@@ -11,7 +11,13 @@ import {
 
 const Separator = () => <View style={styles.separator} />;
 
-const menuItems = ['Addition', 'Subtraction', 'Multiplication', 'Division', 'Random']
+const menuItems = [
+  'Addition',
+  'Subtraction',
+  'Multiplication',
+  'Division',
+  'Random',
+];
 
 const MainMenu = () => {
   return (
@@ -27,19 +33,17 @@ const MainMenu = () => {
       <Separator />
       {menuItems.map((item, idx) => {
         return (
-        <View key={idx}>
-        <Pressable
-        style={styles.menuButton}
-        onPress={() => Alert.alert(`${item} pressed`)}
-      >
-        <Text style={styles.menuText}>{item}</Text>
-      </Pressable>
-      <Separator />
-      </View>
-        )
+          <View key={idx}>
+            <Pressable
+              style={styles.menuButton}
+              onPress={() => Alert.alert(`${item} pressed`)}
+            >
+              <Text style={styles.menuText}>{item}</Text>
+            </Pressable>
+            <Separator />
+          </View>
+        );
       })}
-
-      
     </View>
   );
 };
@@ -70,40 +74,3 @@ const styles = StyleSheet.create({
 });
 
 export default MainMenu;
-
-
-{/* <Pressable
-        style={styles.menuButton}
-        onPress={() => Alert.alert('Addition pressed')}
-      >
-        <Text style={styles.menuText}>Addition</Text>
-      </Pressable>
-      <Separator />
-      <Pressable
-        style={styles.menuButton}
-        onPress={() => Alert.alert('Subtraction pressed')}
-      >
-        <Text style={styles.menuText}>Subtraction</Text>
-      </Pressable>
-      <Separator />
-      <Pressable
-        style={styles.menuButton}
-        onPress={() => Alert.alert('Multiplication pressed')}
-      >
-        <Text style={styles.menuText}>Multiplication</Text>
-      </Pressable>
-      <Separator />
-      <Pressable
-        style={styles.menuButton}
-        onPress={() => Alert.alert('Division pressed')}
-      >
-        <Text style={styles.menuText}>Division</Text>
-      </Pressable>
-      <Separator />
-      <Pressable
-        style={styles.menuButton}
-        onPress={() => Alert.alert('Random pressed')}
-      >
-        <Text style={styles.menuText}>Random</Text>
-      </Pressable>
-      <Separator /> */}
