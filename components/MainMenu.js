@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
   },
   separator: {
     marginVertical: 12,
-    borderBottomColor: '#737373',
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    // borderBottomColor: '#737373',
+    // borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });
 
