@@ -6,20 +6,20 @@ import AdditionProblems from './components/AdditionProblems';
 export default function App() {
   return (
     <View >
-      <StatusBar style="auto" />
+      {/* <StatusBar style="auto" /> */}
       <AdditionProblems />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 3,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingTop:20,
-    paddingLeft: 20,
-    paddingRight:20
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 3,
+//     backgroundColor: 'white',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     paddingTop:20,
+//     paddingLeft: 20,
+//     paddingRight:20
+//   },
+// });
