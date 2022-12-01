@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import MainMenu from './components/MainMenu';
+import AdditionProblems from './components/AdditionProblems';
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <View >
       <StatusBar style="auto" />
-      <MainMenu />
+      <AdditionProblems />
     </View>
   );
 }
@@ -14,7 +15,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 3,
-    backgroundColor: 'pink',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop:20,
