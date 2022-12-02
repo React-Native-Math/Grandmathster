@@ -13,14 +13,12 @@ export default function AdditionProblems (){
     const propOperation = '+'
   
     useEffect(()=>{
-        //props.first takes in the selected numbers 0-9 as an array
-    const propsFirst = [1,3,6]
-
+    //props.first takes in the selected numbers 0-9 as an array
+    const propsFirst = [1,3,6,9,2]
     setFirstNum(propsFirst[Math.floor(Math.random()*propsFirst.length)])
-    
-        //props.second to be 10, 20, 30, 40, 10 would represent 0-10, 30 would represent 0-30
-    const propsSecondNum = 10
 
+    //props.second to be 10, 20, 30, 40, 10 would represent 0-10, 30 would represent 0-30
+    const propsSecondNum = 10
     setSecondNum(Math.floor(Math.random()*propsSecondNum))
     },[change])
     
@@ -88,9 +86,7 @@ export default function AdditionProblems (){
 
 
 const styles = StyleSheet.create({
-    outerContainer:{
-      
-    },
+
     scoreContainer:{
         justifyContent:'top',
         paddingTop:15,
@@ -100,28 +96,30 @@ const styles = StyleSheet.create({
         textAlign:'center',
         fontSize:20,
         fontFamily:'Fredericka',
-        fontColor: 'white',
+        color: 'white',
+
     },
     problemContainer:{  
         justifyContent:'center',
         alignItems:'center',
-        paddingTop:150,
+        paddingTop:50,
     },
     number:{
-      fontSize:25,
+      fontSize:75,
       fontFamily:'Fredericka',
-      fontColor: 'white',
+      
+      color: 'white',
     },
     message:{
         paddingTop: 20,
         fontSize: 15,
         fontFamily:'Fredericka',
-        fontColor: 'white'
+        color: 'white',
     },
     score:{
         fontSize:20,
         fontFamily:'Fredericka',
-        fontColor: 'white',
+        color: 'white',
     }
 
 })

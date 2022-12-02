@@ -9,21 +9,15 @@ export default function App() {
     'Fredericka':require('./assets/fonts/FrederickatheGreat-Regular.ttf')
   })
   return (
-    <View >
+    <View style={styles.container}>
       {/* <StatusBar style="auto" /> */}
       <AdditionProblems />
     </View>
   );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 3,
-//     backgroundColor: 'white',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     paddingTop:20,
-//     paddingLeft: 20,
-//     paddingRight:20
-//   },
-// });
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'black',
+  },
+});
