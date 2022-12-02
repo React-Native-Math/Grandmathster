@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {View, StyleSheet, TextInput, Text, ImageBackgroundComponent,} from 'react-native'
+import {View, StyleSheet, TextInput, Text} from 'react-native'
 
 
 export default function AdditionProblems (){
@@ -11,7 +11,9 @@ export default function AdditionProblems (){
     const [score, setScore] = useState(0)
     const [questionNumber, setQuestionNumber] = useState(0)
     const propOperation = '+'
-  
+    
+
+
     useEffect(()=>{
     //props.first takes in the selected numbers 0-9 as an array
     const propsFirst = [1,3,6,9,2]
