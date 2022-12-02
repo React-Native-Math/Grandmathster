@@ -32,14 +32,14 @@ export default function AdditionProblems (){
             setScore(score+1)
             setInput('')
             setQuestionNumber(questionNumber+1)
-            setTimeout(()=>setMessage(''),1000)
+            
         }
         else{
             setMessage(`Incorrect, the correct answer was ${firstNum + secondNum}`)
             setChange(!change)
             setInput('')
             setQuestionNumber(questionNumber+1)
-            setTimeout(()=>setMessage(''),2000)     
+               
         }
     }
     return(
@@ -65,7 +65,9 @@ export default function AdditionProblems (){
                 <TextInput 
                     style={styles.textInput}
                     placeholder={questionNumber === 0 ? 'type your answer' : ''}
-                    onChangeText={(userInput)=>setInput(userInput)}
+                    onChangeText={(userInput)=>{setInput(userInput)
+                        setMessage('')
+                    }}
                     onSubmitEditing={(e)=>handleInputAnswer(e)} 
                     clearTextOnFocus={true}
                     keyboardType='number-pad'
