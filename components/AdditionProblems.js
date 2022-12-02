@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import {View, StyleSheet, TextInput, Text,} from 'react-native'
-import {useFonts} from 'expo-font'
+import {View, StyleSheet, TextInput, Text, ImageBackgroundComponent,} from 'react-native'
+
 
 export default function AdditionProblems (){
-    const [loaded] = useFonts({})
     const [input, setInput] = useState(null)
     const [message, setMessage] = useState('')
     const [firstNum, setFirstNum] = useState(null)
@@ -36,7 +35,7 @@ export default function AdditionProblems (){
             setTimeout(()=>setMessage(''),1000)
         }
         else{
-            setMessage(`Incorrect, the correct answer is ${firstNum+secondNum}`)
+            setMessage(`Incorrect, the correct answer was ${firstNum + secondNum}`)
             setChange(!change)
             setInput('')
             setQuestionNumber(questionNumber+1)
@@ -44,10 +43,11 @@ export default function AdditionProblems (){
         }
     }
     return(
-        <View>
+        <View style={styles.outerContainer}>
+   
             <View style={styles.scoreContainer}>
                 <Text style={styles.score}>
-                    Score: {score}            {questionNumber > 0 ? `Accuracy:${Math.floor(score/questionNumber*100)}%`:''}
+                    Score: {score}            {questionNumber > 0 ? `Accuracy: ${Math.floor(score/questionNumber*100)}%`:''}
                 </Text>
                 
             </View>
@@ -64,7 +64,7 @@ export default function AdditionProblems (){
                 </Text>
                 <TextInput 
                     style={styles.textInput}
-                    placeholder='type your answer'
+                    placeholder={questionNumber === 0 ? 'type your answer' : ''}
                     onChangeText={(userInput)=>setInput(userInput)}
                     onSubmitEditing={(e)=>handleInputAnswer(e)} 
                     clearTextOnFocus={true}
@@ -86,6 +86,9 @@ export default function AdditionProblems (){
 
 
 const styles = StyleSheet.create({
+    outerContainer:{
+      
+    },
     scoreContainer:{
         justifyContent:'top',
         paddingTop:15,
@@ -94,7 +97,8 @@ const styles = StyleSheet.create({
     textInput:{
         textAlign:'center',
         fontSize:20,
-        fontFamily:'Fredericka'
+        fontFamily:'Fredericka',
+        fontColor: 'white',
     },
     problemContainer:{  
         justifyContent:'center',
@@ -104,15 +108,18 @@ const styles = StyleSheet.create({
     number:{
       fontSize:25,
       fontFamily:'Fredericka',
+      fontColor: 'white',
     },
     message:{
         paddingTop: 20,
         fontSize: 15,
         fontFamily:'Fredericka',
+        fontColor: 'white'
     },
     score:{
         fontSize:20,
-        fontFamily:'Fredericka'
+        fontFamily:'Fredericka',
+        fontColor: 'white',
     }
 
 })
