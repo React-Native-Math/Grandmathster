@@ -2,12 +2,15 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // import Home from '../components/MainMenu'
-import { View, Text } from "react-native";
+import { View, Text, Button } from "react-native";
 
-function HomeScreen() {
+function HomeScreen({navigation}) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
+      <Button
+      title="Go to"
+      onPress={() => navigation.navigate('Details')} />
     </View>
   );
 }
