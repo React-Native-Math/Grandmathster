@@ -20,6 +20,11 @@ const menuItems = [
 ];
 
 const MainMenu = () => {
+
+  const handlePress = () => {
+    
+  }
+
   return (
     <View style={styles.container}>
       <Image
