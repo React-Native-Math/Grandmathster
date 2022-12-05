@@ -1,34 +1,33 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   Text,
   Image,
   StyleSheet,
-  Button,
-  Alert,
   Pressable,
-} from 'react-native';
+} from "react-native";
 
 const Separator = () => <View style={styles.separator} />;
 
 const menuItems = [
-  'Addition',
-  'Subtraction',
-  'Multiplication',
-  'Division',
-  'Random',
+  "Addition",
+  "Subtraction",
+  "Multiplication",
+  "Division",
+  "Random",
 ];
 
-const MainMenu = () => {
+const MainMenu = ({ navigation }) => {
+
   return (
     <View style={styles.container}>
       <Image
         style={styles.logoPic}
         source={{
-          uri: 'https://www.mathunion.org/fileadmin/IMU/Logo/IMU-logo-wt.png',
+          uri: "https://www.mathunion.org/fileadmin/IMU/Logo/IMU-logo-wt.png",
         }}
       />
-      <Text>App Name</Text>
+      <Text>App Name / instructions</Text>
       <Separator />
       <Separator />
       {menuItems.map((item, idx) => {
@@ -36,7 +35,7 @@ const MainMenu = () => {
           <View key={idx}>
             <Pressable
               style={styles.menuButton}
-              onPress={() => Alert.alert(`${item} pressed`)}
+              onPress={() => navigation.navigate(`${item}Game`)}
             >
               <Text style={styles.menuText}>{item}</Text>
             </Pressable>
@@ -50,7 +49,7 @@ const MainMenu = () => {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   logoPic: {
     height: 80,
@@ -58,13 +57,13 @@ const styles = StyleSheet.create({
   },
   menuButton: {
     borderRadius: 100,
-    backgroundColor: 'navy',
+    backgroundColor: "navy",
     padding: 5,
     width: 150,
-    alignItems: 'center',
+    alignItems: "center",
   },
   menuText: {
-    color: 'white',
+    color: "white",
   },
   separator: {
     marginVertical: 12,
