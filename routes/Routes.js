@@ -7,6 +7,7 @@ import SubtractionGame from "../components/gameModes/SubtractionGame";
 import MultiplicationGame from "../components/gameModes/MultiplicationGame";
 import DivisionGame from "../components/gameModes/DivisionGame";
 import RandomGame from "../components/gameModes/RandomGame";
+import AdvancedSettingsAddition from "../components/gameModes/AdvancedSettingsAddition";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +19,8 @@ const Navigation = () => {
         component={MainMenu}
         options={{ title: "App Name" }}
       />
-      <Stack.Screen name="AdditionGame" component={AdditionMenu} />
+      <Stack.Screen name="AdditionMenu" component={AdditionMenu} />
+      <Stack.Screen name='AdvancedSettingsAddition' component={AdvancedSettingsAddition}/>
       <Stack.Screen name="SubtractionGame" component={SubtractionGame} />
       <Stack.Screen name="MultiplicationGame" component={MultiplicationGame} />
       <Stack.Screen name="DivisionGame" component={DivisionGame} />

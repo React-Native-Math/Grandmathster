@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react'
-import {View, StyleSheet, TextInput, Text, Button, Alert} from 'react-native'
+import {View, StyleSheet, TextInput, Text, Button, Alert, Pressable} from 'react-native'
 import BouncyCheckboxGroup, {
     ICheckboxButton,
   } from "react-native-bouncy-checkbox-group";
+import Navigation from '../../routes/Routes';
 import AdditionProblems from './AdditionProblems'
 
 
-export default function AdditonMunu (){
+export default function AdditonMunu ({navigation}){
     const [difficultyFirstNum, setDifficultyFirstNum] = useState(0)
     const [difficultySecondNum, setDifficultySecondNum] = useState(0)
     const [toggle, setToggle] = useState(false)
@@ -61,10 +62,6 @@ export default function AdditonMunu (){
         setToggle(!false)
     }
 
-    const handleQuestionAmount = (e,maxQuestions) =>{
-
-    }
-
     return(
         <View>
             {toggle ? 
@@ -105,6 +102,11 @@ export default function AdditonMunu (){
                         Hard
                     </Text>
                 </Button>
+                <Pressable
+                    onPress={()=>navigation.navigate('AdvancedSettingsAddition')}
+                >
+                    <Text>Advanced Settings</Text>
+                </Pressable>
             </View>
         }
         </View>

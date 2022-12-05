@@ -35,7 +35,7 @@ const MainMenu = ({ navigation }) => {
           <View key={idx}>
             <Pressable
               style={styles.menuButton}
-              onPress={() => navigation.navigate(`${item}Game`)}
+              onPress={() => navigation.navigate(`${item}Menu`)}
             >
               <Text style={styles.menuText}>{item}</Text>
             </Pressable>
