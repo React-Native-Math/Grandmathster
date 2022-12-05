@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Pressable,
 } from "react-native";
-import AdditionGame from "./gameModes/AdditionGame";
 
 const Separator = () => <View style={styles.separator} />;
 

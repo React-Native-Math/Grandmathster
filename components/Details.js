@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   View,
   Text,
@@ -7,7 +7,7 @@ import {
   Button,
   Alert,
   Pressable,
-} from 'react-native';
+} from "react-native";
 
 const Details = () => {
   return (
@@ -15,12 +15,12 @@ const Details = () => {
       <Image
         style={styles.logoPic}
         source={{
-          uri: 'https://www.mathunion.org/fileadmin/IMU/Logo/IMU-logo-wt.png',
+          uri: "https://www.mathunion.org/fileadmin/IMU/Logo/IMU-logo-wt.png",
         }}
       />
       <Text>App Name</Text>
-      </View>
-  )
-}
+    </View>
+  );
+};
 
-export default Details
+export default Details;

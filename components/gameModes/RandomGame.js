@@ -1,10 +1,10 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 
 const RandomGame = () => {
   return (
     <View>
-      <div>RandomGame</div>
+      <Text>RandomGame</Text>
     </View>
   );
 };
