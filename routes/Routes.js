@@ -9,8 +9,19 @@ import {
   DivisionGame,
   RandomGame,
 } from "../components/gameModes";
+import { Image } from 'react-native'
+import arrow from '../assets/img/arrow.png'
 
 const Stack = createNativeStackNavigator();
+
+function ArrowButton() {
+  return (
+    <Image
+      style={{ width: 30, height: 30 }}
+      source={arrow}
+    />
+  );
+}
 
 const Navigation = () => {
   return (
@@ -18,7 +29,8 @@ const Navigation = () => {
       <Stack.Screen
         name="Home"
         component={MainMenu}
-        options={{ title: "App Name" }}
+        options={{ headerTitle: (props) => <ArrowButton /> }}
+        // options={{ title: "App Name" }}
       />
       <Stack.Screen name="AdditionGame" component={AdditionMenu} />
       <Stack.Screen name="SubtractionGame" component={SubtractionGame} />
