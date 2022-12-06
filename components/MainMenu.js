@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Pressable,
 } from "react-native";
+import appLogo from '../assets/img/appLogo.png'
 
 const Separator = () => <View style={styles.separator} />;
 
@@ -23,9 +24,7 @@ const MainMenu = ({ navigation }) => {
     <View style={styles.container}>
       <Image
         style={styles.logoPic}
-        source={{
-          uri: "https://www.mathunion.org/fileadmin/IMU/Logo/IMU-logo-wt.png",
-        }}
+        source={appLogo}
       />
       <Text>App Name / instructions</Text>
       <Separator />
