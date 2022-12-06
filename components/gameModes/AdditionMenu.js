@@ -109,7 +109,7 @@ export default function AdditonMunu() {
           maxQuestionsNumber={questionAmount}
         />
       ) : (
-        <View>
+        <View style={styles.menuContainer}>
           <Text>Number of Questions</Text>
           <BouncyCheckboxGroup
             data={ICheckboxButton}
@@ -119,15 +119,12 @@ export default function AdditonMunu() {
               setQuestionAmount(selectedItem.value);
             }}
           />
-            <View style={styles.menuContainer}>
           <Pressable
             style={styles.menuButton}
             onPress={(e) => handleDifficulty(e, 10, 10)}
           >
             <Text style={styles.menuText}>Easy</Text>
           </Pressable>
-            </View>
-
           <Button onPress={(e) => handleDifficulty(e, 100, 100)} title="Medium">
             <Text>Medium</Text>
           </Button>
