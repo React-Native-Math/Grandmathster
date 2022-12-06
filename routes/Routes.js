@@ -9,17 +9,19 @@ import {
   DivisionGame,
   RandomGame,
 } from "../components/gameModes";
-import { Image } from 'react-native'
+import { Image, Pressable } from 'react-native'
 import arrow from '../assets/img/arrow.png'
 
 const Stack = createNativeStackNavigator();
 
 function ArrowButton() {
   return (
+    <Pressable onPress={() => console.log('clicked')}>
     <Image
       style={{ width: 30, height: 30 }}
       source={arrow}
     />
+    </Pressable>
   );
 }
 
@@ -28,9 +30,10 @@ const Navigation = () => {
     <Stack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: '#f4511e',
+        backgroundColor: 'silver',
       },
       headerTitle: (props) => <ArrowButton />,
+      // headerLeft: () => null,
       headerTintColor: '#fff',
       headerTitleStyle: {
         fontWeight: 'bold',

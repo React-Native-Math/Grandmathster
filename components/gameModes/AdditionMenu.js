@@ -12,48 +12,78 @@ export default function AdditonMunu (){
     const [toggle, setToggle] = useState(false)
     const [questionAmount, setQuestionAmount] = useState(10)
 
-    const ICheckboxButton= [
-        {
-            id:0,
-            text:10,
-            value:10,
-            fillColor: "#ff7473",
-            unfillColor: "#fbbfbb",
-            textStyle:{
-                textDecorationLine:"none",
-            }
+    const checkboxOptions = [10, 20, 30, 'Unlimited']
+
+    const ICheckboxButton = checkboxOptions.map((option, idx) => {
+      return {
+        id: idx,
+        text: option,
+        value: option !== "Unlimited" ? Number(option) : Infinity,
+        fillColor: "#ff7473",
+        unfillColor: "#fbbfbb",
+        textStyle: {
+          textDecorationLine: "none",
         },
-        {
-            id:1,
-            text:20,
-            value:20,
-            fillColor: "#ff7473",
-            unfillColor: "#fbbfbb",
-            textStyle:{
-                textDecorationLine:"none",
-            }
+        style: {
+          marginTop: 16,
         },
-        {
-            id:2,
-            text:30,
-            value:30,
-            fillColor: "#ff7473",
-            unfillColor: "#fbbfbb",
-            textStyle:{
-                textDecorationLine:"none",
-            }
-        },
-        {
-            id:3,
-            text:'Unlimited',
-            value: Infinity,
-            fillColor: "#ff7473",
-            unfillColor: "#fbbfbb",
-            textStyle:{
-                textDecorationLine:"none",
-            }
-        },
-    ]
+      };
+    });
+
+    // const ICheckboxButton= [
+    //     {
+    //         id:0,
+    //         text:10,
+    //         value:10,
+    //         fillColor: "#ff7473",
+    //         unfillColor: "#fbbfbb",
+    //         textStyle:{
+    //             textDecorationLine:"none",
+    //         },
+    //         style: {
+    //             marginTop: 16,
+    //         }
+    //     },
+    //     {
+    //         id:1,
+    //         text:20,
+    //         value:20,
+    //         fillColor: "#ff7473",
+    //         unfillColor: "#fbbfbb",
+    //         textStyle:{
+    //             textDecorationLine:"none",
+    //         },
+    //         style: {
+    //             marginTop: 16,
+    //         }
+    //     },
+    //     {
+    //         id:2,
+    //         text:30,
+    //         value:30,
+    //         fillColor: "#ff7473",
+    //         unfillColor: "#fbbfbb",
+    //         textStyle:{
+    //             textDecorationLine:"none",
+    //         },
+    //         style: {
+    //             marginTop: 16,
+    //         }
+    //     },
+    //     {
+    //         id:3,
+    //         text:'Unlimited',
+    //         value: Infinity,
+    //         fillColor: "#ff7473",
+    //         unfillColor: "#fbbfbb",
+    //         textStyle:{
+    //             textDecorationLine:"none",
+    //         },
+    //         style: {
+    //             marginTop: 16,
+    //         }
+    //     },
+    // ]
 
     const handleDifficulty = (e,first, second) =>{
         setDifficultyFirstNum(first)
@@ -78,6 +108,7 @@ export default function AdditonMunu (){
                 <BouncyCheckboxGroup
                 data={ICheckboxButton} 
                 initial={0}
+                style={styles.checkbox}
                 onChange={(selectedItem)=>{
                     setQuestionAmount(selectedItem.value)
                 }}
@@ -128,4 +159,7 @@ const styles = StyleSheet.create({
     separator: {
       marginVertical: 12,
     },
+    checkbox: {
+        flexDirection: "column",
+    }
   });
