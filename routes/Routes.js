@@ -2,11 +2,13 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MainMenu from "../components/MainMenu";
-import AdditionMenu from "../components/gameModes/AdditionMenu";
-import SubtractionGame from "../components/gameModes/SubtractionGame";
-import MultiplicationGame from "../components/gameModes/MultiplicationGame";
-import DivisionGame from "../components/gameModes/DivisionGame";
-import RandomGame from "../components/gameModes/RandomGame";
+import {
+  AdditionMenu,
+  SubtractionGame,
+  MultiplicationGame,
+  DivisionGame,
+  RandomGame,
+} from "../components/gameModes";
 
 const Stack = createNativeStackNavigator();
 
