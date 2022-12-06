@@ -25,12 +25,22 @@ function ArrowButton() {
 
 const Navigation = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTitle: (props) => <ArrowButton />,
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }}
+    >
       <Stack.Screen
         name="Home"
         component={MainMenu}
-        options={{ headerTitle: (props) => <ArrowButton /> }}
-        // options={{ title: "App Name" }}
+        options={{ title: "App Name" }}
       />
       <Stack.Screen name="AdditionGame" component={AdditionMenu} />
       <Stack.Screen name="SubtractionGame" component={SubtractionGame} />
