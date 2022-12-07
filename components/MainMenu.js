@@ -23,9 +23,9 @@ const MainMenu = ({ navigation }) => {
   const [about, setAbout] = useState(false)
   return (
     <View style={styles.container}>
-  {/* View style={styles.overlayContainer}>
+  {about ? <View style={styles.overlayContainer}>
   <View style={styles.overlay}/>
-  </View> */}
+  </View> : <View></View>}
       <Image
         style={styles.logoPic}
         source={appLogo}
@@ -48,7 +48,7 @@ const MainMenu = ({ navigation }) => {
       })}
       <Pressable
               style={styles.menuButton}
-              onPress={() => setAbout(true)}
+              onPress={() => setAbout(!about)}
             >
               <Text style={styles.menuText}>About</Text>
             </Pressable>
