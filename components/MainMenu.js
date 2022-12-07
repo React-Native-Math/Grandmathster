@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,6 +6,8 @@ import {
   StyleSheet,
   Pressable,
 } from "react-native";
+import appLogo from '../assets/img/appLogo.png'
+import Footer from "./Footer";
 
 const Separator = () => <View style={styles.separator} />;
 
@@ -18,14 +20,15 @@ const menuItems = [
 ];
 
 const MainMenu = ({ navigation }) => {
-
+  const [about, setAbout] = useState(false)
   return (
     <View style={styles.container}>
+  {/* View style={styles.overlayContainer}>
+  <View style={styles.overlay}/>
+  </View> */}
       <Image
         style={styles.logoPic}
-        source={{
-          uri: "https://www.mathunion.org/fileadmin/IMU/Logo/IMU-logo-wt.png",
-        }}
+        source={appLogo}
       />
       <Text>App Name / instructions</Text>
       <Separator />
@@ -43,6 +46,15 @@ const MainMenu = ({ navigation }) => {
           </View>
         );
       })}
+      <Pressable
+              style={styles.menuButton}
+              onPress={() => setAbout(true)}
+            >
+              <Text style={styles.menuText}>About</Text>
+            </Pressable>
+      <View style={styles.footer}>
+      <Footer/>
+      </View>
     </View>
   );
 };
@@ -70,6 +82,31 @@ const styles = StyleSheet.create({
     // borderBottomColor: '#737373',
     // borderBottomWidth: StyleSheet.hairlineWidth,
   },
+  footer: {
+    height: 100,
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  overlayContainer: {
+    display: 'flex',
+    zIndex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+  },
+  overlay: {
+    position: 'absolute',
+    borderRadius: 5,
+    zIndex: 1,
+    width: '80%',
+    height: '97%',
+    backgroundColor: 'red',
+    opacity: 1,
+  }
 });
 
 export default MainMenu;
