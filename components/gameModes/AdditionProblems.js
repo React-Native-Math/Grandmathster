@@ -11,12 +11,20 @@ export default function AdditionProblems (props){
     const [score, setScore] = useState(0)
     const [questionNumber, setQuestionNumber] = useState(0)
     const [time, setTime] = useState(0)
-
     useEffect(()=>{
-    setFirstNum(Math.floor(Math.random()*props.firstNum))
     setSecondNum(Math.floor(Math.random()*props.secondNum))
+    if(Number.isInteger(props.firstNum)){
+        setFirstNum(Math.floor(Math.random()*props.firstNum))
+    }
+    else{ let firstNumberArray = Object.entries(props.firstNum)
+        firstNumberArray = firstNumberArray.filter(([key, value])=>{
+            if(value)
+            return key
+        })
+        setFirstNum(Number(firstNumberArray[Math.floor(Math.random()*firstNumberArray.length)][0]))
+    }
     },[change])
-    
+
     if(props.timeAtt){
         setTimeout(()=>{
             setTime(time+1)

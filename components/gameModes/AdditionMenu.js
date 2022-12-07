@@ -4,7 +4,7 @@ import BouncyCheckboxGroup, {ICheckboxButton} from "react-native-bouncy-checkbox
 import AdditionProblems from './AdditionProblems'
 
 
-export default function AdditonMunu ({navigation}){
+export default function AdditionMenu ({navigation}){
     const [difficultyFirstNum, setDifficultyFirstNum] = useState(0)
     const [difficultySecondNum, setDifficultySecondNum] = useState(0)
     const [toggle, setToggle] = useState(false)
