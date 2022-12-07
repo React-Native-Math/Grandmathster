@@ -12,7 +12,7 @@ export default function AdvancedSettingsAddition() {
   const [toggle, setToggle] = useState(false);
   const [questionAmount, setQuestionAmount] = useState(10);
   const [timeAttack, setTimeAttack] = useState(false)
-  const [timeAmount, setTimeAmount] = useState(1000000000)
+  const [timeAmount, setTimeAmount] = useState(Infinity)
 
   const checkboxOptions = [0,1,2,3,4,5,6,7,8,9];
 
