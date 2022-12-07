@@ -20,6 +20,7 @@ export default function AdditonMunu() {
   const [questionAmount, setQuestionAmount] = useState(10);
 
   const checkboxOptions = [10, 20, 30, "Unlimited"];
+  const difficulties = ['Easy', 'Medium', 'Hard']
 
   const ICheckboxButton = checkboxOptions.map((option, idx) => {
     return {
@@ -32,7 +33,7 @@ export default function AdditonMunu() {
         textDecorationLine: "none",
       },
       style: {
-        marginTop: 16,
+        marginTop: 10,
       },
     };
   });
@@ -101,7 +102,7 @@ export default function AdditonMunu() {
   const handleQuestionAmount = (e, maxQuestions) => {};
 
   return (
-    <View>
+    <View style={styles.menuContainer}>
       {toggle ? (
         <AdditionProblems
           firstNum={difficultyFirstNum}
@@ -109,7 +110,8 @@ export default function AdditonMunu() {
           maxQuestionsNumber={questionAmount}
         />
       ) : (
-        <View style={styles.menuContainer}>
+        <>
+        <View style={styles.questionAmountContainer}>
           <Text>Number of Questions</Text>
           <BouncyCheckboxGroup
             data={ICheckboxButton}
@@ -119,6 +121,8 @@ export default function AdditonMunu() {
               setQuestionAmount(selectedItem.value);
             }}
           />
+          </View>
+          <View style={styles.buttonsContainer}>
           <Pressable
             style={styles.menuButton}
             onPress={(e) => handleDifficulty(e, 10, 10)}
@@ -132,6 +136,7 @@ export default function AdditonMunu() {
             <Text>Hard</Text>
           </Button>
         </View>
+        </>
       )}
     </View>
   );
@@ -148,9 +153,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingBottom: 5,
   },
+  questionAmountContainer: {
+    display: 'flex',
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 10,
+    backgroundColor: 'red',
+  },
+  buttonsContainer: {
+    display: 'flex',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: 'green',
+    height: 190,
+    marginTop: 10,
+  },
   menuButton: {
     borderRadius: 50,
     padding: 5,
+    margin: 5,
     width: 150,
     height: 60,
     color: "white",
