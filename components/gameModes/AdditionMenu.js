@@ -1,9 +1,6 @@
-import React, {useState, useEffect} from 'react'
-import {View, StyleSheet, TextInput, Text, Button, Alert, Pressable} from 'react-native'
-import BouncyCheckboxGroup, {
-    ICheckboxButton,
-  } from "react-native-bouncy-checkbox-group";
-import Navigation from '../../routes/Routes';
+import React, {useState} from 'react'
+import {View, StyleSheet, Text, Button, Pressable} from 'react-native'
+import BouncyCheckboxGroup, {ICheckboxButton} from "react-native-bouncy-checkbox-group";
 import AdditionProblems from './AdditionProblems'
 
 
@@ -12,6 +9,8 @@ export default function AdditonMunu ({navigation}){
     const [difficultySecondNum, setDifficultySecondNum] = useState(0)
     const [toggle, setToggle] = useState(false)
     const [questionAmount, setQuestionAmount] = useState(10)
+    const [timeAttack, setTimeAttack] = useState(false)
+    const [timeAmount, setTimeAmount] = useState(1000000000)
 
     const ICheckboxButton= [
         {
@@ -54,13 +53,58 @@ export default function AdditonMunu ({navigation}){
                 textDecorationLine:"none",
             }
         },
+        {
+            id:4,
+            text:'Time Attack 10 seconds',
+            value:'time1',
+            textStyle:{
+                textDecorationLine:"none",
+            }
+        },
+        {
+            id:5,
+            text:'Time Attack 30 seconds',
+            value:'time2',
+            textStyle:{
+                textDecorationLine:"none",
+            }
+        },
+        {
+            id:6,
+            text:'Time Attack 60 seconds',
+            value:'time3',
+            textStyle:{
+                textDecorationLine:"none",
+            }
+        },
     ]
 
     const handleDifficulty = (e,first, second) =>{
         setDifficultyFirstNum(first)
         setDifficultySecondNum(second)
         setToggle(!false)
+        
     }
+
+    const handleSelection = (selectedItem)=>{
+        if(selectedItem.value=='time1'){
+            setTimeAttack(true)
+            setQuestionAmount(1000)
+            setTimeAmount(10)
+        }
+        else if(selectedItem.value=='time2'){
+            setTimeAttack(true)
+            setQuestionAmount(1000)
+            setTimeAmount(30)
+        }
+        else if(selectedItem.value=='time3'){
+            setTimeAttack(true)
+            setQuestionAmount(1000)
+            setTimeAmount(60)
+        }
+        else{
+        setQuestionAmount(selectedItem.value)
+    }}
 
     return(
         <View>
@@ -68,16 +112,18 @@ export default function AdditonMunu ({navigation}){
                 <AdditionProblems 
                 firstNum = {difficultyFirstNum} 
                 secondNum = {difficultySecondNum}
-                maxQuestionsNumber = {questionAmount}/> 
+                maxQuestionsNumber = {questionAmount}
+                timeAtt={timeAttack}
+                timeAmt={timeAmount}
+                /> 
             :
             <View>
-                <Text>Number of Questions</Text>
+                <Text>Number of Questions or set amount of time</Text>
                 <BouncyCheckboxGroup
+                style={{flexDirection:"column"}}
                 data={ICheckboxButton} 
                 initial={0}
-                onChange={(selectedItem)=>{
-                    setQuestionAmount(selectedItem.value)
-                }}
+                onChange={handleSelection}
                 />
                 <Button
                 style={styles.menuButton}

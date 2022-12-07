@@ -10,19 +10,18 @@ export default function AdditionProblems (props){
     const [change,setChange] = useState(false)
     const [score, setScore] = useState(0)
     const [questionNumber, setQuestionNumber] = useState(0)
-
-
+    const [time, setTime] = useState(0)
 
     useEffect(()=>{
-    //props.first takes in the selected numbers 0-9 as an array
-   
     setFirstNum(Math.floor(Math.random()*props.firstNum))
-
-    //props.second to be 10, 20, 30, 40, 10 would represent 0-10, 30 would represent 0-30
-    
     setSecondNum(Math.floor(Math.random()*props.secondNum))
     },[change])
     
+    if(props.timeAtt){
+        setTimeout(()=>{
+            setTime(time+1)
+        },1000)
+    }
 
     function handleInputAnswer (e) {
         if(firstNum+secondNum===Number(input)){
@@ -41,9 +40,9 @@ export default function AdditionProblems (props){
     }
     return(
         <View>
-            {questionNumber <= Number(props.maxQuestionsNumber) ?
+            {(questionNumber <= Number(props.maxQuestionsNumber)) && (props.timeAmt-time>0)
+            ?
             <View style={styles.outerContainer}>
-    
                 <View style={styles.scoreContainer}>
                     <Text style={styles.score}>
                         Score: {score}           Question: {questionNumber}
@@ -51,9 +50,10 @@ export default function AdditionProblems (props){
                     <Text style={styles.score}>
                     {questionNumber > 0 ? `Accuracy: ${Math.floor(score/questionNumber*100)}%`:''}
                     </Text>
-                    
+                    <Text style={styles.score}>
+                    {props.timeAtt ? `Time Remaining: ${Math.floor(props.timeAmt-time)}`:''}
+                    </Text>
                 </View>
-
                 <View style={styles.problemContainer}>
                     <Text style={styles.number}>
                     {''}   {firstNum}
@@ -88,7 +88,7 @@ export default function AdditionProblems (props){
             :
             <View>
                 <Text>
-                    Nice job your accuracy is {Math.floor(score/questionNumber*100)}%
+                    You answered {score} questions correctly and your accuracy was {Math.floor(score/questionNumber*100)}%
                 </Text>
             </View>
             
