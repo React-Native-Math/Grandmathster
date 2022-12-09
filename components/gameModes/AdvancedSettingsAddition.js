@@ -8,7 +8,7 @@ import AdditionProblems from './AdditionProblems';
 
 export default function AdvancedSettingsAddition() {
   const [secondNumMax, setSecondNumMax] = useState(10);
-  const [firstNumIncluded, setFirstNumIncluded] = useState(false)
+  const [firstNumIncluded, setFirstNumIncluded] = useState({})
   const [toggle, setToggle] = useState(false);
   const [questionAmount, setQuestionAmount] = useState(10);
   const [timeAttack, setTimeAttack] = useState(false)

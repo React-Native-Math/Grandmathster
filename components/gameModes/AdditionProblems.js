@@ -11,8 +11,11 @@ export default function AdditionProblems (props){
     const [score, setScore] = useState(0)
     const [questionNumber, setQuestionNumber] = useState(0)
     const [time, setTime] = useState(0)
+
     useEffect(()=>{
     setSecondNum(Math.floor(Math.random()*props.secondNum))
+        
+    //check to see if props.firstNum is a number or object and then set first number
     if(Number.isInteger(props.firstNum)){
         setFirstNum(Math.floor(Math.random()*props.firstNum))
     }
@@ -21,7 +24,11 @@ export default function AdditionProblems (props){
             if(value)
             return key
         })
-        setFirstNum(Number(firstNumberArray[Math.floor(Math.random()*firstNumberArray.length)][0]))
+        //check to see if user passed in an empty object or with every number being toggled false
+        //if false set the first number to be between 0 and 10. else set first number to be a selection of
+        //what user put in under advanced options
+        firstNumberArray.length===0 ? setFirstNum(Math.floor(Math.random()*10))
+        : setFirstNum(Number(firstNumberArray[Math.floor(Math.random()*firstNumberArray.length)][0]))
     }
     },[change])
 
@@ -48,7 +55,7 @@ export default function AdditionProblems (props){
     }
     return(
         <View>
-            {(questionNumber <= Number(props.maxQuestionsNumber)) && (props.timeAmt-time>0)
+            {(questionNumber < Number(props.maxQuestionsNumber)) && (props.timeAmt-time>0)
             ?
             <View style={styles.outerContainer}>
                 <View style={styles.scoreContainer}>
