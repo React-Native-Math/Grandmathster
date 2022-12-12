@@ -25,8 +25,7 @@ export default function AdditionProblems (props){
             return key
         })
         //check to see if user passed in an empty object or with every number being toggled false
-        //if false set the first number to be between 0 and 10. else set first number to be a selection of
-        //what user put in under advanced options
+        //if true set the first number to be between 0 and 10. else set first number to be a selection of what user put in under advanced options
         firstNumberArray.length===0 ? setFirstNum(Math.floor(Math.random()*10))
         : setFirstNum(Number(firstNumberArray[Math.floor(Math.random()*firstNumberArray.length)][0]))
     }

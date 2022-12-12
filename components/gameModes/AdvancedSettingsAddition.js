@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, Pressable, Button, TextInput } from 'react-native';
+import React, { useState, } from 'react';
+import { View, StyleSheet, Text, Pressable, TextInput } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import BouncyCheckboxGroup, {
-  ICheckboxButton,
-} from 'react-native-bouncy-checkbox-group';
 import AdditionProblems from './AdditionProblems';
 
 export default function AdvancedSettingsAddition() {

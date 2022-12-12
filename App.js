@@ -3,20 +3,16 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import Routes from "./routes/Routes";
 import { useFonts } from "expo-font";
+import VoicePlayground from "./components/VoicePlayground";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
     Fredericka: require("./assets/fonts/FrederickatheGreat-Regular.ttf"),
   });
   return (
-    <NavigationContainer>
-      {/* <View style={styles.container}> */}
-      {/* // <StatusBar style="auto" /> */}
-      {/* <> */}
-      <Routes />
-      {/* </> */}
-      {/* </View> */}
-    </NavigationContainer>
+    <View>
+      <VoicePlayground/>
+    </View>
   );
 }
 
