@@ -103,7 +103,7 @@ export default function AdditionProblems (props){
             :
             <View>
                 <Text>
-                    You answered {score} questions correctly and your accuracy was {Math.floor(score/questionNumber*100)}%
+                    You answered {score} questions correctly and your accuracy was {score===0 ? '0%' : Math.floor(score/questionNumber*100)}%
                 </Text>
             </View>
             
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     problemContainer:{  
         justifyContent:'center',
         alignItems:'center',
-        paddingTop:50,
+        paddingTop:20,
     },
     number:{
       fontSize:75,
