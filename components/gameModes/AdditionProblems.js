@@ -21,7 +21,7 @@ export default function AdditionProblems (props){
     }
     else{ let firstNumberArray = Object.entries(props.firstNum)
         firstNumberArray = firstNumberArray.filter(([key, value])=>{
-            if(value)
+            if(value) 
             return key
         })
         //check to see if user passed in an empty object or with every number being toggled false

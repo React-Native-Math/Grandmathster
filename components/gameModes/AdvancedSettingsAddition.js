@@ -26,6 +26,8 @@ export default function AdvancedSettingsAddition() {
       textStyle={{textDecorationLine:'none'}}
       />)
   });
+  
+  console.log(firstNumIncluded)
 
   const handlePressFirstNum = (selectedItem) => {
     setFirstNumIncluded({
