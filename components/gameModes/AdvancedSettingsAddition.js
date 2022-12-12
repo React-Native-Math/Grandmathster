@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { View, StyleSheet, Text, Pressable, Button, TextInput } from 'react-native';
+import React, { useState, } from 'react';
+import { View, StyleSheet, Text, Pressable, TextInput, ScrollView } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import BouncyCheckboxGroup, {
-  ICheckboxButton,
-} from 'react-native-bouncy-checkbox-group';
 import AdditionProblems from './AdditionProblems';
 
 export default function AdvancedSettingsAddition() {
@@ -29,6 +26,8 @@ export default function AdvancedSettingsAddition() {
       textStyle={{textDecorationLine:'none'}}
       />)
   });
+  
+  console.log(firstNumIncluded)
 
   const handlePressFirstNum = (selectedItem) => {
     setFirstNumIncluded({
@@ -38,7 +37,7 @@ export default function AdvancedSettingsAddition() {
   };
 
   return (
-    <View style={styles.menuContainer}>
+    <ScrollView >
       {toggle ? (
         <AdditionProblems
           firstNum={firstNumIncluded}
@@ -53,30 +52,39 @@ export default function AdvancedSettingsAddition() {
             <Text>Select possible values for first number</Text>
             {checkboxFirstNum.map(elem=>elem)}
           </View>
-          <View>
+          <View style={styles.container}>
             <Text>{`Set max value for 2nd number (default is 10)`}</Text>
             <TextInput
+            style={styles.inputContainer}
             onChangeText={(input)=>setSecondNumMax(Number(input))}
             keyboardType='number-pad'
+            placeholder='type here'
+            returnKeyType='done'
             />
           </View>
-          <View>
+          <View style={styles.container}>
             <Text>{`Set number of questions (default is 10)`}</Text>
             <TextInput
+            style={styles.inputContainer}
             onChangeText={(input)=>setQuestionAmount(Number(input))}
             keyboardType='number-pad'
+            placeholder='type here'
+            returnKeyType='done'
             />
           </View>
-          <View>
+          <View style={styles.container}>
             <Text>{`Set Amount of Time (default is unlimited)`}</Text>
             <TextInput
+            style={styles.inputContainer}
             onChangeText={(input)=>{setTimeAmount(Number(input))
               setTimeAttack(true)
             }}
             keyboardType='number-pad'
+            placeholder='type here'
+            returnKeyType='done'
             />
           </View>
-          <View >
+          <View style={styles.container}>
             <Pressable
               style={styles.menuButton}
               onPress={(e)=>setToggle(true)}
@@ -85,22 +93,33 @@ export default function AdvancedSettingsAddition() {
             <Text style={styles.menuText}>Ready!</Text>
             </Pressable>
           </View>
+          <View style={styles.footer}>
+          
+          </View>
         </>
       )}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    justifyContent: 'center'
   },
   menuContainer: {
-    // width: '100vw',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 5,
+  },
+  inputContainer:{
+    justifyContent:'center',
+    textAlign: 'center',
+    borderColor: 'black',
+    borderWidth: 2,
+    width: 200,
+    color: 'green'
   },
   questionAmountContainer: {
     display: 'flex',
@@ -131,11 +150,20 @@ const styles = StyleSheet.create({
   menuText: {
     color: 'white',
     fontSize: 18,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   separator: {
     marginVertical: 12,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   checkbox: {
     flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  footer:{
+    paddingTop:300
   },
 });

@@ -70,7 +70,7 @@ export default function AdditonMunu({navigation}) {
       ) : (
         <>
           <View style={styles.questionAmountContainer}>
-            <Text>Number of Questions</Text>
+            <Text>Choose how many questions or how much time</Text>
             <BouncyCheckboxGroup
               data={ICheckboxButton}
               initial={0}
