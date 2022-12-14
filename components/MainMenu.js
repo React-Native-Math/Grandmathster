@@ -7,7 +7,7 @@ import {
   Pressable,
 } from "react-native";
 import appLogo from '../assets/img/appLogo.png'
-// import Footer from "./Footer";
+import Footer from "./Footer";
 import Numpad from "./Numpad";
 
 const Separator = () => <View style={styles.separator} />;
@@ -54,8 +54,8 @@ const MainMenu = ({ navigation }) => {
               <Text style={styles.menuText}>About</Text>
             </Pressable>
       <View style={styles.footer}>
-      {/* <Footer/> */}
-      <Numpad />
+      <Footer/>
+      {/* <Numpad /> */}
       </View>
     </View>
   );

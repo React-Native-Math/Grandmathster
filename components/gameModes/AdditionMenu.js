@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {View, StyleSheet, Text, Button, Pressable} from 'react-native'
-import BouncyCheckboxGroup, {ICheckboxButton} from "react-native-bouncy-checkbox-group";
+import BouncyCheckboxGroup, {ICheckboxButton} from "react-native-bouncy-checkbox-group"
 import AdditionProblems from './AdditionProblems'
 
 export default function AdditonMunu({navigation}) {
@@ -11,15 +11,36 @@ export default function AdditonMunu({navigation}) {
   const [timeAttack, setTimeAttack] = useState(false)
   const [timeAmount, setTimeAmount] = useState(1000000000)
 
-  const checkboxOptions = [10, 20, 30, 'Unlimited', 'Time Attack 10 seconds', 'Time Attack 30 seconds', 'Time Attack 60 seconds'];
-  const valueOptions = [10, 20, 30, Infinity, 'time1', 'time2', 'time3']
+  // const checkboxOptions = [10, 20, 30, 'Unlimited', 'Time Attack 10 seconds', 'Time Attack 30 seconds', 'Time Attack 60 seconds'];
+  // const valueOptions = [10, 20, 30, Infinity, 'time1', 'time2', 'time3']
+
+  const numOfQuestionsOptions = [10, 20, 30, '∞']
+  const gameModeOptions = [10, 30, 60]
   const difficulties = ['Easy', 'Medium', 'Hard'];
 
-  const ICheckboxButton = checkboxOptions.map((option, idx) => {
+  const ICheckboxButton_1 = numOfQuestionsOptions.map((option, idx) => {
     return {
       id: idx,
       text: option,
-      value: valueOptions[idx],
+      value: option.length ? Infinity : option,
+      checked: false,
+      fillColor: '#ff7473',
+      unfillColor: '#fbbfbb',
+      textStyle: {
+        textDecorationLine: 'none',
+      },
+      style: {
+        marginTop: 10,
+      },
+    };
+  });
+
+  const ICheckboxButton_2 = gameModeOptions.map((option, idx) => {
+    return {
+      id: idx,
+      text: option,
+      value: 'time' + String(idx + 1),
+      checked: false,
       fillColor: '#ff7473',
       unfillColor: '#fbbfbb',
       textStyle: {
@@ -37,25 +58,61 @@ export default function AdditonMunu({navigation}) {
     setToggle(!false);
   };
 
-  const handleSelection = (selectedItem)=>{
-    if(selectedItem.value=='time1'){
+
+  // TODO: EXPERIMENTAL
+  const handleNumOfQuestionsSelection = (selectedItem) => {
+    if (ICheckboxButton_2.some(option => option.checked === true)) {
+      console.log('NO')
+      // return
+    }
+    
+        ICheckboxButton_1.map(option => option.checked = true)
+        console.log(ICheckboxButton_1)
+        setQuestionAmount(selectedItem.value)
+  }
+
+
+    const handleGameModeSelection = (selectedItem) => {
+          if (ICheckboxButton_1.some(option => option.checked === true)) {
+            console.log('NO')
+            ICheckboxButton_2.map(option => option.text = 90)
+            console.log(ICheckboxButton_2)
+            return
+          }
+              ICheckboxButton_2.map(option => option.checked = true)
+              console.log(ICheckboxButton_2)
+    switch (selectedItem.value) {
+      case 'time' + String(selectedItem.value / 10):
         setTimeAttack(true)
         setQuestionAmount(1000)
-        setTimeAmount(10)
+        setTimeAmount(selectedItem.value)
+        break
+      default:
+        setQuestionAmount(selectedItem.value)
     }
-    else if(selectedItem.value=='time2'){
-        setTimeAttack(true)
-        setQuestionAmount(1000)
-        setTimeAmount(30)
-    }
-    else if(selectedItem.value=='time3'){
-        setTimeAttack(true)
-        setQuestionAmount(1000)
-        setTimeAmount(60)
-    }
-    else{
-    setQuestionAmount(selectedItem.value)
-}}
+  }
+  // TODO: END OF EXPERIMENTAL
+
+//   const handleSelection = (selectedItem)=>{
+//     console.log('>>>>', selectedItem.checked)
+//     if(selectedItem.value=='time1'){
+//         setTimeAttack(true)
+//         setQuestionAmount(1000)
+//         setTimeAmount(10)
+//     }
+//     else if(selectedItem.value=='time2'){
+//         setTimeAttack(true)
+//         setQuestionAmount(1000)
+//         setTimeAmount(30)
+//     }
+//     else if(selectedItem.value=='time3'){
+//         setTimeAttack(true)
+//         setQuestionAmount(1000)
+//         setTimeAmount(60)
+//     }
+//     else{
+//     setQuestionAmount(selectedItem.value)
+// }}
 
   return (
     <View style={styles.menuContainer}>
@@ -70,12 +127,21 @@ export default function AdditonMunu({navigation}) {
       ) : (
         <>
           <View style={styles.questionAmountContainer}>
-            <Text>Number of Questions</Text>
+            <Text>Select number of questions</Text>
             <BouncyCheckboxGroup
-              data={ICheckboxButton}
-              initial={0}
+              data={ICheckboxButton_1}
+              // initial={0}
               style={styles.checkbox}
-              onChange={handleSelection}
+              onChange={handleNumOfQuestionsSelection}
+            />
+            </View>
+          <View style={styles.questionAmountContainer}>
+            <Text>Select game mode (seconds)</Text>
+            <BouncyCheckboxGroup
+              data={ICheckboxButton_2}
+              // initial={0}
+              style={styles.checkbox}
+              onChange={handleGameModeSelection}
             />
           </View>
           <View style={styles.buttonsContainer}>
@@ -120,6 +186,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     marginTop: 10,
+    borderColor: 'silver',
+    borderWidth: '2px',
+    borderRadius: '15px',
+    padding: 10,
   },
   buttonsContainer: {
     display: 'flex',
