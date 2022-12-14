@@ -95,13 +95,15 @@ export default function AdditonMunu({navigation}) {
             })}
           </View>
                 <Pressable
-                    onPress={()=>navigation.navigate('AdvancedSettingsAddition')}
+                    onPress={()=>navigation.navigate
+                      ('AdvancedSettingsAddition')}
+                      style={styles.advancedSettingsContainer}
                 >
                   <Image
         style={styles.cogPic}
         source={cogPic}
       />
-                    <Text style={{marginTop:'25px'}}>Advanced Settings</Text>
+                    <Text>Advanced Settings</Text>
                 </Pressable>
         </>
       )}
@@ -185,9 +187,23 @@ const styles = StyleSheet.create({
   },
   sectionHeading: {
     marginTop: '25px',
+    fontWeight: 'bold',
   },
   cogPic: {
-    height: '20px',
-    width: '20px',
+    height: '15px',
+    width: '15px',
+  },
+  advancedSettingsContainer: {
+    marginTop: '25px',
+    backgroundColor: 'silver',
+    borderRadius: '10px', 
+    padding: '10px',
+
+    height: '25px',
+    width: '170px',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   }
 });
