@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
-import {View, StyleSheet, Text, Button, Pressable} from 'react-native'
-import BouncyCheckboxGroup, {ICheckboxButton} from "react-native-bouncy-checkbox-group"
+import {View, StyleSheet, Text, Button, Pressable, Image} from 'react-native'
+import BouncyCheckboxGroup, {ICheckboxButton} from "react-native-bouncy-checkbox-group";
 import AdditionProblems from './AdditionProblems'
+import cogPic from '../../assets/img/cog.png'
 
 export default function AdditonMunu({navigation}) {
   const [difficultyFirstNum, setDifficultyFirstNum] = useState(0);
@@ -11,36 +12,15 @@ export default function AdditonMunu({navigation}) {
   const [timeAttack, setTimeAttack] = useState(false)
   const [timeAmount, setTimeAmount] = useState(1000000000)
 
-  // const checkboxOptions = [10, 20, 30, 'Unlimited', 'Time Attack 10 seconds', 'Time Attack 30 seconds', 'Time Attack 60 seconds'];
-  // const valueOptions = [10, 20, 30, Infinity, 'time1', 'time2', 'time3']
-
-  const numOfQuestionsOptions = [10, 20, 30, '∞']
-  const gameModeOptions = [10, 30, 60]
+  const checkboxOptions = ['10 questions', '20 questions', '30 questions', 'Time attack: unlimited', 'Time attack: 10 seconds', 'Time attack: 30 seconds', 'Time attack: 60 seconds'];
+  const valueOptions = [10, 20, 30, Infinity, 'time1', 'time2', 'time3']
   const difficulties = ['Easy', 'Medium', 'Hard'];
 
-  const ICheckboxButton_1 = numOfQuestionsOptions.map((option, idx) => {
+  const ICheckboxButton = checkboxOptions.map((option, idx) => {
     return {
       id: idx,
       text: option,
-      value: option.length ? Infinity : option,
-      checked: false,
-      fillColor: '#ff7473',
-      unfillColor: '#fbbfbb',
-      textStyle: {
-        textDecorationLine: 'none',
-      },
-      style: {
-        marginTop: 10,
-      },
-    };
-  });
-
-  const ICheckboxButton_2 = gameModeOptions.map((option, idx) => {
-    return {
-      id: idx,
-      text: option,
-      value: 'time' + String(idx + 1),
-      checked: false,
+      value: valueOptions[idx],
       fillColor: '#ff7473',
       unfillColor: '#fbbfbb',
       textStyle: {
@@ -58,61 +38,25 @@ export default function AdditonMunu({navigation}) {
     setToggle(!false);
   };
 
-
-  // TODO: EXPERIMENTAL
-  const handleNumOfQuestionsSelection = (selectedItem) => {
-    if (ICheckboxButton_2.some(option => option.checked === true)) {
-      console.log('NO')
-      // return
-    }
-    
-        ICheckboxButton_1.map(option => option.checked = true)
-        console.log(ICheckboxButton_1)
-        setQuestionAmount(selectedItem.value)
-  }
-
-
-    const handleGameModeSelection = (selectedItem) => {
-          if (ICheckboxButton_1.some(option => option.checked === true)) {
-            console.log('NO')
-            ICheckboxButton_2.map(option => option.text = 90)
-            console.log(ICheckboxButton_2)
-            return
-          }
-              ICheckboxButton_2.map(option => option.checked = true)
-              console.log(ICheckboxButton_2)
-    switch (selectedItem.value) {
-      case 'time' + String(selectedItem.value / 10):
+  const handleSelection = (selectedItem)=>{
+    if(selectedItem.value=='time1'){
         setTimeAttack(true)
         setQuestionAmount(1000)
-        setTimeAmount(selectedItem.value)
-        break
-      default:
-        setQuestionAmount(selectedItem.value)
+        setTimeAmount(10)
     }
-  }
-  // TODO: END OF EXPERIMENTAL
-
-//   const handleSelection = (selectedItem)=>{
-//     console.log('>>>>', selectedItem.checked)
-//     if(selectedItem.value=='time1'){
-//         setTimeAttack(true)
-//         setQuestionAmount(1000)
-//         setTimeAmount(10)
-//     }
-//     else if(selectedItem.value=='time2'){
-//         setTimeAttack(true)
-//         setQuestionAmount(1000)
-//         setTimeAmount(30)
-//     }
-//     else if(selectedItem.value=='time3'){
-//         setTimeAttack(true)
-//         setQuestionAmount(1000)
-//         setTimeAmount(60)
-//     }
-//     else{
-//     setQuestionAmount(selectedItem.value)
-// }}
+    else if(selectedItem.value=='time2'){
+        setTimeAttack(true)
+        setQuestionAmount(1000)
+        setTimeAmount(30)
+    }
+    else if(selectedItem.value=='time3'){
+        setTimeAttack(true)
+        setQuestionAmount(1000)
+        setTimeAmount(60)
+    }
+    else{
+    setQuestionAmount(selectedItem.value)
+}}
 
   return (
     <View style={styles.menuContainer}>
@@ -126,43 +70,39 @@ export default function AdditonMunu({navigation}) {
         />
       ) : (
         <>
+            <Text style={styles.sectionHeading}>Select Game Mode</Text>
           <View style={styles.questionAmountContainer}>
-            <Text>Select number of questions</Text>
             <BouncyCheckboxGroup
-              data={ICheckboxButton_1}
-              // initial={0}
+              data={ICheckboxButton}
+              initial={0}
               style={styles.checkbox}
-              onChange={handleNumOfQuestionsSelection}
-            />
-            </View>
-          <View style={styles.questionAmountContainer}>
-            <Text>Select game mode (seconds)</Text>
-            <BouncyCheckboxGroup
-              data={ICheckboxButton_2}
-              // initial={0}
-              style={styles.checkbox}
-              onChange={handleGameModeSelection}
+              onChange={handleSelection}
             />
           </View>
+          <Text style={styles.sectionHeading}>Select Difficulty</Text>
           <View style={styles.buttonsContainer}>
             {difficulties.map((difficulty, idx) => {
               const maxNum = 10 ** (idx + 1); // sets the maximum possible number for the selected difficulty
               return (
                 <Pressable
                   key={idx}
-                  style={styles.menuButton}
+                  style={styles[`menuButton${idx}`]}
                   onPress={(e) => handleDifficulty(e, maxNum, maxNum)}
                 >
                   <Text style={styles.menuText}>{difficulty}</Text>
                 </Pressable>
               );
             })}
+          </View>
                 <Pressable
                     onPress={()=>navigation.navigate('AdvancedSettingsAddition')}
                 >
-                    <Text>Advanced Settings</Text>
+                  <Image
+        style={styles.cogPic}
+        source={cogPic}
+      />
+                    <Text style={{marginTop:'25px'}}>Advanced Settings</Text>
                 </Pressable>
-          </View>
         </>
       )}
     </View>
@@ -185,34 +125,57 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
+    padding: 15,
     marginTop: 10,
-    borderColor: 'silver',
+    borderColor: 'grey',
     borderWidth: '2px',
-    borderRadius: '15px',
-    padding: 10,
+    borderRadius: 10,
   },
   buttonsContainer: {
     display: 'flex',
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 220,
+    height: 20,
     marginTop: 20,
   },
-  menuButton: {
+  menuButton0: {
     borderRadius: 50,
     padding: 5,
     margin: 5,
-    width: 150,
-    height: 60,
-    color: 'white',
-    backgroundColor: 'black',
+    width: 70,
+    height: 35,
+    backgroundColor: '#006b3d',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  menuButton1: {
+    borderRadius: 50,
+    padding: 5,
+    margin: 5,
+    width: 70,
+    height: 35,
+    backgroundColor: '#fcb606',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  menuButton2: {
+    borderRadius: 50,
+    padding: 5,
+    margin: 5,
+    width: 70,
+    height: 35,
+    backgroundColor: '#c23b21',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
   menuText: {
     color: 'white',
-    fontSize: 18,
+    fontWeight: 'bold',
+    fontSize: 14,
   },
   separator: {
     marginVertical: 12,
@@ -220,4 +183,11 @@ const styles = StyleSheet.create({
   checkbox: {
     flexDirection: 'column',
   },
+  sectionHeading: {
+    marginTop: '25px',
+  },
+  cogPic: {
+    height: '20px',
+    width: '20px',
+  }
 });
