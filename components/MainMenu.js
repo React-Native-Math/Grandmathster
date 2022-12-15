@@ -5,11 +5,14 @@ import {
   Image,
   StyleSheet,
   Pressable,
+  ImageBackground,
 } from "react-native";
 import appLogo from '../assets/img/appLogo.png'
 import Footer from "./Footer";
+import Numpad from "./Numpad";
 
 const Separator = () => <View style={styles.separator} />;
+const bg = { uri: "https://i.pinimg.com/736x/b8/38/af/b838afc8dd3a316f75b93ca9f78ce024.jpg" };
 
 const menuItems = [
   "Addition",
@@ -22,6 +25,7 @@ const menuItems = [
 const MainMenu = ({ navigation }) => {
   const [about, setAbout] = useState(false)
   return (
+      <ImageBackground source={bg} resizeMode="contain" style={styles.bg} >
     <View style={styles.container}>
   {about ? <View style={styles.overlayContainer}>
   <View style={styles.overlay}/>
@@ -30,7 +34,8 @@ const MainMenu = ({ navigation }) => {
         style={styles.logoPic}
         source={appLogo}
       />
-      <Text>App Name / instructions</Text>
+      {/* NimbleNums, Grandmathster, Enumer8*/}
+      <Text>App Name / instructions</Text> 
       <Separator />
       <Separator />
       {menuItems.map((item, idx) => {
@@ -54,8 +59,10 @@ const MainMenu = ({ navigation }) => {
             </Pressable>
       <View style={styles.footer}>
       <Footer/>
+      {/* <Numpad /> */}
       </View>
     </View>
+      </ImageBackground>
   );
 };
 
@@ -84,7 +91,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     height: 100,
-    width: '100%',
+    width: 100,
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
@@ -95,17 +102,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-    height: '100%',
-    width: '100%',
+    height: 100,
+    width: 100,
   },
   overlay: {
     position: 'absolute',
     borderRadius: 5,
     zIndex: 1,
-    width: '80%',
-    height: '97%',
+    width: 80,
+    height: 97,
     backgroundColor: 'red',
     opacity: 1,
+  },
+  bg: {
+    flex: 1,
+    justifyContent: "center",
   }
 });
 
