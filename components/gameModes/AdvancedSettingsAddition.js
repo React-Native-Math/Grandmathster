@@ -1,9 +1,12 @@
 import React, { useState, } from 'react';
-import { View, StyleSheet, Text, Pressable, TextInput, ScrollView } from 'react-native';
+import { View, StyleSheet, Text, Pressable, TextInput, ScrollView, Dimensions, ImageBackground } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import AdditionProblems from './AdditionProblems';
+import schoolBackground2 from '../../assets/img/schoolBackground2.png'
 
 export default function AdvancedSettingsAddition() {
+  const screen = Dimensions.get('screen')
+  const window = Dimensions.get('window')
   const [secondNumMax, setSecondNumMax] = useState(10);
   const [firstNumIncluded, setFirstNumIncluded] = useState({})
   const [toggle, setToggle] = useState(false);
@@ -18,8 +21,8 @@ export default function AdvancedSettingsAddition() {
       <BouncyCheckbox
       disableBuiltInState
       text={option}
-      fillColor='red'
-      iconStyle={{borderColor:'red'}}
+      fillColor='blue'
+      iconStyle={{borderColor:'blue'}}
       onPress={()=>handlePressFirstNum(option)}
       isChecked={firstNumIncluded[option]}
       key={option}
@@ -47,7 +50,7 @@ export default function AdvancedSettingsAddition() {
           timeAmt={timeAmount} 
         />
       ) : (
-        <>
+        <ImageBackground source={schoolBackground2} resizeMode='cover' style={styles.backgound}>
           <View style={styles.questionAmountContainer}>
             <Text>Select possible values for first number</Text>
             {checkboxFirstNum.map(elem=>elem)}
@@ -96,7 +99,7 @@ export default function AdvancedSettingsAddition() {
           <View style={styles.footer}>
           
           </View>
-        </>
+        </ImageBackground>
       )}
     </ScrollView>
   );
@@ -106,6 +109,13 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  background:{
+    width: screen.width,
+    height: screen.height,
+    alignItems: 'center',
+    justifyContent:'center',
+
   },
   menuContainer: {
     display: 'flex',

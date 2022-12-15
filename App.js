@@ -7,6 +7,7 @@ import { useFonts } from "expo-font";
 export default function App() {
   let [fontsLoaded] = useFonts({
     Fredericka: require("./assets/fonts/FrederickatheGreat-Regular.ttf"),
+    DancingScript: require('./assets/fonts/DancingScript-Regular.ttf')
   });
   return (
     <NavigationContainer>
