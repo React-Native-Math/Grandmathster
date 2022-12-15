@@ -1,7 +1,6 @@
 const propsFirst = [1,3,6,9,2]
 setFirstNum(propsFirst[Math.floor(Math.random()*propsFirst.length)])
 
-
 const handleSelection = (selectedItem)=>{
     if(selectedItem.value=='time1'){
         setTimeAttack(true)
@@ -21,3 +20,8 @@ const handleSelection = (selectedItem)=>{
     else{
     setQuestionAmount(selectedItem.value)
 }}
+
+// NOTE: Open issue cause error in console:
+// ReactDOM.render is no longer supported in React 18
+// possible temp fixes:
+// https://github.com/expo/expo/issues/18485

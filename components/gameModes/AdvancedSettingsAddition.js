@@ -4,8 +4,10 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import AdditionProblems from './AdditionProblems';
 import schoolBackground2 from '../../assets/img/schoolBackground2.png'
 
+const screen = Dimensions.get('screen')
+
 export default function AdvancedSettingsAddition() {
-  const screen = Dimensions.get('screen')
+  // console.log('..', screen)
   const window = Dimensions.get('window')
   const [secondNumMax, setSecondNumMax] = useState(10);
   const [firstNumIncluded, setFirstNumIncluded] = useState({})
@@ -50,7 +52,7 @@ export default function AdvancedSettingsAddition() {
           timeAmt={timeAmount} 
         />
       ) : (
-        <ImageBackground source={schoolBackground2} resizeMode='cover' style={styles.backgound}>
+        <ImageBackground source={schoolBackground2} resizeMode='cover' style={styles.background}>
           <View style={styles.questionAmountContainer}>
             <Text>Select possible values for first number</Text>
             {checkboxFirstNum.map(elem=>elem)}
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
   },
   background:{
     width: screen.width,
-    height: screen.height,
+    height:  screen.height,
     alignItems: 'center',
     justifyContent:'center',
 
