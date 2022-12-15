@@ -26,6 +26,8 @@ export default function AdditonMunu({navigation}) {
       unfillColor: '#ADD8E6',
       textStyle: {
         textDecorationLine: 'none',
+        fontFamily: 'DancingScript',
+        color:'black'
       },
       style: {
         marginTop: 10,
@@ -73,7 +75,7 @@ export default function AdditonMunu({navigation}) {
       ) : (
         <ImageBackground source={schoolBackground} resizeMode='cover' style={styles.background}>
           <View style={styles.questionAmountContainer}>
-            <Text>Choose how many questions or how much time</Text>
+            <Text style={{fontFamily: 'DancingScript'}}>Choose how many questions or how much time</Text>
             <BouncyCheckboxGroup
               data={ICheckboxButton}
               initial={0}
@@ -98,7 +100,7 @@ export default function AdditonMunu({navigation}) {
                 <Pressable
                     onPress={()=>navigation.navigate('AdvancedSettingsAddition')}
                 >
-                    <Text>Advanced Settings</Text>
+                    <Text style={{fontFamily: 'DancingScript'}}>Advanced Settings</Text>
                 </Pressable>
           </View>
         </ImageBackground>
@@ -129,7 +131,7 @@ const styles = StyleSheet.create({
   },
   questionAmountContainer: {
     display: 'flex',
-
+    
     width:150,
     height:300,
     justifyContent:'center',
@@ -140,6 +142,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 20,
+    fontFamily: 'DancingScript',
   },
   menuButton: {
     borderRadius: 50,
@@ -156,13 +159,14 @@ const styles = StyleSheet.create({
   menuText: {
     color: 'white',
     fontSize: 18,
+    fontFamily: 'DancingScript'
   },
   separator: {
     marginVertical: 12,
   },
   checkbox: {
     display:'flex',
-
+    fontFamily: 'DancingScript',
     flexDirection:'column',
 
   },
