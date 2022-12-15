@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from "react-native";
 const Footer = () => {
   return (
     <>
-      <Text style={styles.footerText}>Footer</Text>
+      <Text style={styles.footerText}>© 2022 BABM Creations</Text>
     </>
   );
 };
