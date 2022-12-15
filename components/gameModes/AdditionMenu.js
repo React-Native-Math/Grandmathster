@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
-import {View, StyleSheet, Text, Button, Pressable} from 'react-native'
+import {View, StyleSheet, Text, Button, Pressable, ImageBackground, Dimensions} from 'react-native'
 import BouncyCheckboxGroup, {ICheckboxButton} from "react-native-bouncy-checkbox-group";
 import AdditionProblems from './AdditionProblems'
+import schoolBackground from '../../assets/img/schoolBackground.png'
 
 export default function AdditonMunu({navigation}) {
+  const screen = Dimensions.get('screen')
   const [difficultyFirstNum, setDifficultyFirstNum] = useState(0);
   const [difficultySecondNum, setDifficultySecondNum] = useState(0);
   const [toggle, setToggle] = useState(false);
@@ -11,7 +13,7 @@ export default function AdditonMunu({navigation}) {
   const [timeAttack, setTimeAttack] = useState(false)
   const [timeAmount, setTimeAmount] = useState(1000000000)
 
-  const checkboxOptions = [10, 20, 30, 'Unlimited', 'Time Attack 10 seconds', 'Time Attack 30 seconds', 'Time Attack 60 seconds'];
+  const checkboxOptions = ['10 Questions', '20 Questions', '30 Question', 'Unlimited', 'Time Attack 10 seconds', 'Time Attack 30 seconds', 'Time Attack 60 seconds'];
   const valueOptions = [10, 20, 30, Infinity, 'time1', 'time2', 'time3']
   const difficulties = ['Easy', 'Medium', 'Hard'];
 
@@ -20,14 +22,15 @@ export default function AdditonMunu({navigation}) {
       id: idx,
       text: option,
       value: valueOptions[idx],
-      fillColor: '#ff7473',
-      unfillColor: '#fbbfbb',
+      fillColor: '#0000FF',
+      unfillColor: '#ADD8E6',
       textStyle: {
         textDecorationLine: 'none',
       },
       style: {
         marginTop: 10,
       },
+      flexDirection:'row',
     };
   });
 
@@ -68,7 +71,7 @@ export default function AdditonMunu({navigation}) {
           timeAmt={timeAmount}
         />
       ) : (
-        <>
+        <ImageBackground source={schoolBackground} resizeMode='cover' style={styles.background}>
           <View style={styles.questionAmountContainer}>
             <Text>Choose how many questions or how much time</Text>
             <BouncyCheckboxGroup
@@ -76,6 +79,7 @@ export default function AdditonMunu({navigation}) {
               initial={0}
               style={styles.checkbox}
               onChange={handleSelection}
+              
             />
           </View>
           <View style={styles.buttonsContainer}>
@@ -97,7 +101,7 @@ export default function AdditonMunu({navigation}) {
                     <Text>Advanced Settings</Text>
                 </Pressable>
           </View>
-        </>
+        </ImageBackground>
       )}
     </View>
   );
@@ -106,6 +110,14 @@ export default function AdditonMunu({navigation}) {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    justifyContent:'center',
+  },
+  background:{
+    width: screen.width,
+    height: screen.height,
+    alignItems: 'center',
+    justifyContent:'center',
+
   },
   menuContainer: {
     // width: '100vw',
@@ -113,19 +125,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 5,
+    
   },
   questionAmountContainer: {
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
-    marginTop: 10,
+
+    width:150,
+    height:300,
+    justifyContent:'center',
+    alignItems:'center'
   },
   buttonsContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 220,
     marginTop: 20,
   },
   menuButton: {
@@ -133,9 +146,9 @@ const styles = StyleSheet.create({
     padding: 5,
     margin: 5,
     width: 150,
-    height: 60,
+    height: 30,
     color: 'white',
-    backgroundColor: 'black',
+    backgroundColor: 'green',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -148,6 +161,9 @@ const styles = StyleSheet.create({
     marginVertical: 12,
   },
   checkbox: {
-    flexDirection: 'column',
+    display:'flex',
+
+    flexDirection:'column',
+
   },
 });
