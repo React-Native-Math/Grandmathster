@@ -72,6 +72,7 @@ export default function AdditonMunu({navigation}) {
         <>
             <Text style={styles.sectionHeading}>Select Game Mode</Text>
           <View style={styles.questionAmountContainer}>
+            <Text>Choose how many questions or how much time</Text>
             <BouncyCheckboxGroup
               data={ICheckboxButton}
               initial={0}
