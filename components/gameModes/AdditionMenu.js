@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
-import {View, StyleSheet, Text, Button, Pressable} from 'react-native'
+import {View, StyleSheet, Text, Button, Pressable, Image} from 'react-native'
 import BouncyCheckboxGroup, {ICheckboxButton} from "react-native-bouncy-checkbox-group";
 import AdditionProblems from './AdditionProblems'
+import cogPic from '../../assets/img/cog.png'
 
 export default function AdditonMunu({navigation}) {
   const [difficultyFirstNum, setDifficultyFirstNum] = useState(0);
@@ -11,7 +12,7 @@ export default function AdditonMunu({navigation}) {
   const [timeAttack, setTimeAttack] = useState(false)
   const [timeAmount, setTimeAmount] = useState(1000000000)
 
-  const checkboxOptions = [10, 20, 30, 'Unlimited', 'Time Attack 10 seconds', 'Time Attack 30 seconds', 'Time Attack 60 seconds'];
+  const checkboxOptions = ['10 questions', '20 questions', '30 questions', 'Time attack: unlimited', 'Time attack: 10 seconds', 'Time attack: 30 seconds', 'Time attack: 60 seconds'];
   const valueOptions = [10, 20, 30, Infinity, 'time1', 'time2', 'time3']
   const difficulties = ['Easy', 'Medium', 'Hard'];
 
@@ -69,6 +70,7 @@ export default function AdditonMunu({navigation}) {
         />
       ) : (
         <>
+            <Text style={styles.sectionHeading}>Select Game Mode</Text>
           <View style={styles.questionAmountContainer}>
             <Text>Choose how many questions or how much time</Text>
             <BouncyCheckboxGroup
@@ -78,25 +80,32 @@ export default function AdditonMunu({navigation}) {
               onChange={handleSelection}
             />
           </View>
+          <Text style={styles.sectionHeading}>Select Difficulty</Text>
           <View style={styles.buttonsContainer}>
             {difficulties.map((difficulty, idx) => {
               const maxNum = 10 ** (idx + 1); // sets the maximum possible number for the selected difficulty
               return (
                 <Pressable
                   key={idx}
-                  style={styles.menuButton}
+                  style={styles[`menuButton${idx}`]}
                   onPress={(e) => handleDifficulty(e, maxNum, maxNum)}
                 >
                   <Text style={styles.menuText}>{difficulty}</Text>
                 </Pressable>
               );
             })}
+          </View>
                 <Pressable
-                    onPress={()=>navigation.navigate('AdvancedSettingsAddition')}
+                    onPress={()=>navigation.navigate
+                      ('AdvancedSettingsAddition')}
+                      style={styles.advancedSettingsContainer}
                 >
+                  <Image
+        style={styles.cogPic}
+        source={cogPic}
+      />
                     <Text>Advanced Settings</Text>
                 </Pressable>
-          </View>
         </>
       )}
     </View>
@@ -119,30 +128,57 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
+    padding: 15,
     marginTop: 10,
+    borderColor: 'grey',
+    borderWidth: 2,
+    borderRadius: 10,
   },
   buttonsContainer: {
     display: 'flex',
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 220,
+    height: 20,
     marginTop: 20,
   },
-  menuButton: {
+  menuButton0: {
     borderRadius: 50,
     padding: 5,
     margin: 5,
-    width: 150,
-    height: 60,
-    color: 'white',
-    backgroundColor: 'black',
+    width: 70,
+    height: 35,
+    backgroundColor: '#006b3d',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  menuButton1: {
+    borderRadius: 50,
+    padding: 5,
+    margin: 5,
+    width: 100,
+    height: 35,
+    backgroundColor: '#fcb606',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  menuButton2: {
+    borderRadius: 50,
+    padding: 5,
+    margin: 5,
+    width: 70,
+    height: 35,
+    backgroundColor: '#c23b21',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
   menuText: {
     color: 'white',
-    fontSize: 18,
+    fontWeight: 'bold',
+    fontSize: 14,
   },
   separator: {
     marginVertical: 12,
@@ -150,4 +186,24 @@ const styles = StyleSheet.create({
   checkbox: {
     flexDirection: 'column',
   },
+  sectionHeading: {
+    marginTop: 25,
+    fontWeight: 'bold',
+  },
+  cogPic: {
+    height: 15,
+    width: 15,
+  },
+  advancedSettingsContainer: {
+    marginTop: 25,
+    backgroundColor: 'silver',
+    borderRadius: 10, 
+    padding: 10,
+    height: 45,
+    width: 170,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  }
 });

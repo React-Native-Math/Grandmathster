@@ -3,7 +3,7 @@ import {View, StyleSheet, TextInput, Text} from 'react-native'
 
 
 export default function AdditionProblems (props){
-    const [input, setInput] = useState(null)
+    const [input, setInput] = useState('')
     const [message, setMessage] = useState('')
     const [firstNum, setFirstNum] = useState(null)
     const [secondNum, setSecondNum] = useState(null)
