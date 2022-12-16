@@ -9,7 +9,9 @@ export default function App() {
   let [fontsLoaded] = useFonts({
     Fredericka: require("./assets/fonts/FrederickatheGreat-Regular.ttf"),
     DancingScript: require('./assets/fonts/DancingScript-Regular.ttf'),
-    MavenPro: require('./assets/fonts/MavenPro-Regular.ttf')
+    MavenPro: require('./assets/fonts/MavenPro-Regular.ttf'),
+    MartianMono: require('./assets/fonts/MartianMono-Regular.ttf'),
+    Azeret: require('./assets/fonts/AzeretMono-Regular.ttf')
   });
   return (
     <NavigationContainer>

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {View, StyleSheet, TextInput, Text, Dimensions} from 'react-native'
-const screen = Dimensions.get('screen')
 import GameOver from './GameOver'
+const screen = Dimensions.get('screen')
 
 
 export default function AdditionProblems (props){
@@ -49,7 +49,7 @@ export default function AdditionProblems (props){
             setQuestionNumber(questionNumber+1)
         }
         else{
-            setMessage(`Incorrect, the correct answer was ${firstNum + secondNum}`)
+            setMessage(`Incorrect, the answer was ${firstNum + secondNum}`)
             setChange(!change)
             setInput('')
             setQuestionNumber(questionNumber+1)     
@@ -61,11 +61,9 @@ export default function AdditionProblems (props){
             ?
             <View style={styles.outerContainer}>
                 <View style={styles.scoreContainer}>
+                    <Text style={styles.score}>Score: {score}   Question: {questionNumber}</Text>
                     <Text style={styles.score}>
-                        Score: {score}           Question: {questionNumber}
-                    </Text>
-                    <Text style={styles.score}>
-                    {questionNumber > 0 ? `Accuracy: ${Math.floor(score/questionNumber*100)}%`:''}
+                    {questionNumber > 0 ? `Accuracy: ${Math.floor(score/questionNumber*100)}%`:'Accuracy: 0%'}
                     </Text>
                     <Text style={styles.score}>
                     {props.timeAtt ? `Time Remaining: ${Math.floor(props.timeAmt-time)}`:''}
@@ -73,13 +71,13 @@ export default function AdditionProblems (props){
                 </View>
                 <View style={styles.problemContainer}>
                     <Text style={styles.number}>
-                    {''}   {firstNum}
+                    {firstNum}
                     </Text>
                     <Text style={styles.number}>
-                    +  {secondNum}
+                    + {secondNum}
                     </Text>
-                    <Text>
-                        _______
+                    <Text style={{color:'black'}}>
+                        __________________
                     </Text>
                     <TextInput 
                         style={styles.textInput}
@@ -97,7 +95,9 @@ export default function AdditionProblems (props){
                         blurOnSubmit={false}
                         autoFocus={true}
                     />
-                    <Text style={styles.message}>
+                </View>
+                <View>
+                <Text style={styles.message}>
                         {message}
                     </Text>
                 </View>
@@ -117,48 +117,50 @@ export default function AdditionProblems (props){
     )
 }
 
-
-
-
 const styles = StyleSheet.create({
     outerContainer:{
-        backgroundColor:'black'
-    },
+        height:screen.height,
+        width:screen.width,
+        backgroundColor:'#FFDFD3',
+        alignItems:'center',
 
+    },
     scoreContainer:{
-        justifyContent:'top',
+        justifyContent:'center',
         paddingTop:15,
-        paddingLeft:50
+        alignItems:'center',
     },
     textInput:{
         textAlign:'center',
-        fontSize:25,
-        fontFamily:'Fredericka',
-        color: 'white',
+        fontSize:12,
+        fontFamily:'Azeret',
+        color: 'black',
         borderWidth:2,
         width:200,
-        borderColor:'white'
+        borderColor:'black',
+        marginTop:5
     },
-    problemContainer:{  
-        justifyContent:'center',
-        alignItems:'center',
-        paddingTop:20,
+    problemContainer:{
+        width:screen.width*.65,
+        alignItems:'flex-end',
+        marginTop:15,
+        marginRight:15,
     },
     number:{
-      fontSize:75,
-      fontFamily:'Fredericka',
-      color: 'white',
+      fontSize:70,
+      fontFamily:'Azeret',
+      color: 'black',
     },
     message:{
-        paddingTop: 20,
-        fontSize: 20,
-        fontFamily:'Fredericka',
-        color: 'white',
+        paddingTop: 5,
+        fontSize: 15,
+        fontFamily:'Azeret',
+        color: 'black',
     },
     score:{
         fontSize:20,
-        fontFamily:'Fredericka',
-        color: 'white',
+        fontFamily:'Azeret',
+        color: 'black',
     }
 
 })

@@ -21,7 +21,6 @@ return(
             <Text style={styles.text}>Statistics</Text>  
             <Text style={styles.text}>Total Score: {score} out of {questionAmount} </Text>
             <Text style={styles.text}>Accuracy: {Math.floor(score/questionAmount*100)}%</Text>
-         
             <Text style={styles.text}>{message}</Text>
         <Pressable
         style = {styles.homeButton}
