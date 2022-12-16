@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import {View, StyleSheet, TextInput, Text} from 'react-native'
+import {View, StyleSheet, TextInput, Text, Dimensions} from 'react-native'
+const screen = Dimensions.get('screen')
+import GameOver from './GameOver'
 
 
 export default function AdditionProblems (props){
@@ -102,9 +104,12 @@ export default function AdditionProblems (props){
             </View>
             :
             <View>
-                <Text>
-                    You answered {score} questions correctly and your accuracy was {score===0 ? '0%' : Math.floor(score/questionNumber*100)}%
-                </Text>
+             <GameOver
+             score = {score}
+             difficulty = {props.difficulty}
+             questionAmount={questionNumber}
+             navigation={props.navigation}
+             />
             </View>
             
             }
