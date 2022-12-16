@@ -64,6 +64,7 @@ export default function AdditonMunu({navigation}) {
     }
     else{
     setQuestionAmount(selectedItem.value)
+    setTimeAttack(false)
 }}
 
   return (
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     justifyContent:'center',
   },
   background:{
-    width: screen.width*.9,
+    width: screen.width,
     height: screen.height*.9,
     alignItems: 'center',
     justifyContent:'center',
