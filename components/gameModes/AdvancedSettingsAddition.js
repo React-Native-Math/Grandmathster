@@ -4,6 +4,8 @@ import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import AdditionProblems from './AdditionProblems';
 import schoolBackground2 from '../../assets/img/schoolBackground2.png'
 
+const screen = Dimensions.get('screen')
+
 export default function AdvancedSettingsAddition() {
   const window = Dimensions.get('window')
   const [secondNumMax, setSecondNumMax] = useState(10);
@@ -110,8 +112,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   background:{
-    width: window.width,
-    height: window.height,
+    width: screen.width,
+    height:  screen.height,
     alignItems: 'center',
     justifyContent:'center',
 
