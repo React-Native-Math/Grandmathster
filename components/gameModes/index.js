@@ -4,6 +4,7 @@ import MultiplicationGame from "./MultiplicationGame";
 import DivisionGame from "./DivisionGame";
 import RandomGame from "./RandomGame";
 import AdvancedSettingsAddition from "./AdvancedSettingsAddition";
+import GameOver from "./GameOver";
 
 export {
   AdditionMenu,
@@ -12,4 +13,6 @@ export {
   DivisionGame,
   RandomGame,
   AdvancedSettingsAddition,
+  GameOver,
+
 };

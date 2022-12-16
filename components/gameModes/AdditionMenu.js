@@ -9,6 +9,7 @@ const screen = Dimensions.get('screen')
 export default function AdditonMunu({navigation}) {
   const [difficultyFirstNum, setDifficultyFirstNum] = useState(0);
   const [difficultySecondNum, setDifficultySecondNum] = useState(0);
+  const [difficulty, setDifficulty] = useState('')
   const [toggle, setToggle] = useState(false);
   const [questionAmount, setQuestionAmount] = useState(10);
   const [timeAttack, setTimeAttack] = useState(false)
@@ -33,12 +34,15 @@ export default function AdditonMunu({navigation}) {
         marginTop: 10,
       },
       flexDirection:'row',
+      bounceEffectIn:1.5,
+     
     };
   });
 
-  const handleDifficulty = (e, first, second) => {
+  const handleDifficulty = (e, first, second, difficulty) => {
     setDifficultyFirstNum(first);
     setDifficultySecondNum(second);
+    setDifficulty(difficulty)
     setToggle(!false);
   };
 
@@ -71,6 +75,8 @@ export default function AdditonMunu({navigation}) {
           maxQuestionsNumber={questionAmount}
           timeAtt={timeAttack}
           timeAmt={timeAmount}
+          difficulty={difficulty}
+          navigation={navigation}
         />
       ) : (
         <ImageBackground source={schoolBackground} resizeMode='cover' style={styles.background}>
@@ -81,7 +87,6 @@ export default function AdditonMunu({navigation}) {
               initial={0}
               style={styles.checkbox}
               onChange={handleSelection}
-              
             />
           </View>
           <Text style={styles.sectionHeading}>Select Difficulty</Text>
@@ -92,7 +97,7 @@ export default function AdditonMunu({navigation}) {
                 <Pressable
                   key={idx}
                   style={styles[`menuButton${idx}`]}
-                  onPress={(e) => handleDifficulty(e, maxNum, maxNum)}
+                  onPress={(e) => handleDifficulty(e, maxNum, maxNum, difficulty)}
                 >
                   <Text style={styles.menuText}>{difficulty}</Text>
                 </Pressable>
@@ -100,9 +105,8 @@ export default function AdditonMunu({navigation}) {
             })}
           </View>
                 <Pressable
-                    onPress={()=>navigation.navigate
-                      ('AdvancedSettingsAddition')}
-                      style={styles.advancedSettingsContainer}
+                    onPress={()=>navigation.navigate('AdvancedSettingsAddition')}
+                    style={styles.advancedSettingsContainer}
                 >
                   {/* <Image
         style={styles.cogPic}

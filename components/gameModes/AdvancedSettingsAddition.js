@@ -28,6 +28,8 @@ export default function AdvancedSettingsAddition() {
       isChecked={firstNumIncluded[option]}
       key={option}
       textStyle={{textDecorationLine:'none'}}
+      bounceEffectIn={1.5}
+
       />)
   });
   
@@ -48,7 +50,8 @@ export default function AdvancedSettingsAddition() {
           secondNum={secondNumMax}
           maxQuestionsNumber={questionAmount}
           timeAtt={timeAttack}
-          timeAmt={timeAmount} 
+          timeAmt={timeAmount}
+          difficulty={'custom settings'}
         />
       ) : (
         <ImageBackground source={schoolBackground2} style={styles.backgound}>

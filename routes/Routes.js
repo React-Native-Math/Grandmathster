@@ -10,6 +10,7 @@ import {
   DivisionGame,
   RandomGame,
   AdvancedSettingsAddition,
+  GameOver,
 } from "../components/gameModes";
 import { Image, Pressable, View, StyleSheet } from "react-native";
 // import arrow from '../assets/img/arrow.png'
@@ -60,7 +61,7 @@ const Navigation = () => {
       <Stack.Screen
         name="Home"
         component={MainMenu}
-        options={{ title: "App Name" }}
+        // options={{ title: "App Name" }}
       />
       <Stack.Screen name="AdditionMenu" component={AdditionMenu} />
       <Stack.Screen
@@ -71,6 +72,7 @@ const Navigation = () => {
       <Stack.Screen name="MultiplicationGame" component={MultiplicationGame} />
       <Stack.Screen name="DivisionGame" component={DivisionGame} />
       <Stack.Screen name="RandomGame" component={RandomGame} />
+      <Stack.Screen name="GameOver" component={GameOver}/>
     </Stack.Navigator>
   );
 };
