@@ -77,7 +77,7 @@ export default function AdditionProblems (props){
                     + {secondNum}
                     </Text>
                     <Text style={{color:'black'}}>
-                        __________________
+                        _______________________
                     </Text>
                     <TextInput 
                         style={styles.textInput}
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     },
     textInput:{
         textAlign:'center',
-        fontSize:12,
+        fontSize:18,
         fontFamily:'Azeret',
         color: 'black',
         borderWidth:2,
