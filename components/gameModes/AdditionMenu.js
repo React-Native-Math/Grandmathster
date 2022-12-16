@@ -6,6 +6,8 @@ import schoolBackground from '../../assets/img/schoolBackground.png'
 // import cogPic from '../../assets/img/cog.png'
 const screen = Dimensions.get('screen')
 
+// const bg = { uri: "https://i.pinimg.com/736x/b8/38/af/b838afc8dd3a316f75b93ca9f78ce024.jpg" };
+
 export default function AdditonMunu({navigation}) {
   const [difficultyFirstNum, setDifficultyFirstNum] = useState(0);
   const [difficultySecondNum, setDifficultySecondNum] = useState(0);

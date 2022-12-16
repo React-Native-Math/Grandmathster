@@ -12,14 +12,26 @@ import {
   AdvancedSettingsAddition,
   GameOver,
 } from "../components/gameModes";
-import { Image, Pressable, View, StyleSheet } from "react-native";
+import {
+  Image,
+  Pressable,
+  Modal,
+  View,
+  StyleSheet,
+  Text,
+  Dimensions,
+} from "react-native";
 // import arrow from '../assets/img/arrow.png'
-import help from '../assets/img/help.png'
+import help from "../assets/img/help.png";
 import { useState, useEffect } from "react";
 
 const Stack = createNativeStackNavigator();
+const screen = Dimensions.get("screen");
 
 function ArrowButton() {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const modalHandler = () => setModalVisible(!modalVisible);
 
   // const [about, setAbout] = useState(false)
   // const handleHelpClick = () => {
@@ -31,14 +43,36 @@ function ArrowButton() {
 
   return (
     <>
-    {/* {about ? <View style={styles.overlayContainer}>
+      {/* {about ? <View style={styles.overlayContainer}>
   <View style={styles.overlay}/></View> : <View></View>} */}
-    <Pressable onPress={() => {}}>
-      <Image
-      style={{ width: 30, height: 30 }}
-      source={help}
-    />
-    </Pressable>
+
+      <View style={styles.centeredView}>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            Alert.alert("Modal has been closed.");
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>Hello World!</Text>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
+                <Text style={styles.textStyle}>Hide Modal</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
+      </View>
+
+      <Pressable onPress={modalHandler} style={styles.helpIconContainer}>
+        <Image style={styles.helpIcon} source={help}  />
+      </Pressable>
     </>
   );
 }
@@ -72,13 +106,71 @@ const Navigation = () => {
       <Stack.Screen name="MultiplicationGame" component={MultiplicationGame} />
       <Stack.Screen name="DivisionGame" component={DivisionGame} />
       <Stack.Screen name="RandomGame" component={RandomGame} />
-      <Stack.Screen name="GameOver" component={GameOver}/>
+      <Stack.Screen name="GameOver" component={GameOver} />
     </Stack.Navigator>
   );
 };
 
+const styles = StyleSheet.create({
+  helpIconContainer: {
+    position: 'relative',
+    width: screen.width,
+    height: 30,
+    display: 'flex',
+  },
+  helpIcon: {
+    width: 30,
+    height: 30,
+    
+    // zIndex: 0,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    height: screen.height * 0.85,
+    width: screen.width * 0.9,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
+  },
+});
+
 // const styles = StyleSheet({ // TODO: check why this doesn't work
-//   // helpImg: { // 
+//   // helpImg: { //
 //   //   height: 30,
 //   //   width: 30,
 //   // },
