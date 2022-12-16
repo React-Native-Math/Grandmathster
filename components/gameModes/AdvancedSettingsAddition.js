@@ -7,7 +7,6 @@ import schoolBackground2 from '../../assets/img/schoolBackground2.png'
 const screen = Dimensions.get('screen')
 
 export default function AdvancedSettingsAddition() {
-  // console.log('..', screen)
   const window = Dimensions.get('window')
   const [secondNumMax, setSecondNumMax] = useState(10);
   const [firstNumIncluded, setFirstNumIncluded] = useState({})
@@ -52,7 +51,7 @@ export default function AdvancedSettingsAddition() {
           timeAmt={timeAmount} 
         />
       ) : (
-        <ImageBackground source={schoolBackground2} resizeMode='cover' style={styles.background}>
+        <ImageBackground source={schoolBackground2} style={styles.backgound}>
           <View style={styles.questionAmountContainer}>
             <Text>Select possible values for first number</Text>
             {checkboxFirstNum.map(elem=>elem)}

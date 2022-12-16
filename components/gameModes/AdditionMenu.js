@@ -4,6 +4,7 @@ import BouncyCheckboxGroup, {ICheckboxButton} from "react-native-bouncy-checkbox
 import AdditionProblems from './AdditionProblems'
 import schoolBackground from '../../assets/img/schoolBackground.png'
 // import cogPic from '../../assets/img/cog.png'
+const screen = Dimensions.get('screen')
 
 const screen = Dimensions.get('screen')
 
@@ -123,8 +124,8 @@ const styles = StyleSheet.create({
     justifyContent:'center',
   },
   background:{
-    width: screen.width,
-    height: screen.height*.88,
+    width: screen.width*.9,
+    height: screen.height*.9,
     alignItems: 'center',
     justifyContent:'center',
 
