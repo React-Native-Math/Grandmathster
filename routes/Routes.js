@@ -12,6 +12,7 @@ import {
   AdvancedSettingsAddition,
   GameOver,
 } from "../components/gameModes";
+import About from '../components/About'
 import {
   Image,
   Pressable,
@@ -58,12 +59,13 @@ function ArrowButton() {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text style={styles.modalText}>Hello World!</Text>
+              {/* <Text style={styles.modalText}>test</Text> */}
+              <About />
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(!modalVisible)}
               >
-                <Text style={styles.textStyle}>Hide Modal</Text>
+                <Text style={styles.textStyle}>Done</Text>
               </Pressable>
             </View>
           </View>
@@ -121,8 +123,6 @@ const styles = StyleSheet.create({
   helpIcon: {
     width: 30,
     height: 30,
-    
-    // zIndex: 0,
   },
   centeredView: {
     flex: 1,

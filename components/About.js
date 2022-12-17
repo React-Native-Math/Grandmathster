@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
+const screen = Dimensions.get('screen');
 
 export default function Welcome() {
   return (
@@ -14,5 +15,7 @@ const styles = StyleSheet.create({
     backgroundColor: "pink",
     alignItems: "baseline",
     justifyContent: "center",
+    height: screen.height * 0.75,
+    width: screen.width * 0.8,
   },
 });
