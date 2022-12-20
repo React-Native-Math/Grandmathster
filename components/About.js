@@ -4,7 +4,10 @@ const screen = Dimensions.get('screen');
 export default function Welcome() {
   return (
     <View style={styles.container}>
-      <Text>Learn math facts with Mental Math</Text>
+      {/* about the game */}
+      <View></View> 
+      {/* math tips */}
+      <View></View>
     </View>
   );
 }
