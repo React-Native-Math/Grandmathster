@@ -82,7 +82,7 @@ export default function AdditonMunu({navigation}) {
           navigation={navigation}
         />
       ) : (
-        <ImageBackground source={schoolBackground} resizeMode='cover' style={styles.background}>
+        <ImageBackground source={schoolBackground} resizeMode='contain' style={styles.background}>
           <View style={styles.questionAmountContainer}>
             <Text style={styles.sectionHeading}>Select Game Mode</Text>
             <BouncyCheckboxGroup
