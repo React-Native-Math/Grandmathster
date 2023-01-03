@@ -4,6 +4,7 @@ import BouncyCheckboxGroup, {ICheckboxButton} from "react-native-bouncy-checkbox
 import AdditionProblems from './AdditionProblems'
 import schoolBackground from '../../assets/img/schoolBackground.png'
 // import cogPic from '../../assets/img/cog.png'
+import gs2 from '../../assets/img/gs2.jpg';
 const screen = Dimensions.get('screen')
 
 // const bg = { uri: "https://i.pinimg.com/736x/b8/38/af/b838afc8dd3a316f75b93ca9f78ce024.jpg" };
@@ -30,7 +31,7 @@ export default function AdditonMunu({navigation}) {
       unfillColor: '#ADD8E6',
       textStyle: {
         textDecorationLine: 'none',
-        color:'black'
+        color:'white'
       },
       style: {
         marginTop: 10,
@@ -82,7 +83,7 @@ export default function AdditonMunu({navigation}) {
           navigation={navigation}
         />
       ) : (
-        <ImageBackground source={schoolBackground} resizeMode='contain' style={styles.background}>
+        <ImageBackground source={gs2} resizeMode='cover' style={styles.background}>
           <View style={styles.questionAmountContainer}>
             <Text style={styles.sectionHeading}>Select Game Mode</Text>
             <BouncyCheckboxGroup
@@ -140,7 +141,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingBottom: 5,
-    
   },
   questionAmountContainer: {
     display: 'flex',
@@ -149,9 +149,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 15,
     marginTop: 10,
-    borderColor: 'grey',
+    borderColor: 'white',
     borderWidth: 2,
     borderRadius: 10,
+    backgroundColor: 'black',
+
   },
   buttonsContainer: {
     display: 'flex',
@@ -161,6 +163,7 @@ const styles = StyleSheet.create({
     height: 20,
     marginTop: 20,
     fontFamily: 'DancingScript',
+
   },
   menuButton0: {
     borderRadius: 50,
@@ -207,11 +210,12 @@ const styles = StyleSheet.create({
     display:'flex',
     fontFamily: 'DancingScript',
     flexDirection:'column',
-
+    color: 'white', 
   },
   sectionHeading: {
     marginTop: 25,
     fontWeight: 'bold',
+    color: 'white',
   },
   cogPic: {
     height: 15,

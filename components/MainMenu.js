@@ -27,7 +27,7 @@ const MainMenu = ({ navigation }) => {
   const [about, setAbout] = useState(false)
   const capitalizeFirstChar = (word) => word.charAt(0).toUpperCase() + word.substr(1).toLowerCase();
   return (
-      <ImageBackground source={gm} resizeMode="contain" style={styles.bg} >
+      <ImageBackground source={gm} resizeMode="cover" style={styles.bg} >
     <View style={styles.container}>
   {about ? <View style={styles.overlayContainer}>
   <View style={styles.overlay}/>
@@ -46,12 +46,12 @@ const MainMenu = ({ navigation }) => {
           </View>
         );
       })}
-      <Pressable
+      {/* <Pressable
               style={styles.menuButton}
               onPress={() => setAbout(!about)}
             >
-              <Text style={styles.menuText}>About</Text>
-            </Pressable>
+              <Text style={styles.menuText}>**DELETE** ABOUT</Text>
+            </Pressable> */}
       <View style={styles.footer}>
       <Footer/>
       {/* <Numpad /> */}

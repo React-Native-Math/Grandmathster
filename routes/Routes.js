@@ -84,7 +84,7 @@ const Navigation = () => {
     <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor: "silver",
+          backgroundColor: "black",
         },
         headerTitle: (props) => <ArrowButton />,
         // headerLeft: () => null,
@@ -134,8 +134,10 @@ const styles = StyleSheet.create({
     margin: 20,
     height: screen.height * 0.85,
     width: screen.width * 0.9,
-    backgroundColor: "white",
+    backgroundColor: "black",
     borderRadius: 20,
+    borderColor: 'red',
+    borderWidth: 2,
     padding: 35,
     alignItems: "center",
     shadowColor: "#000",
@@ -156,7 +158,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#F194FF",
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "black",
+    borderColor: "#B8100F",
+    borderWidth: 3,
   },
   textStyle: {
     color: "white",
