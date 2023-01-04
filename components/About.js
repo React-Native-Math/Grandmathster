@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
 const screen = Dimensions.get('screen');
-import modalImg from "../assets/img/gs3.png"
+import modalImg from "../assets/img/modalPNG.png"
 
 export default function Welcome() {
   return (

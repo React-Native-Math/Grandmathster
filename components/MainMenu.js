@@ -10,7 +10,7 @@ import {
 // import appLogo from '../assets/img/appLogo.png'
 import Footer from "./Footer";
 import Numpad from "./Numpad";
-import gm from "../assets/img/gm.jpg"
+import mainMenuBG from "../assets/img/mainMenuBG.jpg"
 
 const Separator = () => <View style={styles.separator} />;
 const bg = { uri: "https://i.pinimg.com/736x/b8/38/af/b838afc8dd3a316f75b93ca9f78ce024.jpg" };
@@ -27,7 +27,7 @@ const MainMenu = ({ navigation }) => {
   const [about, setAbout] = useState(false)
   const capitalizeFirstChar = (word) => word.charAt(0).toUpperCase() + word.substr(1).toLowerCase();
   return (
-      <ImageBackground source={gm} resizeMode="cover" style={styles.bg} >
+      <ImageBackground source={mainMenuBG} resizeMode="cover" style={styles.bg} >
     <View style={styles.container}>
   {about ? <View style={styles.overlayContainer}>
   <View style={styles.overlay}/>
@@ -52,6 +52,9 @@ const MainMenu = ({ navigation }) => {
             >
               <Text style={styles.menuText}>**DELETE** ABOUT</Text>
             </Pressable> */}
+            <Pressable style={styles.menuButton} onPress={() => navigation.navigate(`Scores`)}>
+            <Text style={styles.menuText}>SCORES</Text>
+            </Pressable>
       <View style={styles.footer}>
       <Footer/>
       {/* <Numpad /> */}

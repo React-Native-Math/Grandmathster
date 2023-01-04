@@ -22,9 +22,9 @@ import {
   Text,
   Dimensions,
 } from "react-native";
-// import arrow from '../assets/img/arrow.png'
 import help from "../assets/img/help.png";
 import { useState, useEffect } from "react";
+import Scores from '../components/Scores'
 
 const Stack = createNativeStackNavigator();
 const screen = Dimensions.get("screen");
@@ -109,6 +109,7 @@ const Navigation = () => {
       <Stack.Screen name="DivisionGame" component={DivisionGame} />
       <Stack.Screen name="RandomGame" component={RandomGame} />
       <Stack.Screen name="GameOver" component={GameOver} />
+      <Stack.Screen name="Scores" component={Scores} />
     </Stack.Navigator>
   );
 };

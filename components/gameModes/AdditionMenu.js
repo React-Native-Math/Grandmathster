@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-import {View, StyleSheet, Text, Button, Pressable, ImageBackground, Dimensions} from 'react-native'
+import {View, StyleSheet, Text, Button, Pressable, Image, ImageBackground, Dimensions} from 'react-native'
 import BouncyCheckboxGroup, {ICheckboxButton} from "react-native-bouncy-checkbox-group";
 import AdditionProblems from './AdditionProblems'
-import schoolBackground from '../../assets/img/schoolBackground.png'
-// import cogPic from '../../assets/img/cog.png'
-import gs2 from '../../assets/img/gs2.jpg';
+// import schoolBackground from '../../assets/img/schoolBackground.png'
+import cogPic from '../../assets/img/cog.png'
+import selectBG from '../../assets/img/selectBG.jpg';
 const screen = Dimensions.get('screen')
 
 // const bg = { uri: "https://i.pinimg.com/736x/b8/38/af/b838afc8dd3a316f75b93ca9f78ce024.jpg" };
@@ -27,8 +27,8 @@ export default function AdditonMunu({navigation}) {
       id: idx,
       text: option,
       value: valueOptions[idx],
-      fillColor: '#0000FF',
-      unfillColor: '#ADD8E6',
+      fillColor: '#b8100f',
+      unfillColor: 'white',
       textStyle: {
         textDecorationLine: 'none',
         color:'white'
@@ -83,7 +83,7 @@ export default function AdditonMunu({navigation}) {
           navigation={navigation}
         />
       ) : (
-        <ImageBackground source={gs2} resizeMode='cover' style={styles.background}>
+        <ImageBackground source={selectBG} resizeMode='cover' style={styles.background}>
           <View style={styles.questionAmountContainer}>
             <Text style={styles.sectionHeading}>Select Game Mode</Text>
             <BouncyCheckboxGroup
@@ -112,11 +112,11 @@ export default function AdditonMunu({navigation}) {
                     onPress={()=>navigation.navigate('AdvancedSettingsAddition')}
                     style={styles.advancedSettingsContainer}
                 >
-                  {/* <Image
+                  <Image
         style={styles.cogPic}
         source={cogPic}
-      /> */}
-                    <Text>Advanced Settings</Text>
+      />
+                    <Text style={{color: 'white'}}>  Advanced Settings</Text>
                 </Pressable>
         </ImageBackground>
       )}
@@ -170,8 +170,11 @@ const styles = StyleSheet.create({
     padding: 5,
     margin: 5,
     width: 70,
-    height: 35,
-    backgroundColor: '#006b3d',
+    height: 50,
+    backgroundColor: 'black',
+    borderWidth: 5,
+    borderColor: '#006b3d',
+    // backgroundColor: '#006b3d',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -181,8 +184,11 @@ const styles = StyleSheet.create({
     padding: 5,
     margin: 5,
     width: 100,
-    height: 35,
-    backgroundColor: '#fcb606',
+    height: 50,
+    backgroundColor: 'black',
+    borderWidth: 5,
+    borderColor: '#fcb606',
+    // backgroundColor: '#fcb606',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -192,8 +198,11 @@ const styles = StyleSheet.create({
     padding: 5,
     margin: 5,
     width: 70,
-    height: 35,
-    backgroundColor: '#c23b21',
+    height: 50,
+    backgroundColor: 'black',
+    borderWidth: 5,
+    borderColor: '#c23b21',
+    // backgroundColor: '#c23b21',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -215,6 +224,7 @@ const styles = StyleSheet.create({
   sectionHeading: {
     marginTop: 25,
     fontWeight: 'bold',
+    fontSize: 18,
     color: 'white',
   },
   cogPic: {
@@ -223,14 +233,16 @@ const styles = StyleSheet.create({
   },
   advancedSettingsContainer: {
     marginTop: 25,
-    backgroundColor: 'silver',
-    borderRadius: 10, 
+    backgroundColor: 'black',
+    borderRadius: 50, 
+    borderWidth: 2,
+    borderColor: '#b8100f',
     padding: 10,
-    height: 45,
-    width: 170,
+    height: 65,
+    width: 220,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
   }
 });
