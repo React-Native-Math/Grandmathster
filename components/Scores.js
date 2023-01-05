@@ -15,7 +15,11 @@ import { useGlobalState } from "../store/store";
 const Scores = () => {
   const [store, setStore] = useGlobalState('count')
   return (
-    <View>Scores: {store}</View>
+    <View>
+      <Text>
+      Scores: {store}
+      </Text>
+    </View>
   )
 }
 
