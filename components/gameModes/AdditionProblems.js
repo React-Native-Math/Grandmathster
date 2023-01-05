@@ -15,14 +15,15 @@ export default function AdditionProblems (props){
     const [time, setTime] = useState(0)
 
     useEffect(()=>{
-    setSecondNum(Math.floor(Math.random()*props.secondNum))
+    //second number always gets passed as an integer. This takes a random number up to the selection.
+        setSecondNum(Math.floor(Math.random()*props.secondNum))
         
     //check to see if props.firstNum is a number or object and then set first number
-    if(Number.isInteger(props.firstNum)){
-        setFirstNum(Math.floor(Math.random()*props.firstNum))
-    }
-    else{ let firstNumberArray = Object.entries(props.firstNum)
-        firstNumberArray = firstNumberArray.filter(([key, value])=>{
+        if(Number.isInteger(props.firstNum)){
+            setFirstNum(Math.floor(Math.random()*props.firstNum))
+        }
+        else{ let firstNumberArray = Object.entries(props.firstNum)
+            firstNumberArray = firstNumberArray.filter(([key, value])=>{
             if(value) 
             return key
         })
@@ -81,7 +82,6 @@ export default function AdditionProblems (props){
                     </Text>
                     <TextInput 
                         style={styles.textInput}
-
                         placeholder={questionNumber !== 0 ? '' : 'type your answer'}
                         onChangeText={(userInput)=>{setInput(userInput)
                             setMessage('')

@@ -6,11 +6,10 @@ import schoolBackground2 from '../../assets/img/schoolBackground2.png'
 
 const screen = Dimensions.get('screen')
 
-export default function AdvancedSettingsAddition() {
-  const window = Dimensions.get('window')
+export default function AdvancedSettingsAddition({navigation}) {
   const [secondNumMax, setSecondNumMax] = useState(10);
   const [firstNumIncluded, setFirstNumIncluded] = useState({})
-  const [toggle, setToggle] = useState(false);
+  const [showAdditionPage, setShowAdditionPage] = useState(false);
   const [questionAmount, setQuestionAmount] = useState(10);
   const [timeAttack, setTimeAttack] = useState(false)
   const [timeAmount, setTimeAmount] = useState(Infinity)
@@ -32,8 +31,6 @@ export default function AdvancedSettingsAddition() {
 
       />)
   });
-  
-  console.log(firstNumIncluded)
 
   const handlePressFirstNum = (selectedItem) => {
     setFirstNumIncluded({
@@ -44,7 +41,7 @@ export default function AdvancedSettingsAddition() {
 
   return (
     <ScrollView >
-      {toggle ? (
+      {showAdditionPage ? (
         <AdditionProblems
           firstNum={firstNumIncluded}
           secondNum={secondNumMax}
@@ -52,6 +49,7 @@ export default function AdvancedSettingsAddition() {
           timeAtt={timeAttack}
           timeAmt={timeAmount}
           difficulty={'custom settings'}
+          navigation={navigation}
         />
       ) : (
         <ImageBackground source={schoolBackground2} style={styles.backgound}>
@@ -94,7 +92,7 @@ export default function AdvancedSettingsAddition() {
           <View style={styles.container}>
             <Pressable
               style={styles.menuButton}
-              onPress={(e)=>setToggle(true)}
+              onPress={(e)=>setShowAdditionPage(true)}
               title = 'Ready!'
             >
             <Text style={styles.menuText}>Ready!</Text>

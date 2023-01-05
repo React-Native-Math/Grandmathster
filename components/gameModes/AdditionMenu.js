@@ -6,11 +6,11 @@ import schoolBackground from '../../assets/img/schoolBackground.png'
 // import cogPic from '../../assets/img/cog.png'
 const screen = Dimensions.get('screen')
 
-export default function AdditonMunu({navigation}) {
+export default function AdditonMenu({navigation}) {
   const [difficultyFirstNum, setDifficultyFirstNum] = useState(0);
   const [difficultySecondNum, setDifficultySecondNum] = useState(0);
   const [difficulty, setDifficulty] = useState('')
-  const [toggle, setToggle] = useState(false);
+  const [showAdditionPage, setShowAdditionPage] = useState(false);
   const [questionAmount, setQuestionAmount] = useState(10);
   const [timeAttack, setTimeAttack] = useState(false)
   const [timeAmount, setTimeAmount] = useState(1000000000)
@@ -43,7 +43,7 @@ export default function AdditonMunu({navigation}) {
     setDifficultyFirstNum(first);
     setDifficultySecondNum(second);
     setDifficulty(difficulty)
-    setToggle(!false);
+    setShowAdditionPage(!false);
   };
 
   const handleSelection = (selectedItem)=>{
@@ -69,7 +69,7 @@ export default function AdditonMunu({navigation}) {
 
   return (
     <View style={styles.menuContainer}>
-      {toggle ? (
+      {showAdditionPage ? (
         <AdditionProblems
           firstNum={difficultyFirstNum}
           secondNum={difficultySecondNum}
