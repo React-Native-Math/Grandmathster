@@ -15,11 +15,10 @@ import AdditionProblems from "./AdditionProblems";
 import selectBG from "../../assets/img/selectBG.jpg";
 const screen = Dimensions.get("screen");
 
-export default function AdvancedSettingsAddition() {
-  const window = Dimensions.get("window");
+export default function AdvancedSettingsAddition({navigation}) {
   const [secondNumMax, setSecondNumMax] = useState(10);
-  const [firstNumIncluded, setFirstNumIncluded] = useState({});
-  const [toggle, setToggle] = useState(false);
+  const [firstNumIncluded, setFirstNumIncluded] = useState({})
+  const [showAdditionPage, setShowAdditionPage] = useState(false);
   const [questionAmount, setQuestionAmount] = useState(10);
   const [timeAttack, setTimeAttack] = useState(false);
   const [timeAmount, setTimeAmount] = useState(Infinity);
@@ -50,16 +49,16 @@ export default function AdvancedSettingsAddition() {
   };
 
   return (
-    <>
-      {/* <ScrollView > */}
-      {toggle ? (
+      <>
+      {showAdditionPage ? (
         <AdditionProblems
           firstNum={firstNumIncluded}
           secondNum={secondNumMax}
           maxQuestionsNumber={questionAmount}
           timeAtt={timeAttack}
           timeAmt={timeAmount}
-          difficulty={"custom settings"}
+          difficulty={'custom settings'}
+          navigation={navigation}
         />
       ) : (
         <ImageBackground
@@ -115,8 +114,8 @@ export default function AdvancedSettingsAddition() {
           <View style={styles.container}>
             <Pressable
               style={styles.menuButton}
-              onPress={(e) => setToggle(true)}
-              title="Ready!"
+              onPress={(e)=>setShowAdditionPage(true)}
+              title = 'Ready!'
             >
               <Text style={styles.menuText}>Done</Text>
             </Pressable>
@@ -124,7 +123,7 @@ export default function AdvancedSettingsAddition() {
           <View style={styles.footer}></View>
         </ImageBackground>
       )}
-      {/* </ScrollView> */}
+ 
     </>
   );
 }

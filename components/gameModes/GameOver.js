@@ -16,7 +16,7 @@ export default function GameOver ({navigation, score, questionAmount, difficulty
     else if(accuracy>75) setMessage(`You are a Novice on ${difficulty} mode! Keep practicing to become a Mathster!`)
     else if(accuracy>50) setMessage('Keep Practicing!')
     else if(accuracy>0) setMessage('Please review your math facts')
-    else if(accuracy===0)setMessage('Stop Guessing!!')
+    else if(accuracy===0)setMessage('Stop Guessing')
     },[])
 return(
     <ImageBackground source={schoolBackground} style={styles.background}>

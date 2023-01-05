@@ -16,28 +16,25 @@ export default function AdditionProblems(props) {
   useEffect(() => {
     setSecondNum(Math.floor(Math.random() * props.secondNum));
 
+    //second number always gets passed as an integer. This takes a random number up to the selection.
+        setSecondNum(Math.floor(Math.random()*props.secondNum))
+        
     //check to see if props.firstNum is a number or object and then set first number
-    if (Number.isInteger(props.firstNum)) {
-      setFirstNum(Math.floor(Math.random() * props.firstNum));
-    } else {
-      let firstNumberArray = Object.entries(props.firstNum);
-      firstNumberArray = firstNumberArray.filter(([key, value]) => {
-        if (value) return key;
-      });
-      //check to see if user passed in an empty object or with every number being toggled false
-      //if false set the first number to be between 0 and 10. else set first number to be a selection of
-      //what user put in under advanced options
-      firstNumberArray.length === 0
-        ? setFirstNum(Math.floor(Math.random() * 10))
-        : setFirstNum(
-            Number(
-              firstNumberArray[
-                Math.floor(Math.random() * firstNumberArray.length)
-              ][0]
-            )
-          );
+        if(Number.isInteger(props.firstNum)){
+            setFirstNum(Math.floor(Math.random()*props.firstNum))
+        }
+        else{ let firstNumberArray = Object.entries(props.firstNum)
+            firstNumberArray = firstNumberArray.filter(([key, value])=>{
+            if(value) 
+            return key
+        })
+        //check to see if user passed in an empty object or with every number being toggled false
+        //if false set the first number to be between 0 and 10. else set first number to be a selection of
+        //what user put in under advanced options
+        firstNumberArray.length===0 ? setFirstNum(Math.floor(Math.random()*10))
+        : setFirstNum(Number(firstNumberArray[Math.floor(Math.random()*firstNumberArray.length)][0]))
     }
-  }, [change]);
+    },[change])
 
   if (props.timeAtt) {
     setTimeout(() => {
@@ -117,6 +114,7 @@ export default function AdditionProblems(props) {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   outerContainer: {
