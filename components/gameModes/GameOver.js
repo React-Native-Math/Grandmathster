@@ -2,13 +2,16 @@ import React, {useEffect, useState} from 'react'
 import {View, StyleSheet, Text, Pressable, ImageBackground, Dimensions} from 'react-native'
 import schoolBackground from '../../assets/img/schoolBackground.png'
 const screen = Dimensions.get('screen')
+import { useGlobalState } from '../../store/store'
 
 
 export default function GameOver ({navigation, score, questionAmount, difficulty}) {
     const [message,setMessage]= useState('')
+    const [store, setStore] = useGlobalState('count')
     useEffect(()=>{
     const accuracy = Math.floor(score/questionAmount*100)
-    if(accuracy===100) setMessage(`Congratulations you are the Grand Mathster on ${difficulty} mode!`)
+    if(accuracy===100) { setMessage(`Congratulations you are the Grand Mathster on ${difficulty} mode!`)
+    setStore(store + 1) }
     else if(accuracy>90) setMessage(`You are a Mathster on ${difficulty} mode! Keep practicing to become the Grand Mathster!`)
     else if(accuracy>75) setMessage(`You are a Novice on ${difficulty} mode! Keep practicing to become a Mathster!`)
     else if(accuracy>50) setMessage('Keep Practicing!')
