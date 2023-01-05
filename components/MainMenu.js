@@ -7,43 +7,38 @@ import {
   Pressable,
   ImageBackground,
 } from "react-native";
-import appLogo from '../assets/img/appLogo.png'
+// import appLogo from '../assets/img/appLogo.png'
 import Footer from "./Footer";
 import Numpad from "./Numpad";
+import mainMenuBG from "../assets/img/mainMenuBG.jpg"
 
 const Separator = () => <View style={styles.separator} />;
 const bg = { uri: "https://i.pinimg.com/736x/b8/38/af/b838afc8dd3a316f75b93ca9f78ce024.jpg" };
 
 const menuItems = [
-  "Addition",
-  "Subtraction",
-  "Multiplication",
-  "Division",
-  "Random",
+  "ADDITION",
+  "SUBTRACTION",
+  "MULTIPLICATION",
+  "DIVISION",
+  "RANDOM",
 ];
 
 const MainMenu = ({ navigation }) => {
   const [about, setAbout] = useState(false)
+  const capitalizeFirstChar = (word) => word.charAt(0).toUpperCase() + word.substr(1).toLowerCase();
   return (
-      <ImageBackground source={bg} resizeMode="contain" style={styles.bg} >
+      <ImageBackground source={mainMenuBG} resizeMode="cover" style={styles.bg} >
     <View style={styles.container}>
   {about ? <View style={styles.overlayContainer}>
   <View style={styles.overlay}/>
   </View> : <View></View>}
-      <Image
-        style={styles.logoPic}
-        source={appLogo}
-      />
-      {/* NimbleNums, Grandmathster, Enumer8*/}
-      <Text>App Name / instructions</Text> 
-      <Separator />
       <Separator />
       {menuItems.map((item, idx) => {
         return (
           <View key={idx}>
             <Pressable
               style={styles.menuButton}
-              onPress={() => navigation.navigate(`${item}Menu`)}
+              onPress={() => navigation.navigate(`${capitalizeFirstChar(item)}Menu`)}
             >
               <Text style={styles.menuText}>{item}</Text>
             </Pressable>
@@ -51,11 +46,14 @@ const MainMenu = ({ navigation }) => {
           </View>
         );
       })}
-      <Pressable
+      {/* <Pressable
               style={styles.menuButton}
               onPress={() => setAbout(!about)}
             >
-              <Text style={styles.menuText}>About</Text>
+              <Text style={styles.menuText}>**DELETE** ABOUT</Text>
+            </Pressable> */}
+            <Pressable style={styles.menuButton} onPress={() => navigation.navigate(`Scores`)}>
+            <Text style={styles.menuText}>SCORES</Text>
             </Pressable>
       <View style={styles.footer}>
       <Footer/>
@@ -69,6 +67,7 @@ const MainMenu = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    marginTop: 250,
   },
   logoPic: {
     height: 80,
@@ -76,13 +75,17 @@ const styles = StyleSheet.create({
   },
   menuButton: {
     borderRadius: 100,
-    backgroundColor: "navy",
+    backgroundColor: "black",
+    borderColor: "#B8100F",
+    borderWidth: 3,
     padding: 5,
     width: 150,
     alignItems: "center",
   },
   menuText: {
     color: "white",
+    fontWeight: "bold",
+    fontSize: 12,
   },
   separator: {
     marginVertical: 12,
