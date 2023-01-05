@@ -20,6 +20,7 @@
     "expo-status-bar": "~1.4.2",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "react-hooks-global-state": "^2.1.0",
     "react-native": "0.70.5",
     "react-native-bouncy-checkbox": "^3.0.6",
     "react-native-bouncy-checkbox-group": "^0.1.1",

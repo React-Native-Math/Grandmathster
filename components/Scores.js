@@ -9,10 +9,13 @@ import {
   Dimensions,
   ImageBackground,
 } from "react-native";
+import { useGlobalState } from "../store/store";
+
 
 const Scores = () => {
+  const [store, setStore] = useGlobalState('count')
   return (
-    <View>Scores</View>
+    <View>Scores: {store}</View>
   )
 }
 
