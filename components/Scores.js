@@ -15,7 +15,9 @@ import badgeAdd from "../assets/img/badgeAdd.png";
 import badgeSub from "../assets/img/badgeSub.png";
 import badgeMul from "../assets/img/badgeMul.png";
 import badgeDiv from "../assets/img/badgeDiv.png";
+import badgeRan from "../assets/img/badgeRan.png";
 import selectBg from "../assets/img/selectBG.jpg";
+
 const screen = Dimensions.get("screen");
 const Scores = () => {
   const [store, setStore] = useGlobalState("count");
@@ -24,6 +26,7 @@ const Scores = () => {
     { img: badgeSub, name: "Subtraction" },
     { img: badgeMul, name: "Multiplication" },
     { img: badgeDiv, name: "Division" },
+    { img: badgeRan, name: "Random" }
   ];
   return (
     <ImageBackground source={selectBg} resizeMode="cover">
@@ -52,8 +55,8 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   badge: {
-    height: 120,
-    width: 120,
+    height: 100,
+    width: 100,
     margin: 5,
   },
   gmText: {
