@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, TextInput, Text, Dimensions } from "react-native";
+import { View, StyleSheet, TextInput, Text, Dimensions, ImageBackground } from "react-native";
 import GameOver from "./GameOver";
 const screen = Dimensions.get("screen");
+import selectBG from '../../assets/img/selectBG.jpg'
 
 export default function AdditionProblems(props) {
   const [input, setInput] = useState("");
@@ -57,6 +58,7 @@ export default function AdditionProblems(props) {
     }
   }
   return (
+    <ImageBackground source={selectBG} resizeMode='cover'>
     <View>
       {questionNumber < Number(props.maxQuestionsNumber) &&
       props.timeAmt - time > 0 ? (
@@ -116,6 +118,7 @@ export default function AdditionProblems(props) {
         </View>
       )}
     </View>
+    </ImageBackground>
   );
 }
 
@@ -124,7 +127,6 @@ const styles = StyleSheet.create({
   outerContainer: {
     height: screen.height,
     width: screen.width,
-    backgroundColor: 'black',
     alignItems: "center",
   },
   scoreContainer: {
