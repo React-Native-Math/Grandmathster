@@ -18,14 +18,14 @@ import cogPic from "../../assets/img/cog.png";
 import selectBG from "../../assets/img/selectBG.jpg";
 const screen = Dimensions.get("screen");
 
-export default function AdditonMenu({navigation}) {
+export default function AdditonMenu({ navigation }) {
   const [difficultyFirstNum, setDifficultyFirstNum] = useState(0);
   const [difficultySecondNum, setDifficultySecondNum] = useState(0);
-  const [difficulty, setDifficulty] = useState('')
+  const [difficulty, setDifficulty] = useState("");
   const [showAdditionPage, setShowAdditionPage] = useState(false);
   const [questionAmount, setQuestionAmount] = useState(10);
-  const [timeAttack, setTimeAttack] = useState(false)
-  const [timeAmount, setTimeAmount] = useState(1000000000)
+  const [timeAttack, setTimeAttack] = useState(false);
+  const [timeAmount, setTimeAmount] = useState(1000000000);
 
   const checkboxOptions = [
     "10 questions",
@@ -61,7 +61,7 @@ export default function AdditonMenu({navigation}) {
   const handleDifficulty = (e, first, second, difficulty) => {
     setDifficultyFirstNum(first);
     setDifficultySecondNum(second);
-    setDifficulty(difficulty)
+    setDifficulty(difficulty);
     setShowAdditionPage(!false);
   };
 
