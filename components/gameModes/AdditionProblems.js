@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   outerContainer: {
     height: screen.height,
     width: screen.width,
-    backgroundColor: "#FFDFD3",
+    backgroundColor: 'black',
     alignItems: "center",
   },
   scoreContainer: {
@@ -136,11 +136,12 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 18,
     fontFamily: "Azeret",
-    color: "black",
+    color: "red",
     borderWidth: 2,
     width: 200,
-    borderColor: "black",
+    borderColor: "white",
     marginTop: 5,
+    fontWeight:'bold',
   },
   problemContainer: {
     width: screen.width * 0.65,
@@ -151,17 +152,19 @@ const styles = StyleSheet.create({
   number: {
     fontSize: 70,
     fontFamily: "Azeret",
-    color: "black",
+    color: "red",
+    fontWeight:'bold',
   },
   message: {
     paddingTop: 5,
     fontSize: 15,
     fontFamily: "Azeret",
-    color: "black",
+    color: "red",
+    fontWeight:'bold',
   },
   score: {
     fontSize: 20,
     fontFamily: "Azeret",
-    color: "black",
+    color: "red",
   },
 });
