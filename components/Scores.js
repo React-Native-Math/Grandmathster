@@ -39,7 +39,7 @@ const Scores = () => {
 
   useEffect(() => {
     const getPerfectScores = async (idx) => {
-      console.log("RUNNING")
+      console.log("getPerfectScores RUNNING")
       try {
         const operation = badges[idx].name.toLowerCase()
         console.log("op ", operation)
@@ -48,7 +48,6 @@ const Scores = () => {
         const output = jsonValue != null ? JSON.parse(jsonValue) : 0
         console.log('output', output)
         badges[idx].func(output)
-        // return jsonValue != null ? JSON.parse(jsonValue) : null;
       } catch (e) {
         console.log("Error at getPerfectScores: ", e)
       }
@@ -62,7 +61,7 @@ const Scores = () => {
       {badges.map((badge, idx) => {
         return (
           <View style={styles.badgeContainer} key={idx}>
-            <Pressable onPress={() => getPerfectScores(idx)}>
+            <Pressable onPress={() => console.log("TODO: LINK TO TIME ATTACK")}>
             <Image style={styles.badge} source={badge.img} />
             </Pressable>
             <View style={styles.textContainer}>

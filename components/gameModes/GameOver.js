@@ -26,31 +26,26 @@ export default function GameOver({
   const [message, setMessage] = useState("");
   const [perfectScoresCount, setPerfectScoresCount] = useState(0);
   const [loading, setLoading] = useState(true);
+  const perfectScoreAllocation = {
+    10: 1,
+    20: 2,
+    30: 5,
+  };
 
   const storePerfectScores = async () => {
     try {
-      const perfectScoresCount = await AsyncStorage.getItem(
-        operation
-      );
-      let val;
-      if (questionAmount === 10) {
-        console.log('hit10')
-        val = perfectScoresCount === null ? 1 : +perfectScoresCount + 1;
-      } else if (questionAmount === 20) {
-        console.log('hit20')
-        val = perfectScoresCount === null ? 2 : +perfectScoresCount + 2;
-      } else {
-        console.log('hit30')
-        val = perfectScoresCount === null ? 5 : +perfectScoresCount + 5;
-      }
-    //   const val = perfectScoresCount === null ? 1 : +perfectScoresCount + 1;
-      const jsonValue = JSON.stringify(val);
+      const perfectScoresCount = await AsyncStorage.getItem(operation);
+      const setVal = (questionAmount) =>
+        perfectScoresCount === null
+          ? perfectScoreAllocation[questionAmount]
+          : +perfectScoresCount + perfectScoreAllocation[questionAmount];
+      const jsonValue = JSON.stringify(setVal(questionAmount));
       await AsyncStorage.setItem(operation, jsonValue);
       console.log(
         "jsonValue>>",
         jsonValue,
-        "multiget>>",
-        await AsyncStorage.multiGet(["addition_3", "addition_10", "addition"])
+        "getItem>>",
+        await AsyncStorage.getItem("addition")
       );
     } catch (e) {
       console.log("Error at storePerfectScores: ", e);
