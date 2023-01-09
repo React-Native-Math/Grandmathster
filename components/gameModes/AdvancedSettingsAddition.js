@@ -59,6 +59,7 @@ export default function AdvancedSettingsAddition({navigation}) {
           timeAmt={timeAmount}
           difficulty={'custom settings'}
           navigation={navigation}
+          custom = {true}
         />
       ) : (
         <ImageBackground

@@ -108,6 +108,10 @@ export default function AdditionProblems(props) {
             difficulty={props.difficulty}
             questionAmount={questionNumber}
             navigation={props.navigation}
+            operation = {'addition'}
+            timeAtt = {props.timeAtt}
+            timeAmt = {props.timeAmt}
+            custom = {props.custom}
           />
         </View>
       )}
