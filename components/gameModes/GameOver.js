@@ -29,7 +29,7 @@ export default function GameOver({
     20: 2,
     30: 5,
   };
-  const [previousHighScores, setPreviousHighScores] = useState({})
+
   const [scoreSaved, setScoreSaved] = useState(false)
   //AsyncStorage of High Scores notes:
   //have problems page pass in gameOver screen operation, if timeAtt, and timeAmt
@@ -40,63 +40,36 @@ export default function GameOver({
   //Correctly store the new score in the object or don't store at all if not a new high score.
   //Write that object to the database overwriting previous object.
 
-  const getHighScores = async () =>{
-      try{
-          const savedHighScores = await AsyncStorage.getItem(operation + '_' + timeAmt)
-          savedHighScores != null ? JSON.parse(savedHighScores) : null
-          console.log(savedHighScores)
-          if(!savedHighScores){
-              setPreviousHighScores({
-                  highScore:0,
-                  midScore:0,
-                  lowScore:0
-              })
-          }
-          else {setPreviousHighScores(savedHighScores)}
-      }catch(e){ 
-          console.log(e)
-      }
-  }
-
-  const setHighScores = async (newHighScoreObj) =>{
-      try{
-          const jsonValue = JSON.stringify(newHighScoreObj)
-          await AsyncStorage.setItem(operation + '_' + timeAmt, jsonValue)
-      }catch(e){
-          console.log(e)
-      }
-  }
-  
-  const writeNewScores = async (previousHighScores, score) => {
-      if(typeof(previousHighScores)!=='object'){
-      previousHighScores = JSON.parse(previousHighScores)
-      }
-    
-      if(score>previousHighScores.highScore){
-          const newHighScores = {
-              lowScore:previousHighScores.midScore,
-              midScore:previousHighScores.highScore,
+  const callReadAndWriteTimAttHighScores = async (score)=>{
+    let previousHighScores = await AsyncStorage.getItem(operation+'_'+timeAmt)
+    let highScores = previousHighScores ? JSON.parse(previousHighScores) : {highScore:0,midScore:0,lowScore:0}
+          if(score>highScores.highScore){
+          newHighs = {
+              lowScore:highScores.midScore,
+              midScore:highScores.highScore,
               highScore:score,
           }
-        
-          await setHighScores(newHighScores)
+          const jsonValue = JSON.stringify(newHighs);
+          await AsyncStorage.setItem(operation+'_'+timeAmt, jsonValue);
       }
-      else if(score>previousHighScores.midScore){
-          const newHighScores ={
-              highScore:previousHighScores.highScore,
-              lowScore:previousHighScores.midScore,
+      else if(score>highScores.midScore){
+          const newHighs ={
+              highScore:highScores.highScore,
+              lowScore:highScores.midScore,
               midScore:score,
           }
-          await setHighScores(newHighScores)
+          const jsonValue = JSON.stringify(newHighs);
+          await AsyncStorage.setItem(operation+'_'+timeAmt, jsonValue);
       }
-      else if(score>previousHighScores.lowScore){
-          const newHighScores = {
-              ...previousHighScores,
+      else if(score>highScores.lowScore){
+          const newHighs = {
+              ...highScores,
               lowScore:score
           }
-          await setHighScores(newHighScores)
+          const jsonValue = JSON.stringify(newHighs);
+          await AsyncStorage.setItem(operation+'_'+timeAmt, jsonValue);
       }
-      setScoreSaved(true)
+
   }
   const storePerfectScores = async () => {
     try {
@@ -107,12 +80,6 @@ export default function GameOver({
           : +perfectScoresCount + perfectScoreAllocation[questionAmount];
       const jsonValue = JSON.stringify(setVal(questionAmount));
       await AsyncStorage.setItem(operation, jsonValue);
-      console.log(
-        "jsonValue>>",
-        jsonValue,
-        "getItem>>",
-        await AsyncStorage.getItem("addition")
-      );
     } catch (e) {
       console.log("Error at storePerfectScores: ", e);
     }
@@ -120,7 +87,7 @@ export default function GameOver({
   useEffect(() => {
     const accuracy = Math.floor((score / questionAmount) * 100);
     if(timeAtt && !custom){
-      getHighScores()   
+      callReadAndWriteTimAttHighScores(score)
     }
     if (accuracy === 100) {
       setMessage(
