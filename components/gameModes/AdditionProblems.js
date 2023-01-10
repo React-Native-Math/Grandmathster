@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 18,
     fontFamily: "Azeret",
-    color: "red",
+    color: "white",
     borderWidth: 2,
     width: 200,
     borderColor: "white",
@@ -154,19 +154,19 @@ const styles = StyleSheet.create({
   number: {
     fontSize: 70,
     fontFamily: "Azeret",
-    color: "red",
-    fontWeight:'bold',
+    color: "white",
+    // fontWeight:'bold',
   },
   message: {
     paddingTop: 5,
     fontSize: 15,
     fontFamily: "Azeret",
-    color: "red",
-    fontWeight:'bold',
+    color: "white",
+    // fontWeight:'bold',
   },
   score: {
     fontSize: 20,
     fontFamily: "Azeret",
-    color: "red",
+    color: "white",
   },
 });
