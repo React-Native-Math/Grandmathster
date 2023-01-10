@@ -11,6 +11,7 @@ import {
   ImageBackground,
 } from "react-native";
 import { useGlobalState } from "../store/store";
+import OperationScores from "./OperationScores";
 import badgeAdd from "../assets/img/badgeAdd.png";
 import badgeSub from "../assets/img/badgeSub.png";
 import badgeMul from "../assets/img/badgeMul.png";
@@ -28,6 +29,7 @@ const Scores = () => {
   const [mulPerfectScore, setMulPerfectScore] = useState(0)
   const [divPerfectScore, setDivPerfectScore] = useState(0)
   const [ranPerfectScore, setRanPerfectScore] = useState(0)
+  const [displayOperation, setDisplayOperation] = useState('')
 
   const badges = [
     { img: badgeAdd, name: "Addition", func: setAddPerfectScore, perfectScores: addPerfectScore, },
@@ -57,11 +59,16 @@ const Scores = () => {
   )
   
    return (
+    <View>
+    {displayOperation ? 
+      <OperationScores
+      operation = {displayOperation}
+      /> :
     <ImageBackground source={selectBg} resizeMode="cover">
       {badges.map((badge, idx) => {
         return (
           <View style={styles.badgeContainer} key={idx}>
-            <Pressable onPress={() => console.log("TODO: LINK TO TIME ATTACK")}>
+            <Pressable onPress={() => setDisplayOperation(badge.name)}>
             <Image style={styles.badge} source={badge.img} />
             </Pressable>
             <View style={styles.textContainer}>
@@ -73,7 +80,8 @@ const Scores = () => {
         );
       })}
     </ImageBackground>
-  );
+  }
+  </View>)
 };
 const styles = StyleSheet.create({
   badgeContainer: {

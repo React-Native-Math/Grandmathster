@@ -95,6 +95,7 @@ export default function AdditonMenu({ navigation }) {
           timeAmt={timeAmount}
           difficulty={difficulty}
           navigation={navigation}
+          custom = {false}
         />
       ) : (
         <ImageBackground
