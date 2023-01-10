@@ -3,15 +3,15 @@ import {
   View,
   StyleSheet,
   Text,
+  Image,
   Pressable,
   ImageBackground,
   Dimensions,
 } from "react-native";
-// import schoolBackground from "../../assets/img/schoolBackground.png";
 import selectBG from "../../assets/img/selectBG.jpg";
 const screen = Dimensions.get("screen");
-// import { useGlobalState } from '../../store/store'
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import badgeOutline from '../../assets/img/badgeOutline.png'
 
 export default function GameOver({
   navigation,
@@ -31,6 +31,7 @@ export default function GameOver({
     20: 2,
     30: 5,
   };
+  const [showBadge, setShowBadge] = useState(false)
 
   const storePerfectScores = async () => {
     try {
@@ -58,6 +59,7 @@ export default function GameOver({
         `Congratulations you are the Grand Mathster on ${difficulty} mode!`
       );
       storePerfectScores();
+      setShowBadge(true)
     } else if (accuracy > 90)
       setMessage(
         `You are a Mathster on ${difficulty} mode! Keep practicing to become the Grand Mathster!`
@@ -73,6 +75,9 @@ export default function GameOver({
   return (
     <ImageBackground source={selectBG} style={styles.background}>
       <View style={styles.outerContainer}>
+        {showBadge ? <Pressable
+          onPress={() => navigation.navigate("Scores")}
+        ><Image source={badgeOutline} style={styles.badgeOutline}></Image></Pressable> : <></>}
         <Text style={styles.menuText}>Statistics</Text>
         <Text style={styles.menuText}>
           Total Score: {score} out of {questionAmount}{" "}
@@ -153,4 +158,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: screen.width * 0.8,
   },
+  badgeOutline: {
+    height:65,
+    width:65,
+    marginBottom: 5,
+  }
 });
