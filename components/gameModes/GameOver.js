@@ -11,7 +11,8 @@ import {
 import selectBG from "../../assets/img/selectBG.jpg";
 const screen = Dimensions.get("screen");
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import badgeOutline from '../../assets/img/badgeOutline.png'
+import badgeOutline from "../../assets/img/badgeOutline.png";
+import redSwipe from "../../assets/img/redSwipe.png";
 
 export default function GameOver({
   navigation,
@@ -31,7 +32,7 @@ export default function GameOver({
     20: 2,
     30: 5,
   };
-  const [showBadge, setShowBadge] = useState(false)
+  const [showBadge, setShowBadge] = useState(false);
 
   const storePerfectScores = async () => {
     try {
@@ -59,7 +60,7 @@ export default function GameOver({
         `Congratulations you are the Grand Mathster on ${difficulty} mode!`
       );
       storePerfectScores();
-      setShowBadge(true)
+      setShowBadge(true);
     } else if (accuracy > 90)
       setMessage(
         `You are a Mathster on ${difficulty} mode! Keep practicing to become the Grand Mathster!`
@@ -68,32 +69,53 @@ export default function GameOver({
       setMessage(
         `You are a Novice on ${difficulty} mode! Keep practicing to become a Mathster!`
       );
-    else if (accuracy > 50) setMessage("Keep Practicing!");
+    else if (accuracy > 50)
+      setMessage(
+        "Good effort. Keep working hard and you can become a grandmathster soon!"
+      );
     else if (accuracy > 0) setMessage("Please review your math facts");
     else if (accuracy === 0) setMessage("Stop Guessing");
   }, [loading]);
   return (
     <ImageBackground source={selectBG} style={styles.background}>
       <View style={styles.outerContainer}>
-        {showBadge ? <Pressable
-          onPress={() => navigation.navigate("Scores")}
-        ><Image source={badgeOutline} style={styles.badgeOutline}></Image></Pressable> : <></>}
-        <Text style={styles.menuText}>Statistics</Text>
-        <Text style={styles.menuText}>
-          Total Score: {score} out of {questionAmount}{" "}
-        </Text>
-        <Text style={styles.menuText}>
-          Accuracy: {Math.floor((score / questionAmount) * 100)}%
-        </Text>
-        <View style={styles.messageContainer}>
-          <Text style={styles.menuText}>{message}</Text>
+        {showBadge ? (
+          <Pressable onPress={() => navigation.navigate("Scores")}>
+            <Image source={badgeOutline} style={styles.badgeOutline}></Image>
+          </Pressable>
+        ) : (
+          <></>
+        )}
+        <View style={styles.resultsContainer}>
+          <View style={styles.qAmountContainer}>
+            <Text style={styles.qAmountText}>
+              {questionAmount} QUESTIONS ANSWERED
+            </Text>
+          </View>
+
+          <View style={styles.scoreSwipeContainer}>
+            <View style={styles.scoreContainer}>
+            <Image source={redSwipe} style={styles.redSwipe}></Image>
+            <View style={styles.yourScoreContainer}>
+              <Text style={styles.yourScore}>YOUR SCORE</Text>
+              <Text style={styles.scoreResult}>{score}</Text>
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.messageContainer}>
+            <Text style={styles.messageText}>
+              Your accuracy was {Math.floor((score / questionAmount) * 100)}%{" "}
+              {message}
+            </Text>
+          </View>
+          <Pressable
+            style={styles.menuButton}
+            onPress={() => navigation.navigate("Home")}
+          >
+            <Text style={styles.menuText}>Main Menu</Text>
+          </Pressable>
         </View>
-        <Pressable
-          style={styles.menuButton}
-          onPress={() => navigation.navigate("Home")}
-        >
-          <Text style={styles.menuText}>Main Menu</Text>
-        </Pressable>
       </View>
     </ImageBackground>
   );
@@ -159,8 +181,90 @@ const styles = StyleSheet.create({
     width: screen.width * 0.8,
   },
   badgeOutline: {
-    height:65,
-    width:65,
+    height: 65,
+    width: 65,
     marginBottom: 5,
-  }
+  },
+  resultsContainer: {
+    height: screen.height * 0.5,
+    width: screen.width * 0.65,
+    backgroundColor: "black",
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: "white",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  scoreAchieved: {
+    fontStyle: "bold",
+    fontSize: 24,
+  },
+  qAmountContainer: {
+    position: "absolute",
+    top: 15,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: screen.height * 0.05,
+    width: screen.width * 0.6,
+    // backgroundColor: "red",
+  },
+  qAmountText: {
+    position: "absolute",
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "white",
+  },
+  scoreSwipeContainer: {
+    height: 70,
+    width: 220,
+    // backgroundColor: "yellow",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  scoreContainer: {
+    height: screen.height * 0.05,
+    width: 220,
+    // backgroundColor: "blue",
+    alignItems: "center",
+    justifyContent: "center",
+    // zIndex: 0,
+  },
+  redSwipe: {
+    height: 90,
+    // backgroundColor: 'white',
+    width: 200,
+    // zIndex: 10,
+  },
+  yourScoreContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    position: 'absolute',
+    // backgroundColor: 'pink',
+    height: 40,
+    width: 150,
+  },
+  yourScore: {
+    color: "white",
+    fontWeight: 'bold',
+    fontSize: 12,
+  },
+  scoreResult: {
+    color: "white",
+    fontWeight: 'bold',
+    fontSize: 32,
+  },
 });
+
+{
+  /* <View style={styles.scoreSwipeContainer}>
+          <Image source={redSwipe} style={styles.redSwipe}></Image>
+          <View style={styles.scoreContainer}>
+          <Text style={styles.yourScore}>YOUR SCORE</Text>
+          <Text style={styles.scoreResult}>{score}</Text>
+          </View>
+          </View> */
+}
