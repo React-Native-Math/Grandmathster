@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, TextInput, Text, Dimensions } from "react-native";
+import { View, StyleSheet, TextInput, Text, Dimensions, ImageBackground } from "react-native";
 import GameOver from "./GameOver";
 const screen = Dimensions.get("screen");
+import selectBG from '../../assets/img/selectBG.jpg'
 
 export default function AdditionProblems(props) {
   const [input, setInput] = useState("");
@@ -57,15 +58,16 @@ export default function AdditionProblems(props) {
     }
   }
   return (
+    <ImageBackground source={selectBG} resizeMode='cover'>
     <View>
       {questionNumber < Number(props.maxQuestionsNumber) &&
       props.timeAmt - time > 0 ? (
         <View style={styles.outerContainer}>
           <View style={styles.scoreContainer}>
-            <Text style={styles.score}>
-              Score: {score} Question: {questionNumber}
+            <Text style={styles.score}>Score: {score}<br/>Question: {questionNumber} <br/>
             </Text>
             <Text style={styles.score}>
+              
               {questionNumber > 0
                 ? `Accuracy: ${Math.floor((score / questionNumber) * 100)}%`
                 : "Accuracy: 0%"}
@@ -116,6 +118,7 @@ export default function AdditionProblems(props) {
         </View>
       )}
     </View>
+    </ImageBackground>
   );
 }
 
@@ -124,23 +127,31 @@ const styles = StyleSheet.create({
   outerContainer: {
     height: screen.height,
     width: screen.width,
-    backgroundColor: "#FFDFD3",
     alignItems: "center",
   },
+  scoreBorder:{
+
+  },
   scoreContainer: {
-    justifyContent: "center",
-    paddingTop: 15,
+    justifyContent: "left",
     alignItems: "center",
+    padding: 20,
+    borderColor:'red',
+    borderRadius:10,
+    borderWidth: 5,
+    marginTop:10,
   },
   textInput: {
     textAlign: "center",
     fontSize: 18,
     fontFamily: "Azeret",
-    color: "black",
-    borderWidth: 2,
-    width: 200,
-    borderColor: "black",
+    color: "white",
+    borderWidth: 5,
+    width: 210,
+    borderColor: "red",
     marginTop: 5,
+    fontWeight:'bold',
+    padding:5,
   },
   problemContainer: {
     width: screen.width * 0.65,
@@ -151,17 +162,19 @@ const styles = StyleSheet.create({
   number: {
     fontSize: 70,
     fontFamily: "Azeret",
-    color: "black",
+    color: "white",
   },
   message: {
     paddingTop: 5,
     fontSize: 15,
     fontFamily: "Azeret",
-    color: "black",
+    color: "white",
   },
   score: {
     fontSize: 20,
     fontFamily: "Azeret",
-    color: "black",
+    color: "white",
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 });

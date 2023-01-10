@@ -23,7 +23,7 @@ export default function GameOver({
   timeAtt,
   timeAmt,
   custom,
-}) {
+}){
   const [message, setMessage] = useState("");
   const [perfectScoresCount, setPerfectScoresCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -34,6 +34,47 @@ export default function GameOver({
   };
   const [showBadge, setShowBadge] = useState(false);
 
+  const [scoreSaved, setScoreSaved] = useState(false)
+  //AsyncStorage of High Scores notes:
+  //have problems page pass in gameOver screen operation, if timeAtt, and timeAmt
+  //Store objects with keys that look like operation_timeAmt so addition_10 or addition_30
+  //Do not store custom timeAtt amounts.
+  //object will store only 3 scores ie addition_10 = {highScore : 10, midScore : 7, lowScore : 6}
+  //Check to see if timeAtt mode and not custom settings. If timeAtt mode pull scores.
+  //Correctly store the new score in the object or don't store at all if not a new high score.
+  //Write that object to the database overwriting previous object.
+
+  const callReadAndWriteTimAttHighScores = async (score)=>{
+    let previousHighScores = await AsyncStorage.getItem(operation+'_'+timeAmt)
+    let highScores = previousHighScores ? JSON.parse(previousHighScores) : {highScore:0,midScore:0,lowScore:0}
+          if(score>highScores.highScore){
+          newHighs = {
+              lowScore:highScores.midScore,
+              midScore:highScores.highScore,
+              highScore:score,
+          }
+          const jsonValue = JSON.stringify(newHighs);
+          await AsyncStorage.setItem(operation+'_'+timeAmt, jsonValue);
+      }
+      else if(score>highScores.midScore){
+          const newHighs ={
+              highScore:highScores.highScore,
+              lowScore:highScores.midScore,
+              midScore:score,
+          }
+          const jsonValue = JSON.stringify(newHighs);
+          await AsyncStorage.setItem(operation+'_'+timeAmt, jsonValue);
+      }
+      else if(score>highScores.lowScore){
+          const newHighs = {
+              ...highScores,
+              lowScore:score
+          }
+          const jsonValue = JSON.stringify(newHighs);
+          await AsyncStorage.setItem(operation+'_'+timeAmt, jsonValue);
+      }
+
+  }
   const storePerfectScores = async () => {
     try {
       const perfectScoresCount = await AsyncStorage.getItem(operation);
@@ -43,18 +84,15 @@ export default function GameOver({
           : +perfectScoresCount + perfectScoreAllocation[questionAmount];
       const jsonValue = JSON.stringify(setVal(questionAmount));
       await AsyncStorage.setItem(operation, jsonValue);
-      console.log(
-        "jsonValue>>",
-        jsonValue,
-        "getItem>>",
-        await AsyncStorage.getItem("addition")
-      );
     } catch (e) {
       console.log("Error at storePerfectScores: ", e);
     }
   };
   useEffect(() => {
     const accuracy = Math.floor((score / questionAmount) * 100);
+    if(timeAtt && !custom){
+      callReadAndWriteTimAttHighScores(score)
+    }
     if (accuracy === 100) {
       setMessage(
         `Congratulations you are the Grand Mathster on ${difficulty} mode!`
