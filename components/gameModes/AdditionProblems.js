@@ -64,10 +64,10 @@ export default function AdditionProblems(props) {
       props.timeAmt - time > 0 ? (
         <View style={styles.outerContainer}>
           <View style={styles.scoreContainer}>
-            <Text style={styles.score}>
-              Score: {score} Question: {questionNumber}
+            <Text style={styles.score}>Score: {score}<br/>Question: {questionNumber} <br/>
             </Text>
             <Text style={styles.score}>
+              
               {questionNumber > 0
                 ? `Accuracy: ${Math.floor((score / questionNumber) * 100)}%`
                 : "Accuracy: 0%"}
@@ -129,21 +129,29 @@ const styles = StyleSheet.create({
     width: screen.width,
     alignItems: "center",
   },
+  scoreBorder:{
+
+  },
   scoreContainer: {
-    justifyContent: "center",
-    paddingTop: 15,
+    justifyContent: "left",
     alignItems: "center",
+    padding: 20,
+    borderColor:'red',
+    borderRadius:10,
+    borderWidth: 5,
+    marginTop:10,
   },
   textInput: {
     textAlign: "center",
     fontSize: 18,
     fontFamily: "Azeret",
     color: "white",
-    borderWidth: 2,
-    width: 200,
-    borderColor: "white",
+    borderWidth: 5,
+    width: 210,
+    borderColor: "red",
     marginTop: 5,
     fontWeight:'bold',
+    padding:5,
   },
   problemContainer: {
     width: screen.width * 0.65,
@@ -155,18 +163,18 @@ const styles = StyleSheet.create({
     fontSize: 70,
     fontFamily: "Azeret",
     color: "white",
-    // fontWeight:'bold',
   },
   message: {
     paddingTop: 5,
     fontSize: 15,
     fontFamily: "Azeret",
     color: "white",
-    // fontWeight:'bold',
   },
   score: {
     fontSize: 20,
     fontFamily: "Azeret",
     color: "white",
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 });

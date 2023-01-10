@@ -1,16 +1,13 @@
-import React, { useDeferredValue, useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import {
   View,
   StyleSheet,
   Text,
   Pressable,
-  TextInput,
-  ScrollView,
   Dimensions,
   Image,
   ImageBackground,
 } from "react-native";
-import { useGlobalState } from "../store/store";
 import OperationScores from "./OperationScores";
 import badgeAdd from "../assets/img/badgeAdd.png";
 import badgeSub from "../assets/img/badgeSub.png";
@@ -23,7 +20,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const screen = Dimensions.get("screen");
 const Scores = () => {
-  // const [store, setStore] = useGlobalState("count");
   const [addPerfectScore, setAddPerfectScore] = useState(0)
   const [subPerfectScore, setSubPerfectScore] = useState(0)
   const [mulPerfectScore, setMulPerfectScore] = useState(0)
@@ -41,14 +37,10 @@ const Scores = () => {
 
   useEffect(() => {
     const getPerfectScores = async (idx) => {
-      console.log("getPerfectScores RUNNING")
       try {
         const operation = badges[idx].name.toLowerCase()
-        console.log("op ", operation)
         const jsonValue = await AsyncStorage.getItem(operation)
-        console.log("jsonVal ", jsonValue != null ? JSON.parse(jsonValue) : 0)
         const output = jsonValue != null ? JSON.parse(jsonValue) : 0
-        console.log('output', output)
         badges[idx].func(output)
       } catch (e) {
         console.log("Error at getPerfectScores: ", e)
