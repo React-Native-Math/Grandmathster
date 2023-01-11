@@ -23,7 +23,7 @@ export default function GameOver({
   timeAtt,
   timeAmt,
   custom,
-}){
+}) {
   const [message, setMessage] = useState("");
   const [perfectScoresCount, setPerfectScoresCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -34,7 +34,7 @@ export default function GameOver({
   };
   const [showBadge, setShowBadge] = useState(false);
 
-  const [scoreSaved, setScoreSaved] = useState(false)
+  const [scoreSaved, setScoreSaved] = useState(false);
   //AsyncStorage of High Scores notes:
   //have problems page pass in gameOver screen operation, if timeAtt, and timeAmt
   //Store objects with keys that look like operation_timeAmt so addition_10 or addition_30
@@ -44,37 +44,38 @@ export default function GameOver({
   //Correctly store the new score in the object or don't store at all if not a new high score.
   //Write that object to the database overwriting previous object.
 
-  const callReadAndWriteTimAttHighScores = async (score)=>{
-    let previousHighScores = await AsyncStorage.getItem(operation+'_'+timeAmt)
-    let highScores = previousHighScores ? JSON.parse(previousHighScores) : {highScore:0,midScore:0,lowScore:0}
-          if(score>highScores.highScore){
-          newHighs = {
-              lowScore:highScores.midScore,
-              midScore:highScores.highScore,
-              highScore:score,
-          }
-          const jsonValue = JSON.stringify(newHighs);
-          await AsyncStorage.setItem(operation+'_'+timeAmt, jsonValue);
-      }
-      else if(score>highScores.midScore){
-          const newHighs ={
-              highScore:highScores.highScore,
-              lowScore:highScores.midScore,
-              midScore:score,
-          }
-          const jsonValue = JSON.stringify(newHighs);
-          await AsyncStorage.setItem(operation+'_'+timeAmt, jsonValue);
-      }
-      else if(score>highScores.lowScore){
-          const newHighs = {
-              ...highScores,
-              lowScore:score
-          }
-          const jsonValue = JSON.stringify(newHighs);
-          await AsyncStorage.setItem(operation+'_'+timeAmt, jsonValue);
-      }
-
-  }
+  const callReadAndWriteTimAttHighScores = async (score) => {
+    let previousHighScores = await AsyncStorage.getItem(
+      operation + "_" + timeAmt
+    );
+    let highScores = previousHighScores
+      ? JSON.parse(previousHighScores)
+      : { highScore: 0, midScore: 0, lowScore: 0 };
+    if (score > highScores.highScore) {
+      newHighs = {
+        lowScore: highScores.midScore,
+        midScore: highScores.highScore,
+        highScore: score,
+      };
+      const jsonValue = JSON.stringify(newHighs);
+      await AsyncStorage.setItem(operation + "_" + timeAmt, jsonValue);
+    } else if (score > highScores.midScore) {
+      const newHighs = {
+        highScore: highScores.highScore,
+        lowScore: highScores.midScore,
+        midScore: score,
+      };
+      const jsonValue = JSON.stringify(newHighs);
+      await AsyncStorage.setItem(operation + "_" + timeAmt, jsonValue);
+    } else if (score > highScores.lowScore) {
+      const newHighs = {
+        ...highScores,
+        lowScore: score,
+      };
+      const jsonValue = JSON.stringify(newHighs);
+      await AsyncStorage.setItem(operation + "_" + timeAmt, jsonValue);
+    }
+  };
   const storePerfectScores = async () => {
     try {
       const perfectScoresCount = await AsyncStorage.getItem(operation);
@@ -90,36 +91,38 @@ export default function GameOver({
   };
   useEffect(() => {
     const accuracy = Math.floor((score / questionAmount) * 100);
-    if(timeAtt && !custom){
-      callReadAndWriteTimAttHighScores(score)
+    if (timeAtt && !custom) {
+      callReadAndWriteTimAttHighScores(score);
     }
     if (accuracy === 100) {
       setMessage(
-        `Congratulations you are the Grand Mathster on ${difficulty} mode!`
+        `Congratulations you're a Grandmathster on ${difficulty.toLowerCase()} mode! You earned a new '${operation} badge'`
       );
       storePerfectScores();
       setShowBadge(true);
     } else if (accuracy > 90)
       setMessage(
-        `You are a Mathster on ${difficulty} mode! Keep practicing to become the Grand Mathster!`
+        `You are a Mathster on ${difficulty} mode! Keep practicing to become the Grandmathster!`
       );
     else if (accuracy > 75)
       setMessage(
         `You are a Novice on ${difficulty} mode! Keep practicing to become a Mathster!`
       );
     else if (accuracy > 50)
-      setMessage(
-        "Good effort. Keep working hard and you can become a grandmathster soon!"
-      );
-    else if (accuracy > 0) setMessage("Please review your math facts");
-    else if (accuracy === 0) setMessage("Stop Guessing");
+      setMessage("Good effort but there's room for improvement!");
+    else if (accuracy >= 0)
+      setMessage("Check the help button (❓) above if you're struggling");
+    // else if (accuracy === 0) setMessage("Stop Guessing");
   }, [loading]);
   return (
     <ImageBackground source={selectBG} style={styles.background}>
       <View style={styles.outerContainer}>
         {showBadge ? (
           <Pressable onPress={() => navigation.navigate("Scores")}>
+            <View style={styles.badgeContainer}>
             <Image source={badgeOutline} style={styles.badgeOutline}></Image>
+            <View style={styles.badgeTextContainer}><Text style={styles.badgeText}>Touch the badge to view your achievements</Text></View>
+          </View>
           </Pressable>
         ) : (
           <></>
@@ -133,19 +136,24 @@ export default function GameOver({
 
           <View style={styles.scoreSwipeContainer}>
             <View style={styles.scoreContainer}>
-            <Image source={redSwipe} style={styles.redSwipe}></Image>
-            <View style={styles.yourScoreContainer}>
-              <Text style={styles.yourScore}>YOUR SCORE</Text>
-              <Text style={styles.scoreResult}>{score}</Text>
+              <Image source={redSwipe} style={styles.redSwipe}></Image>
+              <View style={styles.yourScoreContainer}>
+                <Text style={styles.yourScore}>YOUR SCORE</Text>
+                <Text style={styles.scoreResult}>{score}</Text>
               </View>
             </View>
           </View>
 
           <View style={styles.messageContainer}>
-            <Text style={styles.messageText}>
-              Your accuracy was {Math.floor((score / questionAmount) * 100)}%{" "}
-              {message}
+            <Text style={styles.messageTextTop}>
+              This means your accuracy was
+              <Text style={styles.messageAcc}>
+                {" "}
+                {Math.floor((score / questionAmount) * 100)}%{" "}
+              </Text>
             </Text>
+
+            <Text style={styles.messageTextBottom}>{message}</Text>
           </View>
           <Pressable
             style={styles.menuButton}
@@ -168,7 +176,28 @@ const styles = StyleSheet.create({
   },
   messageContainer: {
     textAlign: "center",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 5,
+    padding: 5,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: "white",
+    width: screen.width * 0.5,
+    height: screen.height * 0.2,
+  },
+  messageTextTop: {
+    color: "white",
+  },
+  messageTextBottom: {
+    color: "white",
+    marginTop: 15,
+  },
+  messageAcc: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 16,
   },
   homeButton: {
     borderRadius: 50,
@@ -186,9 +215,9 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#b8100f",
     padding: 5,
-    margin: 5,
+    margin: 15,
     width: 150,
-    height: 60,
+    height: 40,
     color: "white",
     backgroundColor: "black",
     display: "flex",
@@ -218,35 +247,57 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: screen.width * 0.8,
   },
-  badgeOutline: {
-    height: 65,
-    width: 65,
-    marginBottom: 5,
-  },
   resultsContainer: {
-    height: screen.height * 0.5,
+    height: screen.height * 0.45,
     width: screen.width * 0.65,
     backgroundColor: "black",
     borderRadius: 10,
     borderWidth: 2,
     borderColor: "white",
     display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  badgeContainer: {
+    display: "flex",
+    flexDirection: 'row',
+    justifyContent: "space-around",
+    alignItems: "center",
+    height: screen.height * 0.05,
+    width: screen.width * 0.65,
+    borderRadius: 10,
+    borderWidth: 2,
+    borderColor: "gold",
+    marginBottom: 15,
+  },
+  badgeOutline: {
+    height: 65,
+    width: 65,
+    marginBottom: 5,
+  },
+  badgeTextContainer: {
+    display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    width: screen.width * 0.4,
+  },
+  badgeText: {
+    color: 'white',
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: "gold",
+    textAlign: 'center',
   },
   scoreAchieved: {
     fontStyle: "bold",
     fontSize: 24,
   },
   qAmountContainer: {
-    position: "absolute",
-    top: 15,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     height: screen.height * 0.05,
     width: screen.width * 0.6,
-    // backgroundColor: "red",
   },
   qAmountText: {
     position: "absolute",
@@ -257,7 +308,6 @@ const styles = StyleSheet.create({
   scoreSwipeContainer: {
     height: 70,
     width: 220,
-    // backgroundColor: "yellow",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -265,34 +315,29 @@ const styles = StyleSheet.create({
   scoreContainer: {
     height: screen.height * 0.05,
     width: 220,
-    // backgroundColor: "blue",
     alignItems: "center",
     justifyContent: "center",
-    // zIndex: 0,
   },
   redSwipe: {
     height: 90,
-    // backgroundColor: 'white',
     width: 200,
-    // zIndex: 10,
   },
   yourScoreContainer: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    position: 'absolute',
-    // backgroundColor: 'pink',
+    position: "absolute",
     height: 40,
     width: 150,
   },
   yourScore: {
     color: "white",
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 12,
   },
   scoreResult: {
     color: "white",
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 32,
   },
 });

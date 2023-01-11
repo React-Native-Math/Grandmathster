@@ -64,7 +64,7 @@ export default function AdditionProblems(props) {
       props.timeAmt - time > 0 ? (
         <View style={styles.outerContainer}>
           <View style={styles.scoreContainer}>
-            <Text style={styles.score}>Score: {score}<br/>Question: {questionNumber} <br/>
+            <Text style={styles.score}>Score: {score} Question: {questionNumber}
             </Text>
             <Text style={styles.score}>
               
