@@ -45,6 +45,7 @@ export default function GameOver({
   //Write that object to the database overwriting previous object.
 
   const callReadAndWriteTimAttHighScores = async (score) => {
+    let newHighs;
     let previousHighScores = await AsyncStorage.getItem(
       operation + "_" + timeAmt
     );
@@ -98,8 +99,10 @@ export default function GameOver({
       setMessage(
         `Congratulations you're a Grandmathster on ${difficulty.toLowerCase()} mode! You earned a new '${operation} badge'`
       );
-      storePerfectScores();
-      setShowBadge(true);
+      if (!timeAtt) {
+        storePerfectScores();
+        setShowBadge(true);
+      } 
     } else if (accuracy > 90)
       setMessage(
         `You are a Mathster on ${difficulty} mode! Keep practicing to become the Grandmathster!`
@@ -117,7 +120,7 @@ export default function GameOver({
   return (
     <ImageBackground source={selectBG} style={styles.background}>
       <View style={styles.outerContainer}>
-        {showBadge ? (
+        {showBadge && !timeAtt ? (
           <Pressable onPress={() => navigation.navigate("Scores")}>
             <View style={styles.badgeContainer}>
             <Image source={badgeOutline} style={styles.badgeOutline}></Image>
