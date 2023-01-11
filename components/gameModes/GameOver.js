@@ -105,7 +105,7 @@ export default function GameOver({
       } 
     } else if (accuracy > 90)
       setMessage(
-        `You are a Mathster on ${difficulty} mode! Keep practicing to become the Grandmathster!`
+        `You are a Mathster on ${difficulty} mode! Keep practicing to become a Grandmathster!`
       );
     else if (accuracy > 75)
       setMessage(
