@@ -13,6 +13,9 @@ export default function AdditionProblems(props) {
   const [score, setScore] = useState(0);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [time, setTime] = useState(0);
+  const [textShadow, setTextShadow] = useState('#FFFFFF')
+
+  const textShadowVals = ['#FFFFFF', '#FF355E', '#FFFF66', '#CCFF00', '#FF6EFF', '#AAF0D1', '#00FFFF']
 
   useEffect(() => {
     setSecondNum(Math.floor(Math.random() * props.secondNum));
@@ -49,6 +52,7 @@ export default function AdditionProblems(props) {
       setChange(!change);
       setScore(score + 1);
       setInput("");
+      setTextShadow(textShadowVals[Math.floor(Math.random() * textShadowVals.length)]);
       setQuestionNumber(questionNumber + 1);
     } else {
       setMessage(`Incorrect, the answer was ${firstNum + secondNum}`);
@@ -64,7 +68,7 @@ export default function AdditionProblems(props) {
       props.timeAmt - time > 0 ? (
         <View style={styles.outerContainer}>
           <View style={styles.scoreContainer}>
-            <Text style={styles.score}>Score: {score}<br/>Question: {questionNumber} <br/>
+            <Text style={styles.score}>Score: {score} Question: {questionNumber}
             </Text>
             <Text style={styles.score}>
               
@@ -79,9 +83,13 @@ export default function AdditionProblems(props) {
             </Text>
           </View>
           <View style={styles.problemContainer}>
-            <Text style={styles.number}>{firstNum}</Text>
-            <Text style={styles.number}>+ {secondNum}</Text>
-            <Text style={{ color: "black" }}>_______________________</Text>
+            <Text style={{...styles.number, textShadowColor: textShadow, textShadowRadius: 30}}>{firstNum}</Text>
+            <Text style={{...styles.number, textShadowColor: textShadow, textShadowRadius: 30}}>
+            {/* +  −  ×  ÷ */}
+              <Text style={styles.operator}>+ </Text>
+              {secondNum}
+              </Text>
+            {/* <Text style={{ color: "black" }}>_______________________</Text> */}
             <TextInput
               style={styles.textInput}
               placeholder={questionNumber !== 0 ? "" : "type your answer"}
@@ -123,20 +131,21 @@ export default function AdditionProblems(props) {
 }
 
 
+
 const styles = StyleSheet.create({
   outerContainer: {
     height: screen.height,
     width: screen.width,
     alignItems: "center",
   },
-  scoreBorder:{
-
+  operator:{
+    color: 'red',
   },
   scoreContainer: {
-    justifyContent: "left",
+    justifyContent: 'flex-start', //TODO: using 'left' breaks expo
     alignItems: "center",
     padding: 20,
-    borderColor:'red',
+    borderColor:'#b8100f',
     borderRadius:10,
     borderWidth: 5,
     marginTop:10,
@@ -148,10 +157,11 @@ const styles = StyleSheet.create({
     color: "white",
     borderWidth: 5,
     width: 210,
-    borderColor: "red",
+    borderColor: "#b8100f",
     marginTop: 5,
     fontWeight:'bold',
     padding:5,
+    outlineColor: 'black',
   },
   problemContainer: {
     width: screen.width * 0.65,
