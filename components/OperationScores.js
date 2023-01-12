@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   scoresContainer: {
-    display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
     height: screen.height * 0.7,

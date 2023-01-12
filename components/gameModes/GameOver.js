@@ -148,7 +148,7 @@ export default function GameOver({
           </View>
 
           <View style={styles.messageContainer}>
-            <Text style={styles.messageTextTop}>
+            <Text numberOfLines={2} adjustsFontSizeToFit style={styles.messageTextTop}>
               This means your accuracy was
               <Text style={styles.messageAcc}>
                 {" "}
@@ -156,7 +156,7 @@ export default function GameOver({
               </Text>
             </Text>
 
-            <Text style={styles.messageTextBottom}>{message}</Text>
+            <Text numberOfLines={4} adjustsFontSizeToFit style={styles.messageTextBottom}>{message}</Text>
           </View>
           <Pressable
             style={styles.menuButton}
@@ -173,7 +173,7 @@ export default function GameOver({
 const styles = StyleSheet.create({
   background: {
     width: screen.width,
-    height: screen.height * 0.89,
+    height: screen.height,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -192,6 +192,7 @@ const styles = StyleSheet.create({
   },
   messageTextTop: {
     color: "white",
+    // fontSize: screen.height * 0.01
   },
   messageTextBottom: {
     color: "white",
@@ -251,7 +252,7 @@ const styles = StyleSheet.create({
     width: screen.width * 0.8,
   },
   resultsContainer: {
-    height: screen.height * 0.45,
+    height: screen.height * 0.55,
     width: screen.width * 0.65,
     backgroundColor: "black",
     borderRadius: 10,
@@ -344,13 +345,3 @@ const styles = StyleSheet.create({
     fontSize: 32,
   },
 });
-
-{
-  /* <View style={styles.scoreSwipeContainer}>
-          <Image source={redSwipe} style={styles.redSwipe}></Image>
-          <View style={styles.scoreContainer}>
-          <Text style={styles.yourScore}>YOUR SCORE</Text>
-          <Text style={styles.scoreResult}>{score}</Text>
-          </View>
-          </View> */
-}
