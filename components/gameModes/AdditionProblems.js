@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start', //TODO: using 'left' breaks expo
     alignItems: "center",
     padding: 20,
-    borderColor:'red',
+    borderColor:'#b8100f',
     borderRadius:10,
     borderWidth: 5,
     marginTop:10,
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     color: "white",
     borderWidth: 5,
     width: 210,
-    borderColor: "red",
+    borderColor: "#b8100f",
     marginTop: 5,
     fontWeight:'bold',
     padding:5,
@@ -173,9 +173,6 @@ const styles = StyleSheet.create({
     fontSize: 70,
     fontFamily: "Azeret",
     color: "white",
-    // textShadowColor: 'red',
-    // textShadowOffset:{width: 0, height: 0},
-    // textShadowRadius: 30,
   },
   message: {
     paddingTop: 5,

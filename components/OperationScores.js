@@ -113,7 +113,8 @@ const styles = StyleSheet.create({
   },
   timeAttackSubheading: {
     textAlign: "center",
-    color: "white",
+    fontWeight: "bold",
+    color: "red",
     marginBottom: 40,
   },
 });

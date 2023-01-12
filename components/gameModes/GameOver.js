@@ -92,24 +92,25 @@ export default function GameOver({
   };
   useEffect(() => {
     const accuracy = Math.floor((score / questionAmount) * 100);
+    const difficultyLower = difficulty.toLowerCase();
     if (timeAtt && !custom) {
       callReadAndWriteTimAttHighScores(score);
     }
     if (accuracy === 100) {
       setMessage(
-        `Congratulations you're a Grandmathster on ${difficulty.toLowerCase()} mode! You earned a new '${operation} badge'`
+        `Congratulations you're a Grandmathster on ${difficultyLower} mode! You earned a new '${operation} badge'`
       );
       if (!timeAtt) {
         storePerfectScores();
         setShowBadge(true);
-      } 
+      }
     } else if (accuracy > 90)
       setMessage(
-        `You are a Mathster on ${difficulty} mode! Keep practicing to become a Grandmathster!`
+        `Nice, you're now a Mathster on ${difficultyLower} mode! Keep practicing to become a Grandmathster!`
       );
     else if (accuracy > 75)
       setMessage(
-        `You are a Novice on ${difficulty} mode! Keep practicing to become a Mathster!`
+        `You are a Novice on ${difficultyLower} mode! Keep practicing to become a Mathster!`
       );
     else if (accuracy > 50)
       setMessage("Good effort but there's room for improvement!");
@@ -123,9 +124,13 @@ export default function GameOver({
         {showBadge && !timeAtt ? (
           <Pressable onPress={() => navigation.navigate("Scores")}>
             <View style={styles.badgeContainer}>
-            <Image source={badgeOutline} style={styles.badgeOutline}></Image>
-            <View style={styles.badgeTextContainer}><Text style={styles.badgeText}>Touch the badge to view your achievements</Text></View>
-          </View>
+              <Image source={badgeOutline} style={styles.badgeOutline}></Image>
+              <View style={styles.badgeTextContainer}>
+                <Text style={styles.badgeText}>
+                  Touch the badge to view your achievements
+                </Text>
+              </View>
+            </View>
           </Pressable>
         ) : (
           <></>
@@ -148,7 +153,11 @@ export default function GameOver({
           </View>
 
           <View style={styles.messageContainer}>
-            <Text numberOfLines={2} adjustsFontSizeToFit style={styles.messageTextTop}>
+            <Text
+              numberOfLines={2}
+              adjustsFontSizeToFit
+              style={styles.messageTextTop}
+            >
               This means your accuracy was
               <Text style={styles.messageAcc}>
                 {" "}
@@ -156,7 +165,13 @@ export default function GameOver({
               </Text>
             </Text>
 
-            <Text numberOfLines={4} adjustsFontSizeToFit style={styles.messageTextBottom}>{message}</Text>
+            <Text
+              numberOfLines={4}
+              adjustsFontSizeToFit
+              style={styles.messageTextBottom}
+            >
+              {message}
+            </Text>
           </View>
           <Pressable
             style={styles.menuButton}
@@ -264,7 +279,7 @@ const styles = StyleSheet.create({
   },
   badgeContainer: {
     display: "flex",
-    flexDirection: 'row',
+    flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
     height: screen.height * 0.05,
@@ -286,11 +301,11 @@ const styles = StyleSheet.create({
     width: screen.width * 0.4,
   },
   badgeText: {
-    color: 'white',
+    color: "white",
     fontSize: 12,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: "gold",
-    textAlign: 'center',
+    textAlign: "center",
   },
   scoreAchieved: {
     fontStyle: "bold",
