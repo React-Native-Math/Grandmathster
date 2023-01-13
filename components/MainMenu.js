@@ -2,14 +2,11 @@ import React, { useState } from "react";
 import {
   View,
   Text,
-  Image,
   StyleSheet,
   Pressable,
   ImageBackground,
 } from "react-native";
-// import appLogo from '../assets/img/appLogo.png'
 import Footer from "./Footer";
-import Numpad from "./Numpad";
 import mainMenuBG from "../assets/img/mainMenuBG.jpg"
 
 const Separator = () => <View style={styles.separator} />;
@@ -46,18 +43,11 @@ const MainMenu = ({ navigation }) => {
           </View>
         );
       })}
-      {/* <Pressable
-              style={styles.menuButton}
-              onPress={() => setAbout(!about)}
-            >
-              <Text style={styles.menuText}>**DELETE** ABOUT</Text>
-            </Pressable> */}
             <Pressable style={styles.menuButton} onPress={() => navigation.navigate(`Scores`)}>
             <Text style={styles.menuText}>SCORES</Text>
             </Pressable>
       <View style={styles.footer}>
       <Footer/>
-      {/* <Numpad /> */}
       </View>
     </View>
       </ImageBackground>
@@ -89,8 +79,6 @@ const styles = StyleSheet.create({
   },
   separator: {
     marginVertical: 12,
-    // borderBottomColor: '#737373',
-    // borderBottomWidth: StyleSheet.hairlineWidth,
   },
   footer: {
     height: 100,

@@ -1,5 +1,4 @@
 import * as React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MainMenu from "../components/MainMenu";
 import {
@@ -22,7 +21,7 @@ import {
   Dimensions,
 } from "react-native";
 import help from "../assets/img/help.png";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import Scores from '../components/Scores'
 
 const Stack = createNativeStackNavigator();
@@ -156,30 +155,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
-
-// const styles = StyleSheet({ // TODO: check why this doesn't work
-//   // helpImg: { //
-//   //   height: 30,
-//   //   width: 30,
-//   // },
-//   overlayContainer: {
-//     display: 'flex',
-//     zIndex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     position: 'absolute',
-//     height: 100,
-//     width: 100,
-//   },
-//   overlay: {
-//     position: 'absolute',
-//     borderRadius: 5,
-//     zIndex: 10,
-//     width: 80,
-//     height: 97,
-//     backgroundColor: 'red',
-//     opacity: 1,
-//   },
-// })
 
 export default Navigation;

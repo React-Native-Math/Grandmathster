@@ -85,11 +85,9 @@ export default function AdditionProblems(props) {
           <View style={styles.problemContainer}>
             <Text style={{...styles.number, textShadowColor: textShadow, textShadowRadius: 30}}>{firstNum}</Text>
             <Text style={{...styles.number, textShadowColor: textShadow, textShadowRadius: 30}}>
-            {/* +  −  ×  ÷ */}
               <Text style={styles.operator}>+ </Text>
               {secondNum}
               </Text>
-            {/* <Text style={{ color: "black" }}>_______________________</Text> */}
             <TextInput
               style={styles.textInput}
               placeholder={questionNumber !== 0 ? "" : "type your answer"}
@@ -143,7 +141,7 @@ const styles = StyleSheet.create({
     color: 'red',
   },
   scoreContainer: {
-    justifyContent: 'flex-start', //TODO: using 'left' breaks expo
+    justifyContent: 'flex-start',
     alignItems: "center",
     padding: 20,
     borderColor:'#b8100f',

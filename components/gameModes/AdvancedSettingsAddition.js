@@ -5,13 +5,11 @@ import {
   Text,
   Pressable,
   TextInput,
-  ScrollView,
   Dimensions,
   ImageBackground,
 } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import AdditionProblems from "./AdditionProblems";
-// import schoolBackground2 from '../../assets/img/schoolBackground2.png'
 import selectBG from "../../assets/img/selectBG.jpg";
 const screen = Dimensions.get("screen");
 
