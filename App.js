@@ -1,9 +1,9 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DarkTheme } from "@react-navigation/native";
 import Routes from "./routes/Routes";
 import { useFonts } from "expo-font";
-import AdditionProblems from "./components/gameModes/AdditionProblems";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { enableScreens } from "react-native-screens";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -13,15 +13,22 @@ export default function App() {
     MartianMono: require('./assets/fonts/MartianMono-Regular.ttf'),
     Azeret: require('./assets/fonts/AzeretMono-Regular.ttf')
   });
+  enableScreens(false)
+  
+  const navigationTheme = {
+    ...DarkTheme,
+    colors: {
+      ...DarkTheme.colors,
+      background: "black",
+    },
+  };
   return (
-    <NavigationContainer>
-      {/* <View style={styles.container}> */}
-      {/* // <StatusBar style="auto" /> */}
-      {/* <> */}
+    <GestureHandlerRootView style={{flex:1, backgroundColor:'black'}}>
+    <NavigationContainer theme = {navigationTheme}>
+
       <Routes />
-      {/* </> */}
-      {/* </View> */}
     </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }
 

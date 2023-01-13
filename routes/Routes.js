@@ -25,6 +25,7 @@ import {
 import help from "../assets/img/help.png";
 import { useState, useEffect } from "react";
 import Scores from '../components/Scores'
+import { enableScreens } from "react-native-screens";
 
 const Stack = createNativeStackNavigator();
 const screen = Dimensions.get("screen");
@@ -41,7 +42,7 @@ function ArrowButton() {
   // }
 
   // useEffect(handleHelpClick, [])
-
+  enableScreens(false)
   return (
     <>
       {/* {about ? <View style={styles.overlayContainer}>
@@ -82,9 +83,19 @@ function ArrowButton() {
 const Navigation = () => {
   return (
     <Stack.Navigator
-      screenOptions={{
+      screenOptions={
+        // ({navigation})=>{
+        //   return{
+        //     detachPreviousScreen:false
+        //   }
+        // }
+        {
+        enableScreens:false,
+        detachPreviousScreen:false,
         headerStyle: {
           backgroundColor: "black",
+          fontcolor:'white',
+          detachPreviousScreen:false,
         },
         headerTitle: (props) => <ArrowButton />,
         // headerLeft: () => null,
@@ -92,8 +103,7 @@ const Navigation = () => {
         headerTitleStyle: {
           fontWeight: "bold",
         },
-      }}
-    >
+      }}>
       <Stack.Screen
         name="Home"
         component={MainMenu}
