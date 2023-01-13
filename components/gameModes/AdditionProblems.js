@@ -100,11 +100,12 @@ export default function AdditionProblems(props) {
               onSubmitEditing={(e) => handleInputAnswer(e)}
               clearTextOnFocus={true}
               keyboardType="number-pad"
-              enablesReturnKeyAutomatically="true"
+              enablesReturnKeyAutomatically='false'
               value={input}
               returnKeyType="done"
               blurOnSubmit={false}
               autoFocus={true}
+              
             />
           </View>
           <View>

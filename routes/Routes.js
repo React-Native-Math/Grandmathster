@@ -2,7 +2,6 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MainMenu from "../components/MainMenu";
-import Numpad from "../components/Numpad";
 import {
   AdditionMenu,
   SubtractionGame,
@@ -25,7 +24,6 @@ import {
 import help from "../assets/img/help.png";
 import { useState, useEffect } from "react";
 import Scores from '../components/Scores'
-import { enableScreens } from "react-native-screens";
 
 const Stack = createNativeStackNavigator();
 const screen = Dimensions.get("screen");
@@ -35,19 +33,8 @@ function ArrowButton() {
 
   const modalHandler = () => setModalVisible(!modalVisible);
 
-  // const [about, setAbout] = useState(false)
-  // const handleHelpClick = () => {
-  //   setAbout(!about)
-  //   console.log(about)
-  // }
-
-  // useEffect(handleHelpClick, [])
-  enableScreens(false)
   return (
     <>
-      {/* {about ? <View style={styles.overlayContainer}>
-  <View style={styles.overlay}/></View> : <View></View>} */}
-
       <View style={styles.centeredView}>
         <Modal
           animationType="slide"
@@ -60,7 +47,6 @@ function ArrowButton() {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              {/* <Text style={styles.modalText}>test</Text> */}
               <About />
               <Pressable
                 style={[styles.button, styles.buttonClose]}
@@ -84,24 +70,11 @@ const Navigation = () => {
   return (
     <Stack.Navigator
       screenOptions={
-        // ({navigation})=>{
-        //   return{
-        //     detachPreviousScreen:false
-        //   }
-        // }
         {
-        enableScreens:false,
-        detachPreviousScreen:false,
-        headerStyle: {
-          backgroundColor: "black",
-          fontcolor:'white',
-          detachPreviousScreen:false,
-        },
         headerTitle: (props) => <ArrowButton />,
-        // headerLeft: () => null,
         headerTintColor: "#fff",
         headerTitleStyle: {
-          fontWeight: "bold",
+          color:'white'
         },
       }}>
       <Stack.Screen

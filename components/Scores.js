@@ -64,7 +64,7 @@ const Scores = () => {
         return (
           <View style={styles.badgeContainer} key={idx}>
             <Pressable onPress={() => setDisplayOperation(badge.name)}>
-            <Image style={styles.badge} source={badge.img} />
+            <Image style={styles.badge} source={badge.img} transition={false}/>
             </Pressable>
             <View style={styles.textContainer}>
               <Text style={styles.gmText}>Grandmathster</Text>
