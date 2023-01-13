@@ -2,7 +2,6 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MainMenu from "../components/MainMenu";
-import Numpad from "../components/Numpad";
 import {
   AdditionMenu,
   SubtractionGame,
@@ -34,19 +33,8 @@ function ArrowButton() {
 
   const modalHandler = () => setModalVisible(!modalVisible);
 
-  // const [about, setAbout] = useState(false)
-  // const handleHelpClick = () => {
-  //   setAbout(!about)
-  //   console.log(about)
-  // }
-
-  // useEffect(handleHelpClick, [])
-
   return (
     <>
-      {/* {about ? <View style={styles.overlayContainer}>
-  <View style={styles.overlay}/></View> : <View></View>} */}
-
       <View style={styles.centeredView}>
         <Modal
           animationType="slide"
@@ -59,7 +47,6 @@ function ArrowButton() {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              {/* <Text style={styles.modalText}>test</Text> */}
               <About />
               <Pressable
                 style={[styles.button, styles.buttonClose]}
@@ -82,18 +69,14 @@ function ArrowButton() {
 const Navigation = () => {
   return (
     <Stack.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: "black",
-        },
+      screenOptions={
+        {
         headerTitle: (props) => <ArrowButton />,
-        // headerLeft: () => null,
         headerTintColor: "#fff",
         headerTitleStyle: {
-          fontWeight: "bold",
+          color:'white'
         },
-      }}
-    >
+      }}>
       <Stack.Screen
         name="Home"
         component={MainMenu}

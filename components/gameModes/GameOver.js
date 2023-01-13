@@ -98,21 +98,21 @@ export default function GameOver({
     }
     if (accuracy === 100) {
       setMessage(
-        `Congratulations you're a Grandmathster on ${difficultyLower} mode! You earned a new '${operation} badge'`
+        `Congratulations on acheiving Grandmathster on ${difficultyLower} mode! You earned a new '${operation} badge'`
       );
       if (!timeAtt) {
         storePerfectScores();
         setShowBadge(true);
       }
-    } else if (accuracy > 90)
+    } else if (accuracy >= 90)
       setMessage(
-        `Nice, you're now a Mathster on ${difficultyLower} mode! Keep practicing to become a Grandmathster!`
+        `Acheived Mathster level on ${difficultyLower} mode!`
       );
-    else if (accuracy > 75)
+    else if (accuracy >= 75)
       setMessage(
-        `You are a Novice on ${difficultyLower} mode! Keep practicing to become a Mathster!`
+        `You Acheived Novice on ${difficultyLower} mode!`
       );
-    else if (accuracy > 50)
+    else if (accuracy >= 50)
       setMessage("Good effort but there's room for improvement!");
     else if (accuracy >= 0)
       setMessage("Check the help button (❓) above if you're struggling");
