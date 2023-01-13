@@ -3,17 +3,14 @@ import {
   View,
   StyleSheet,
   Text,
-  Button,
   Pressable,
   Image,
   ImageBackground,
   Dimensions,
 } from "react-native";
 import BouncyCheckboxGroup, {
-  ICheckboxButton,
 } from "react-native-bouncy-checkbox-group";
 import AdditionProblems from "./AdditionProblems";
-// import schoolBackground from '../../assets/img/schoolBackground.png'
 import cogPic from "../../assets/img/cog.png";
 import selectBG from "../../assets/img/selectBG.jpg";
 const screen = Dimensions.get("screen");
@@ -189,7 +186,6 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     borderWidth: 5,
     borderColor: "#006b3d",
-    // backgroundColor: '#006b3d',
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -203,7 +199,6 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     borderWidth: 5,
     borderColor: "#fcb606",
-    // backgroundColor: '#fcb606',
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -217,7 +212,6 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     borderWidth: 5,
     borderColor: "#c23b21",
-    // backgroundColor: '#c23b21',
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

@@ -3,10 +3,6 @@ import {
   View,
   Text,
   Image,
-  StyleSheet,
-  Button,
-  Alert,
-  Pressable,
 } from "react-native";
 
 const Details = () => {

@@ -1,9 +1,7 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Image } from "react-native";
 import { NavigationContainer, DarkTheme } from "@react-navigation/native";
 import Routes from "./routes/Routes";
 import { useFonts } from "expo-font";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { enableScreens } from "react-native-screens";
 import { useEffect } from "react";
 import {Asset} from 'expo-asset'
 
@@ -27,7 +25,7 @@ export default function App() {
   }
 
   useEffect(()=>{
-    const imageAssets = cacheImages([require('./assets/img/badgeAdd.png'), require('./assets/img/badgeDiv.png'), require('./assets/img/badgeMul.png'), require('./assets/img/badgeRan.png'),require('./assets/img/badgeSub.png'), require('./assets/img/cog.png'), require('./assets/img/selectBG.jpg'), require('./assets/img/help.png'),  require('./assets/img/modalPNG.png')])
+    const imageAssets = cacheImages([require('./assets/img/redSwipe.png'), require('./assets/img/badgeOutline.png'), require('./assets/img/badgeAdd.png'), require('./assets/img/badgeDiv.png'), require('./assets/img/badgeMul.png'), require('./assets/img/badgeRan.png'),require('./assets/img/badgeSub.png'), require('./assets/img/cog.png'), require('./assets/img/selectBG.jpg'), require('./assets/img/help.png'),  require('./assets/img/modalPNG.png')])
   },[])
   
   const navigationTheme = {
@@ -38,12 +36,10 @@ export default function App() {
     },
   };
   return (
-    <GestureHandlerRootView style={{flex:1, backgroundColor:'black'}}>
     <NavigationContainer theme = {navigationTheme}>
-
-      <Routes />
+      <Routes/>
     </NavigationContainer>
-    </GestureHandlerRootView>
+
   );
 }
 
