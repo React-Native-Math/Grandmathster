@@ -27,7 +27,7 @@ export default function App() {
   }
 
   useEffect(()=>{
-    const imageAssets = cacheImages([require('./assets/img/badgeAdd.png'), require('./assets/img/badgeDiv.png'), require('./assets/img/badgeMul.png'), require('./assets/img/badgeRan.png'),require('./assets/img/badgeSub.png'), require('./assets/img/cog.png'), require('./assets/img/selectBG.jpg'), require('./assets/img/help.png')])
+    const imageAssets = cacheImages([require('./assets/img/badgeAdd.png'), require('./assets/img/badgeDiv.png'), require('./assets/img/badgeMul.png'), require('./assets/img/badgeRan.png'),require('./assets/img/badgeSub.png'), require('./assets/img/cog.png'), require('./assets/img/selectBG.jpg'), require('./assets/img/help.png'),  require('./assets/img/modalPNG.png')])
   },[])
   
   const navigationTheme = {
