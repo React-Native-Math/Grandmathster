@@ -14,6 +14,7 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 import AdditionProblems from "./AdditionProblems";
 import selectBG from "../../assets/img/selectBG.jpg";
 const screen = Dimensions.get("window");
+const screenHeightAdjusted = screen.height - 45 // subtract height of navigation stack bar
 
 export default function AdvancedSettingsAddition({navigation}) {
   const [secondNumMax, setSecondNumMax] = useState(10);
@@ -37,6 +38,8 @@ export default function AdvancedSettingsAddition({navigation}) {
         key={option}
         textStyle={{ textDecorationLine: "none", color: "white" }}
         bounceEffectIn={1.5}
+        style={styles.checkbox}
+        size={20}
       />
     );
   });
@@ -67,13 +70,14 @@ export default function AdvancedSettingsAddition({navigation}) {
           resizeMode="cover"
           style={styles.background}
         >
-          <View style={styles.x}></View>
-          {/* <View style={styles.outerContainer}>
+          <View style={styles.outerContainer}>
           <View style={styles.questionAmountContainer}>
             <Text style={styles.formTitle}>
               Select possible values for first number
             </Text>
+            <View style={styles.checkboxContainer}>
             {checkboxFirstNum.map((elem) => elem)}
+            </View>
           </View>
           <View style={styles.container}>
             <Text
@@ -123,7 +127,7 @@ export default function AdvancedSettingsAddition({navigation}) {
               <Text style={styles.menuText}>Done</Text>
             </Pressable>
           </View>
-          </View> */}
+          </View>
         </ImageBackground>
       )}
  
@@ -131,30 +135,49 @@ export default function AdvancedSettingsAddition({navigation}) {
   );
 }
 
+
+
 const styles = StyleSheet.create({
   background: {
-    height: screen.height - 45, // subtract height of navigation stack bar
+    height: screenHeightAdjusted,
     width: screen.width,
     display: 'flex',
     justifyContent: "center",
     alignItems: "center",
   },
-  // outerContainer: {
-  //   padding: 0,
-  //   margin: 0,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  //   height: 25,
-  //   width: 25,
-  //   backgroundColor: 'red',
-  // },
-  x: {
+  outerContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: 25,
-    width: 25,
-    backgroundColor: 'white',
-  }
+    height: screenHeightAdjusted * .85,
+    width: screen.width * .85,
+    borderColor: "white",
+    borderWidth: 2,
+    borderRadius: 10,
+    backgroundColor: "black",
+  },
+  questionAmountContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  checkboxContainer: {
+    // display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: screenHeightAdjusted * 0.30,
+    width: screen.width * 0.70,
+    backgroundColor: 'black',
+  },
+  checkbox: {
+    height: (screenHeightAdjusted * 0.30) / 5,
+    width: (screen.width * 0.70) / 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: 2,
+    padding: 2,
+    borderColor: '#b8100f',
+    borderWidth: 2,
+  },
   // menuContainer: {
   //   display: "flex",
   //   justifyContent: "center",

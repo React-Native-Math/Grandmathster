@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   },
   background: {
     width: screen.width,
-    height: screen.height * 0.9,
+    height: screen.height - 45,
     alignItems: "center",
     justifyContent: "center",
   },
