@@ -6,14 +6,14 @@ import {
   Pressable,
   TextInput,
   ScrollView,
+  PixelRatio,
   Dimensions,
   ImageBackground,
 } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import AdditionProblems from "./AdditionProblems";
-// import schoolBackground2 from '../../assets/img/schoolBackground2.png'
 import selectBG from "../../assets/img/selectBG.jpg";
-const screen = Dimensions.get("screen");
+const screen = Dimensions.get("window");
 
 export default function AdvancedSettingsAddition({navigation}) {
   const [secondNumMax, setSecondNumMax] = useState(10);
@@ -67,6 +67,8 @@ export default function AdvancedSettingsAddition({navigation}) {
           resizeMode="cover"
           style={styles.background}
         >
+          <View style={styles.x}></View>
+          {/* <View style={styles.outerContainer}>
           <View style={styles.questionAmountContainer}>
             <Text style={styles.formTitle}>
               Select possible values for first number
@@ -121,7 +123,7 @@ export default function AdvancedSettingsAddition({navigation}) {
               <Text style={styles.menuText}>Done</Text>
             </Pressable>
           </View>
-          <View style={styles.footer}></View>
+          </View> */}
         </ImageBackground>
       )}
  
@@ -130,78 +132,88 @@ export default function AdvancedSettingsAddition({navigation}) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
   background: {
+    height: screen.height - 45, // subtract height of navigation stack bar
     width: screen.width,
-    height: screen.height * 0.9,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  menuContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    paddingBottom: 5,
-  },
-  inputContainer: {
-    justifyContent: "center",
-    textAlign: "center",
-    borderColor: "white",
-    borderWidth: 2,
-    width: 200,
-    color: "silver",
-  },
-  questionAmountContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
-    marginTop: 10,
-  },
-  buttonsContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: 220,
-    marginTop: 20,
-  },
-  menuButton: {
-    borderRadius: 50,
-    borderWidth: 2,
-    borderColor: "#b8100f",
-    padding: 5,
-    margin: 5,
-    width: 150,
-    height: 60,
-    color: "white",
-    backgroundColor: "black",
-    display: "flex",
+    display: 'flex',
     justifyContent: "center",
     alignItems: "center",
   },
-  menuText: {
-    color: "white",
-    fontSize: 18,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  separator: {
-    marginVertical: 12,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  checkbox: {
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  footer: {
-    paddingTop: 300,
-  },
-  formTitle: {
-    color: "white",
-  },
+  // outerContainer: {
+  //   padding: 0,
+  //   margin: 0,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   height: 25,
+  //   width: 25,
+  //   backgroundColor: 'red',
+  // },
+  x: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 25,
+    width: 25,
+    backgroundColor: 'white',
+  }
+  // menuContainer: {
+  //   display: "flex",
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   paddingBottom: 5,
+  // },
+  // inputContainer: {
+  //   justifyContent: "center",
+  //   textAlign: "center",
+  //   borderColor: "white",
+  //   borderWidth: 2,
+  //   width: 200,
+  //   color: "silver",
+  // },
+  // questionAmountContainer: {
+  //   display: "flex",
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   textAlign: "center",
+  //   marginTop: 10,
+  // },
+  // buttonsContainer: {
+  //   display: "flex",
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   height: 220,
+  //   marginTop: 20,
+  // },
+  // menuButton: {
+  //   borderRadius: 50,
+  //   borderWidth: 2,
+  //   borderColor: "#b8100f",
+  //   padding: 5,
+  //   margin: 5,
+  //   width: 150,
+  //   height: 60,
+  //   color: "white",
+  //   backgroundColor: "black",
+  //   display: "flex",
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  // },
+  // menuText: {
+  //   color: "white",
+  //   fontSize: 18,
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  // },
+  // separator: {
+  //   marginVertical: 12,
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  // },
+  // checkbox: {
+  //   flexDirection: "column",
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  // },
+  // formTitle: {
+  //   color: "white",
+  // },
 });
