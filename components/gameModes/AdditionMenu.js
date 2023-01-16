@@ -19,7 +19,7 @@ import selectBG from "../../assets/img/selectBG.jpg";
 const screen = Dimensions.get("screen");
 const screenHeightAdjusted = screen.height - 45; // subtract height of navigation stack bar
 
-export default function AdditonMenu({ navigation }) {
+export default function AdditionMenu({ navigation }) {
 
   const [difficultyFirstNum, setDifficultyFirstNum] = useState(0);
   const [difficultySecondNum, setDifficultySecondNum] = useState(0);
@@ -260,16 +260,18 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#b8100f",
     padding: 10,
-    height: screenHeightAdjusted * 0.1,
-    width: screen.width * 0.7,
+    width: screen.width * 0.6,
+    height: screenHeightAdjusted * 0.06,
     display: "flex",
     flexDirection: "row",
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center",
   },
   advancedSettingsText: {
     color: "white",
-    fontSize: screenHeightAdjusted * 0.02,
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: screenHeightAdjusted * 0.015,
     marginLeft: screenHeightAdjusted * 0.02,
   },
 });

@@ -73,7 +73,7 @@ const Navigation = () => {
     <Stack.Navigator
       screenOptions={{
         headerTitle: (props) => <ArrowButton />,
-        headerTintColor: "#fff",
+        headerTintColor: "#B8100F",
         headerStyle: { backgroundColor: 'black', height: 45},
         headerTitleStyle: {
           color: "white",

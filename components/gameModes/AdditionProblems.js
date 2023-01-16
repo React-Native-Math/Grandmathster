@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     color: 'red',
   },
   scoreContainer: {
-    justifyContent: 'flex-start', //TODO: using 'left' breaks expo
+    justifyContent: 'flex-start',
     alignItems: "center",
     padding: 20,
     borderColor:'#b8100f',
