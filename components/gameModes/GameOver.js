@@ -79,6 +79,8 @@ export default function GameOver({
       await AsyncStorage.setItem(operation + "_" + timeAmt, jsonValue);
     }
   };
+  const accuracy = questionAmount === 0 ? 0 : Math.floor((score / questionAmount) * 100);
+
   const storePerfectScores = async () => {
     try {
       const perfectScoresCount = await AsyncStorage.getItem(operation);
@@ -93,7 +95,7 @@ export default function GameOver({
     }
   };
   useEffect(() => {
-    const accuracy = Math.floor((score / questionAmount) * 100);
+    
     const difficultyLower = difficulty.toLowerCase();
     if (timeAtt && !custom) {
       callReadAndWriteTimAttHighScores(score);
@@ -163,7 +165,7 @@ export default function GameOver({
               This means your accuracy was
               <Text style={styles.messageAcc}>
                 {" "}
-                {Math.floor((score / questionAmount) * 100)}%{" "}
+                {accuracy}%{" "}
               </Text>
               
             </Text>

@@ -145,7 +145,7 @@ export default function AdditionProblems(props) {
 
 const styles = StyleSheet.create({
   outerContainer: {
-    height: screen.height,
+    height: screenHeightAdjusted,
     width: screen.width,
     alignItems: "center",
   },
@@ -155,11 +155,11 @@ const styles = StyleSheet.create({
   scoreContainer: {
     justifyContent: 'flex-start',
     alignItems: "center",
-    padding: 20,
+    padding: screenHeightAdjusted < 667 ? 3 : 20,
     borderColor:'#b8100f',
     borderRadius:10,
     borderWidth: 5,
-    marginTop: screen.height > 700 ? screen.height*.08 : screen.height*.06,
+    marginTop: screenHeightAdjusted > 700 ? screenHeightAdjusted*.08 : screenHeightAdjusted*.03,
   },
   textInput: {
     textAlign: "center",
