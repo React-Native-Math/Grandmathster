@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, TextInput, Text, Dimensions, ImageBackground } from "react-native";
+import { View, StyleSheet, TextInput, Text, Dimensions, ImageBackground, Keyboard } from "react-native";
 import GameOver from "./GameOver";
-const screen = Dimensions.get("screen");
 import selectBG from '../../assets/img/selectBG.jpg'
+const screen = Dimensions.get("screen");
+const screenHeightAdjusted = screen.height - 45; // subtract height of navigation stack bar
 
 export default function AdditionProblems(props) {
   const [input, setInput] = useState("");
@@ -16,6 +17,15 @@ export default function AdditionProblems(props) {
   const [textShadow, setTextShadow] = useState('#FFFFFF')
 
   const textShadowVals = ['#FFFFFF', '#FF355E', '#FFFF66', '#CCFF00', '#FF6EFF', '#AAF0D1', '#00FFFF']
+
+  // const keyboardDidShow = (e) => {
+  //   const { height, screenX, screenY, width } = e.endCoordinates
+  //   console.log(screen.height, height, screenX, screenY, width)
+  // }
+
+  // useEffect(() => {
+  //   Keyboard.addListener('keyboardDidShow', keyboardDidShow)
+  // }, [])
 
   useEffect(() => {
     setSecondNum(Math.floor(Math.random() * props.secondNum));
