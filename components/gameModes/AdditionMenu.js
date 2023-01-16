@@ -105,10 +105,11 @@ export default function AdditionMenu({ navigation }) {
           resizeMode="cover"
           style={styles.background}
         >
-          <Text style={styles.sectionHeading}>Select Game Mode</Text>
+          <Text style={styles.sectionHeading}>In-game settings</Text>
           <View style={styles.separator}></View>
 
           <View style={styles.questionAmountContainer}>
+            <Text style={styles.subHeading}>Select game mode</Text>
             <BouncyCheckboxGroup
               data={ICheckboxButton}
               initial={0}
@@ -242,7 +243,13 @@ const styles = StyleSheet.create({
     textShadowColor: "red",
     textShadowRadius: 30,
     // textTransform: "uppercase",
-    fontSize: screenHeightAdjusted * 0.025,
+    fontSize: screenHeightAdjusted * 0.03,
+    color: "white",
+  },
+  subHeading: {
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: screenHeightAdjusted * 0.023,
     color: "white",
   },
   separator: {
