@@ -5,8 +5,6 @@ import {
   Text,
   Pressable,
   TextInput,
-  ScrollView,
-  PixelRatio,
   Dimensions,
   ImageBackground,
 } from "react-native";
