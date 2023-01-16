@@ -14,11 +14,11 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 import AdditionProblems from "./AdditionProblems";
 import selectBG from "../../assets/img/selectBG.jpg";
 const screen = Dimensions.get("window");
-const screenHeightAdjusted = screen.height - 45 // subtract height of navigation stack bar
+const screenHeightAdjusted = screen.height - 45; // subtract height of navigation stack bar
 
-export default function AdvancedSettingsAddition({navigation}) {
+export default function AdvancedSettingsAddition({ navigation }) {
   const [secondNumMax, setSecondNumMax] = useState(10);
-  const [firstNumIncluded, setFirstNumIncluded] = useState({})
+  const [firstNumIncluded, setFirstNumIncluded] = useState({});
   const [showAdditionPage, setShowAdditionPage] = useState(false);
   const [questionAmount, setQuestionAmount] = useState(10);
   const [timeAttack, setTimeAttack] = useState(false);
@@ -52,7 +52,7 @@ export default function AdvancedSettingsAddition({navigation}) {
   };
 
   return (
-      <>
+    <>
       {showAdditionPage ? (
         <AdditionProblems
           firstNum={firstNumIncluded}
@@ -60,9 +60,9 @@ export default function AdvancedSettingsAddition({navigation}) {
           maxQuestionsNumber={questionAmount}
           timeAtt={timeAttack}
           timeAmt={timeAmount}
-          difficulty={'custom settings'}
+          difficulty={"custom settings"}
           navigation={navigation}
-          custom = {true}
+          custom={true}
         />
       ) : (
         <ImageBackground
@@ -70,173 +70,173 @@ export default function AdvancedSettingsAddition({navigation}) {
           resizeMode="cover"
           style={styles.background}
         >
+          <Text style={styles.AdvancedSettingsTitle}>Advanced Settings</Text>
+          <View style={styles.separator}></View>
           <View style={styles.outerContainer}>
-          <View style={styles.questionAmountContainer}>
-            <Text style={styles.formTitle}>
-              Select possible values for first number
-            </Text>
-            <View style={styles.checkboxContainer}>
-            {checkboxFirstNum.map((elem) => elem)}
+            <View style={styles.questionAmountContainer}>
+              <Text style={styles.sectionHeading}>
+                Set first number's ending digit
+              </Text>
+              <View style={styles.separator}></View>
+              <View style={styles.checkboxContainer}>
+                {checkboxFirstNum.map((elem) => elem)}
+              </View>
             </View>
-          </View>
-          <View style={styles.container}>
-            <Text
-              style={styles.formTitle}
-            >{`Set max value for 2nd number (default is 10)`}</Text>
-            <TextInput
-              style={styles.inputContainer}
-              onChangeText={(input) => setSecondNumMax(Number(input))}
-              keyboardType="number-pad"
-              placeholder="type here"
-              returnKeyType="done"
-            />
-          </View>
-          <View style={styles.container}>
-            <Text
-              style={styles.formTitle}
-            >{`Set number of questions (default is 10)`}</Text>
-            <TextInput
-              style={styles.inputContainer}
-              onChangeText={(input) => setQuestionAmount(Number(input))}
-              keyboardType="number-pad"
-              placeholder="type here"
-              returnKeyType="done"
-            />
-          </View>
-          <View style={styles.container}>
-            <Text
-              style={styles.formTitle}
-            >{`Set Amount of Time (default is unlimited)`}</Text>
-            <TextInput
-              style={styles.inputContainer}
-              onChangeText={(input) => {
-                setTimeAmount(Number(input));
-                setTimeAttack(true);
-              }}
-              keyboardType="number-pad"
-              placeholder="type here"
-              returnKeyType="done"
-            />
-          </View>
-          <View style={styles.container}>
-            <Pressable
-              style={styles.menuButton}
-              onPress={(e)=>setShowAdditionPage(true)}
-              title = 'Ready!'
-            >
-              <Text style={styles.menuText}>Done</Text>
-            </Pressable>
-          </View>
+            <View style={styles.inputContainer}>
+              <View style={styles.container}>
+                <View style={styles.separator}></View>
+                <Text
+                  style={styles.sectionHeading}
+                >{`Set second number max. value`}</Text>
+
+                <TextInput
+                  style={styles.inputField}
+                  onChangeText={(input) => setSecondNumMax(Number(input))}
+                  keyboardType="number-pad"
+                  placeholder="type here (default = 10)"
+                  placeholderTextColor="#b8100f"
+                  returnKeyType="done"
+                />
+              </View>
+              <View style={styles.separator}></View>
+              <Text
+                style={styles.sectionHeading}
+              >{`Set number of questions`}</Text>
+              <TextInput
+                style={styles.inputField}
+                onChangeText={(input) => setQuestionAmount(Number(input))}
+                keyboardType="number-pad"
+                placeholder="type here (default = 10)"
+                placeholderTextColor="#b8100f"
+                returnKeyType="done"
+              />
+              <View style={styles.separator}></View>
+
+              <Text
+                style={styles.sectionHeading}
+              >{`Set time, in seconds`}</Text>
+              <TextInput
+                style={styles.inputField}
+                onChangeText={(input) => {
+                  setTimeAmount(Number(input));
+                  setTimeAttack(true);
+                }}
+                keyboardType="number-pad"
+                placeholder="type here (default = unlimited)"
+                placeholderTextColor="#b8100f"
+                returnKeyType="done"
+              />
+              <View style={styles.separator}></View>
+              <Pressable
+                style={styles.menuButton}
+                onPress={(e) => setShowAdditionPage(true)}
+                title="Ready!"
+              >
+                <Text style={styles.menuText}>Done</Text>
+              </Pressable>
+              {/* </View> */}
+            </View>
           </View>
         </ImageBackground>
       )}
- 
     </>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   background: {
     height: screenHeightAdjusted,
     width: screen.width,
-    display: 'flex',
+    display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
   outerContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: screenHeightAdjusted * .85,
-    width: screen.width * .85,
+    justifyContent: "center",
+    alignItems: "center",
+    height: screenHeightAdjusted * 0.85,
+    width: screen.width * 0.85,
     borderColor: "white",
     borderWidth: 2,
     borderRadius: 10,
     backgroundColor: "black",
   },
+  AdvancedSettingsTitle: {
+    color: "white",
+    textShadowColor: "red",
+    textShadowRadius: 30,
+    fontWeight: "bold",
+    fontSize: screenHeightAdjusted * 0.03,
+  },
   questionAmountContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   checkboxContainer: {
     // display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: screenHeightAdjusted * 0.30,
-    width: screen.width * 0.70,
-    backgroundColor: 'black',
+    flexWrap: "wrap",
+    justifyContent: "center",
+    alignItems: "center",
+    height: screenHeightAdjusted * 0.3,
+    width: screen.width * 0.7,
+    backgroundColor: "black",
   },
   checkbox: {
-    height: (screenHeightAdjusted * 0.30) / 5,
-    width: (screen.width * 0.70) / 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontSize: 2,
+    height: (screenHeightAdjusted * 0.3) / 5,
+    width: (screen.width * 0.7) / 2,
+    justifyContent: "center",
+    alignItems: "center",
     padding: 2,
-    borderColor: '#b8100f',
+    borderColor: "#b8100f",
     borderWidth: 2,
   },
-  // menuContainer: {
-  //   display: "flex",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   paddingBottom: 5,
-  // },
-  // inputContainer: {
-  //   justifyContent: "center",
-  //   textAlign: "center",
-  //   borderColor: "white",
-  //   borderWidth: 2,
-  //   width: 200,
-  //   color: "silver",
-  // },
-  // questionAmountContainer: {
-  //   display: "flex",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   textAlign: "center",
-  //   marginTop: 10,
-  // },
-  // buttonsContainer: {
-  //   display: "flex",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   height: 220,
-  //   marginTop: 20,
-  // },
-  // menuButton: {
-  //   borderRadius: 50,
-  //   borderWidth: 2,
-  //   borderColor: "#b8100f",
-  //   padding: 5,
-  //   margin: 5,
-  //   width: 150,
-  //   height: 60,
-  //   color: "white",
-  //   backgroundColor: "black",
-  //   display: "flex",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  // },
-  // menuText: {
-  //   color: "white",
-  //   fontSize: 18,
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  // },
-  // separator: {
-  //   marginVertical: 12,
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  // },
-  // checkbox: {
-  //   flexDirection: "column",
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  // },
-  // formTitle: {
-  //   color: "white",
-  // },
+  sectionHeading: {
+    fontWeight: "bold",
+    textAlign: "center",
+    // textTransform: "uppercase",
+    fontSize: screenHeightAdjusted * 0.02,
+    color: "white",
+  },
+  separator: {
+    height: screenHeightAdjusted * 0.015,
+    width: 5,
+  },
+  inputContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    height: screenHeightAdjusted * 0.4,
+    width: screen.width * 0.7,
+  },
+  inputField: {
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    borderColor: "white",
+    borderWidth: 2,
+    borderRadius: 10,
+    height: screenHeightAdjusted * 0.05,
+    width: screen.width * 0.7,
+    color: "white",
+    fontSize: screenHeightAdjusted * 0.015,
+  },
+  menuButton: {
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: "#b8100f",
+    padding: 5,
+    // margin: 5,
+    width: screen.width * 0.7,
+    height: 60,
+    color: "white",
+    backgroundColor: "black",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  menuText: {
+    color: "white",
+    fontSize: 18,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });

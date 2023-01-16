@@ -74,16 +74,20 @@ const Navigation = () => {
       screenOptions={{
         headerTitle: (props) => <ArrowButton />,
         headerTintColor: "#fff",
-        headerStyle: { backgroundColor: 'black', height: 45 },
+        headerStyle: { backgroundColor: 'black', height: 45},
         headerTitleStyle: {
           color: "white",
         },
+        // contentStyle: {
+        //   borderTopColor: 'red',
+        //   borderTopWidth: 3,
+        // },
       }}
     >
       <Stack.Screen
         name="Home"
         component={MainMenu}
-        options={{ title: "Grandmathster"  }}
+        options={{ title: "Grandmathster"}}
       />
       <Stack.Screen name="AdditionMenu" component={AdditionMenu} />
       <Stack.Screen
