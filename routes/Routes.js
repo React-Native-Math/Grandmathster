@@ -58,9 +58,11 @@ function ArrowButton() {
         </Modal>
       </View>
 
-      <Pressable onPress={modalHandler} style={styles.helpIconContainer}>
-        <Image style={styles.helpIcon} source={help}  />
-      </Pressable>
+      <View style={styles.helpIconContainer}>
+        <Pressable onPress={modalHandler}>
+          <Image style={styles.helpIcon} source={help} />
+        </Pressable>
+      </View>
     </>
   );
 }
@@ -68,18 +70,23 @@ function ArrowButton() {
 const Navigation = () => {
   return (
     <Stack.Navigator
-      screenOptions={
-        {
+      screenOptions={{
         headerTitle: (props) => <ArrowButton />,
-        headerTintColor: "#fff",
+        headerTintColor: "#B8100F",
+        headerStyle: { backgroundColor: 'black', height: 45},
         headerTitleStyle: {
-          color:'white'
+          color: "white",
         },
-      }}>
+        // contentStyle: {
+        //   borderTopColor: 'red',
+        //   borderTopWidth: 3,
+        // },
+      }}
+    >
       <Stack.Screen
         name="Home"
         component={MainMenu}
-        // options={{ title: "App Name" }}
+        options={{ title: "Grandmathster"}}
       />
       <Stack.Screen name="AdditionMenu" component={AdditionMenu} />
       <Stack.Screen
@@ -98,12 +105,13 @@ const Navigation = () => {
 
 const styles = StyleSheet.create({
   helpIconContainer: {
-    position: 'relative',
+    position: 'absolute',
+    left: 0,
     width: screen.width,
     height: 30,
-    display: 'flex',
   },
   helpIcon: {
+    position: 'absolute',
     width: 30,
     height: 30,
   },

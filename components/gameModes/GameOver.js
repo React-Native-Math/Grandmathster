@@ -9,10 +9,12 @@ import {
   Dimensions,
 } from "react-native";
 import selectBG from "../../assets/img/selectBG.jpg";
-const screen = Dimensions.get("screen");
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import badgeOutline from "../../assets/img/badgeOutline.png";
 import redSwipe from "../../assets/img/redSwipe.png";
+
+const screen = Dimensions.get("screen");
+const screenHeightAdjusted = screen.height - 45; // subtract height of navigation stack bar
 
 export default function GameOver({
   navigation,
@@ -77,6 +79,8 @@ export default function GameOver({
       await AsyncStorage.setItem(operation + "_" + timeAmt, jsonValue);
     }
   };
+  const accuracy = questionAmount === 0 ? 0 : Math.floor((score / questionAmount) * 100);
+
   const storePerfectScores = async () => {
     try {
       const perfectScoresCount = await AsyncStorage.getItem(operation);
@@ -91,14 +95,14 @@ export default function GameOver({
     }
   };
   useEffect(() => {
-    const accuracy = Math.floor((score / questionAmount) * 100);
+    
     const difficultyLower = difficulty.toLowerCase();
     if (timeAtt && !custom) {
       callReadAndWriteTimAttHighScores(score);
     }
     if (accuracy === 100) {
       setMessage(
-        `Congratulations on acheiving Grandmathster on ${difficultyLower} mode! You earned a new '${operation} badge'`
+        `Congratulations on achieving GRANDMATHSTER on ${difficultyLower} mode! You earned a new '${operation} badge'`
       );
       if (!timeAtt) {
         storePerfectScores();
@@ -106,11 +110,11 @@ export default function GameOver({
       }
     } else if (accuracy >= 90)
       setMessage(
-        `Acheived Mathster level on ${difficultyLower} mode!`
+        `Achieved MATHSTER level on ${difficultyLower} mode!`
       );
     else if (accuracy >= 75)
       setMessage(
-        `You Acheived Novice on ${difficultyLower} mode!`
+        `You achieved NOVICE level on ${difficultyLower} mode!`
       );
     else if (accuracy >= 50)
       setMessage("Good effort but there's room for improvement!");
@@ -135,12 +139,12 @@ export default function GameOver({
         ) : (
           <></>
         )}
-        <View style={styles.resultsContainer}>
-          <View style={styles.qAmountContainer}>
+        <View style={styles.qAmountContainer}>
             <Text style={styles.qAmountText}>
               {questionAmount} QUESTIONS ANSWERED
             </Text>
           </View>
+        <View style={styles.resultsContainer}>
 
           <View style={styles.scoreSwipeContainer}>
             <View style={styles.scoreContainer}>
@@ -154,20 +158,21 @@ export default function GameOver({
 
           <View style={styles.messageContainer}>
             <Text
-              numberOfLines={2}
-              adjustsFontSizeToFit
+              // numberOfLines={2}
+              // adjustsFontSizeToFit
               style={styles.messageTextTop}
             >
               This means your accuracy was
               <Text style={styles.messageAcc}>
                 {" "}
-                {Math.floor((score / questionAmount) * 100)}%{" "}
+                {accuracy}%{" "}
               </Text>
+              
             </Text>
 
             <Text
-              numberOfLines={4}
-              adjustsFontSizeToFit
+              // numberOfLines={4}
+              // adjustsFontSizeToFit
               style={styles.messageTextBottom}
             >
               {message}
@@ -194,72 +199,52 @@ const styles = StyleSheet.create({
   },
   messageContainer: {
     textAlign: "center",
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 5,
-    padding: 5,
     borderRadius: 10,
     borderWidth: 2,
     borderColor: "white",
-    width: screen.width * 0.5,
-    height: screen.height * 0.2,
+    height: screenHeightAdjusted * 0.35,
+    width: screen.width * 0.7,
+    backgroundColor: 'black'
   },
   messageTextTop: {
     color: "white",
-    // fontSize: screen.height * 0.01
+    fontSize: screenHeightAdjusted * 0.02,
+    padding: 10,
+    textAlign: 'center',
   },
   messageTextBottom: {
     color: "white",
-    marginTop: 15,
+    marginTop: screenHeightAdjusted * 0.02,
+    fontSize: screenHeightAdjusted *0.02,
+    padding: 10,
+    textAlign: 'center',
   },
   messageAcc: {
-    color: "white",
+    color: "red",
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: screenHeightAdjusted * 0.025,
   },
-  homeButton: {
-    borderRadius: 50,
-    padding: 5,
-    margin: 10,
-    width: 125,
-    height: 40,
-    backgroundColor: "#006b3d",
+  menuButton: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-  },
-  menuButton: {
     borderRadius: 50,
     borderWidth: 2,
     borderColor: "#b8100f",
     padding: 5,
     margin: 15,
-    width: 150,
-    height: 40,
+    height: screenHeightAdjusted * 0.05,
+    width: screen.width * 0.6,
     color: "white",
     backgroundColor: "black",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
   },
   menuText: {
     color: "white",
-    fontSize: 18,
+    fontSize: screenHeightAdjusted * 0.02,
     alignItems: "center",
     justifyContent: "center",
-  },
-  text: {
-    fontFamily: "MavenPro",
-    fontSize: 20,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  buttonText: {
-    fontSize: 20,
-    fontFamily: "MavenPro",
-    justifyContent: "center",
-    alignItems: "center",
   },
   outerContainer: {
     justifyContent: "center",
@@ -267,14 +252,14 @@ const styles = StyleSheet.create({
     width: screen.width * 0.8,
   },
   resultsContainer: {
-    height: screen.height * 0.55,
-    width: screen.width * 0.65,
+    height: screenHeightAdjusted * 0.7,
+    width: screen.width * 0.85,
     backgroundColor: "black",
     borderRadius: 10,
     borderWidth: 2,
     borderColor: "white",
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center",
   },
   badgeContainer: {
@@ -283,80 +268,80 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     height: screen.height * 0.05,
-    width: screen.width * 0.65,
+    width: screen.width * 0.75,
     borderRadius: 10,
     borderWidth: 2,
     borderColor: "gold",
-    marginBottom: 15,
+    marginBottom: screenHeightAdjusted * 0.01,
   },
   badgeOutline: {
-    height: 65,
-    width: 65,
-    marginBottom: 5,
+    height: screenHeightAdjusted * 0.07,
+    width: screenHeightAdjusted * 0.07,
+    marginLeft: screen.width * 0.03,
   },
   badgeTextContainer: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: screen.width * 0.4,
+    width: screen.width * 0.65,
+    paddingLeft: screen.width * 0.025,
   },
   badgeText: {
     color: "white",
-    fontSize: 12,
+    textShadowColor: 'yellow',
+    textShadowRadius: 30,
+    fontSize: screenHeightAdjusted * 0.015,
     fontWeight: "bold",
     color: "gold",
     textAlign: "center",
-  },
-  scoreAchieved: {
-    fontStyle: "bold",
-    fontSize: 24,
   },
   qAmountContainer: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     height: screen.height * 0.05,
-    width: screen.width * 0.6,
+    width: screen.width * 0.85,
   },
   qAmountText: {
-    position: "absolute",
-    fontSize: 16,
-    fontWeight: "bold",
-    color: "white",
+      fontWeight: "bold",
+      textAlign: "center",
+      fontSize: screenHeightAdjusted * 0.02,
+      color: "white",
   },
   scoreSwipeContainer: {
-    height: 70,
-    width: 220,
+    height: screenHeightAdjusted * 0.10,
+    width: screen.width * 0.5,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
   scoreContainer: {
     height: screen.height * 0.05,
-    width: 220,
+    width: screen.width * 0.7,
     alignItems: "center",
     justifyContent: "center",
   },
   redSwipe: {
-    height: 90,
-    width: 200,
+    height: screenHeightAdjusted * 0.15,
+    width: screenHeightAdjusted * 0.35,
   },
   yourScoreContainer: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    height: 40,
-    width: 150,
+    height: screenHeightAdjusted * 0.15,
+    width: screen.width * 0.7,
   },
   yourScore: {
     color: "white",
+    marginTop: screenHeightAdjusted * 0.01,
     fontWeight: "bold",
-    fontSize: 12,
+    fontSize: screenHeightAdjusted * 0.015,
   },
   scoreResult: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 32,
+    fontSize: screenHeightAdjusted * 0.05,
   },
 });

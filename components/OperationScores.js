@@ -8,7 +8,9 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import selectBG from "../assets/img/selectBG.jpg";
+
 const screen = Dimensions.get("screen");
+const screenHeightAdjusted = screen.height - 45; // subtract height of navigation stack bar
 
 export default function OperationScores(props) {
   const [highScoresArr, setHighScoresArr] = useState([]);
@@ -34,10 +36,10 @@ export default function OperationScores(props) {
   return (
     <ImageBackground source={selectBG} resizeMode="cover">
       <View style={styles.outerContainer}>
-        <View style={styles.scoresContainer}>
-          <Text style={styles.timeAttackHeading}>
-            {props.operation.toUpperCase()} TIME ATTACK SCORES
+      <Text style={styles.timeAttackHeading}>
+            {props.operation} time attack scores
           </Text>
+        <View style={styles.scoresContainer}>
           {highScoresArr.length
             ? highScoresArr.map((elem, idx) => {
                 if (elem[1]) {
@@ -46,16 +48,19 @@ export default function OperationScores(props) {
                     <Text style={styles.timeAttackSubheading} key={idx}>
                       Top Scores ({elem[0].slice(-2)} seconds)
                       <View style={styles.tableContainer}>
-                        <Text style={styles.scoreText}>
-                          1. {scoreObject.highScore} points
+                        <View style={styles.scoreText}>
+                        <Text>
+                          <Text style={styles.positionHighlight}>1.</Text>     {scoreObject.highScore} points
                         </Text>
-
-                        <Text style={styles.scoreText}>
-                          2. {scoreObject.midScore} points
+                        <View style={styles.separator}></View>
+                        <Text>
+                        <Text style={styles.positionHighlight}>2.</Text>     {scoreObject.midScore} points
                         </Text>
-                        <Text style={styles.scoreText}>
-                          3. {scoreObject.lowScore} points
+                        <View style={styles.separator}></View>
+                        <Text>
+                        <Text style={styles.positionHighlight}>3.</Text>     {scoreObject.lowScore} points
                         </Text>
+                        </View>
                       </View>
                     </Text>
                   );
@@ -70,7 +75,8 @@ export default function OperationScores(props) {
 
 const styles = StyleSheet.create({
   outerContainer: {
-    height: screen.height,
+    height: screenHeightAdjusted,
+    width: screen.width,
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -78,43 +84,48 @@ const styles = StyleSheet.create({
   scoresContainer: {
     justifyContent: "space-around",
     alignItems: "center",
-    height: screen.height * 0.7,
-    width: 250,
+    height: screenHeightAdjusted * 0.65,
+    width: screen.width * 0.85,
     borderWidth: 2,
     borderColor: "white",
     borderRadius: 5,
+    backgroundColor: "black",
   },
   tableContainer: {
     display: "flex",
-    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    width: 200,
-    height: 100,
+    width: screen.width * 0.5,
+    height: screenHeightAdjusted * 0.1,
     backgroundColor: "black",
-    marginTop: 10,
-    borderWidth: 1,
+    marginTop: screenHeightAdjusted * 0.02,
+    borderWidth: 2,
     borderColor: "white",
     borderRadius: 5,
     padding: 2,
   },
   scoreText: {
-    marginTop: 5,
     color: "white",
-    textAlign: "right",
+    textAlign: "left",
   },
   timeAttackHeading: {
+    fontWeight: "bold",
     textAlign: "center",
+    textShadowColor: "red",
+    textShadowRadius: 30,
+    marginBottom: screenHeightAdjusted * 0.025,
+    fontSize: screenHeightAdjusted * 0.025,
     color: "white",
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginTop: 10,
-    marginBottom: 15,
   },
   timeAttackSubheading: {
     textAlign: "center",
     fontWeight: "bold",
     color: "red",
-    marginBottom: 40,
   },
+  positionHighlight: {
+   color: 'red',
+  },
+  separator: {
+    marginTop: screenHeightAdjusted * 0.0075,
+  }
 });
