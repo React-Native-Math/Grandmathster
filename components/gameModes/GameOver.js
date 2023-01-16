@@ -100,7 +100,7 @@ export default function GameOver({
     }
     if (accuracy === 100) {
       setMessage(
-        `Congratulations on acheiving Grandmathster on ${difficultyLower} mode! You earned a new '${operation} badge'`
+        `Congratulations on achieving GRANDMATHSTER on ${difficultyLower} mode! You earned a new '${operation} badge'`
       );
       if (!timeAtt) {
         storePerfectScores();
@@ -108,11 +108,11 @@ export default function GameOver({
       }
     } else if (accuracy >= 90)
       setMessage(
-        `Acheived Mathster level on ${difficultyLower} mode!`
+        `Achieved MATHSTER level on ${difficultyLower} mode!`
       );
     else if (accuracy >= 75)
       setMessage(
-        `You Acheived Novice on ${difficultyLower} mode!`
+        `You achieved NOVICE level on ${difficultyLower} mode!`
       );
     else if (accuracy >= 50)
       setMessage("Good effort but there's room for improvement!");

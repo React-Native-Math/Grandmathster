@@ -25,7 +25,7 @@ export default function AdditionMenu({ navigation }) {
   const [difficultySecondNum, setDifficultySecondNum] = useState(0);
   const [difficulty, setDifficulty] = useState("");
   const [showAdditionPage, setShowAdditionPage] = useState(false);
-  const [questionAmount, setQuestionAmount] = useState(3);
+  const [questionAmount, setQuestionAmount] = useState(10);
   const [timeAttack, setTimeAttack] = useState(false);
   const [timeAmount, setTimeAmount] = useState(1000000000);
 
