@@ -17,8 +17,10 @@ import AdditionProblems from "./AdditionProblems";
 import cogPic from "../../assets/img/cog.png";
 import selectBG from "../../assets/img/selectBG.jpg";
 const screen = Dimensions.get("screen");
+const screenHeightAdjusted = screen.height - 45; // subtract height of navigation stack bar
 
 export default function AdditonMenu({ navigation }) {
+
   const [difficultyFirstNum, setDifficultyFirstNum] = useState(0);
   const [difficultySecondNum, setDifficultySecondNum] = useState(0);
   const [difficulty, setDifficulty] = useState("");
@@ -95,7 +97,7 @@ export default function AdditonMenu({ navigation }) {
           timeAmt={timeAmount}
           difficulty={difficulty}
           navigation={navigation}
-          custom = {false}
+          custom={false}
         />
       ) : (
         <ImageBackground
@@ -103,8 +105,10 @@ export default function AdditonMenu({ navigation }) {
           resizeMode="cover"
           style={styles.background}
         >
+          <Text style={styles.sectionHeading}>Select Game Mode</Text>
+          <View style={styles.separator}></View>
+
           <View style={styles.questionAmountContainer}>
-            <Text style={styles.sectionHeading}>Select Game Mode</Text>
             <BouncyCheckboxGroup
               data={ICheckboxButton}
               initial={0}
@@ -112,7 +116,16 @@ export default function AdditonMenu({ navigation }) {
               onChange={handleSelection}
             />
           </View>
-          <Text style={styles.sectionHeading}>Select Difficulty</Text>
+          <Pressable
+            onPress={() => navigation.navigate("AdvancedSettingsAddition")}
+            style={styles.advancedSettingsContainer}
+          >
+            <Image style={styles.cogPic} source={cogPic} />
+            <Text style={styles.advancedSettingsText}> Advanced Settings</Text>
+          </Pressable>
+          <View style={styles.separator}></View>
+          <Text style={styles.sectionHeading}>Choose a level to start!</Text>
+          <View style={styles.separator}></View>
           <View style={styles.buttonsContainer}>
             {difficulties.map((difficulty, idx) => {
               const maxNum = 10 ** (idx + 1); // sets the maximum possible number for the selected difficulty
@@ -129,13 +142,6 @@ export default function AdditonMenu({ navigation }) {
               );
             })}
           </View>
-          <Pressable
-            onPress={() => navigation.navigate("AdvancedSettingsAddition")}
-            style={styles.advancedSettingsContainer}
-          >
-            <Image style={styles.cogPic} source={cogPic} />
-            <Text style={{ color: "white" }}> Advanced Settings</Text>
-          </Pressable>
         </ImageBackground>
       )}
     </View>
@@ -149,7 +155,7 @@ const styles = StyleSheet.create({
   },
   background: {
     width: screen.width,
-    height: screen.height - 45,
+    height: screenHeightAdjusted,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -157,15 +163,14 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: 5,
+    // paddingBottom: 5,
   },
   questionAmountContainer: {
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
-    padding: 15,
-    marginTop: 10,
+    height: screenHeightAdjusted * 0.45,
+    width: screen.width * 0.85,
     borderColor: "white",
     borderWidth: 2,
     borderRadius: 10,
@@ -176,8 +181,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    height: 20,
-    marginTop: 20,
+    height: screenHeightAdjusted * 0.05,
+    marginTop: screenHeightAdjusted * 0.015,
     fontFamily: "DancingScript",
   },
   menuButton0: {
@@ -189,7 +194,6 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     borderWidth: 5,
     borderColor: "#006b3d",
-    // backgroundColor: '#006b3d',
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -227,9 +231,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 14,
   },
-  separator: {
-    marginVertical: 12,
-  },
   checkbox: {
     display: "flex",
     fontFamily: "DancingScript",
@@ -237,27 +238,38 @@ const styles = StyleSheet.create({
     color: "white",
   },
   sectionHeading: {
-    marginTop: 25,
     fontWeight: "bold",
-    fontSize: 18,
+    textShadowColor: "red",
+    textShadowRadius: 30,
+    // textTransform: "uppercase",
+    fontSize: screenHeightAdjusted * 0.025,
     color: "white",
   },
+  separator: {
+    height: screenHeightAdjusted * 0.015,
+    width: 5,
+  },
   cogPic: {
-    height: 15,
-    width: 15,
+    height: screen.width * 0.04,
+    width: screen.width * 0.04,
   },
   advancedSettingsContainer: {
-    marginTop: 25,
+    marginTop: 10,
     backgroundColor: "black",
     borderRadius: 50,
     borderWidth: 2,
     borderColor: "#b8100f",
     padding: 10,
-    height: 65,
-    width: 220,
+    height: screenHeightAdjusted * 0.1,
+    width: screen.width * 0.7,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+  },
+  advancedSettingsText: {
+    color: "white",
+    fontSize: screenHeightAdjusted * 0.02,
+    marginLeft: screenHeightAdjusted * 0.02,
   },
 });
