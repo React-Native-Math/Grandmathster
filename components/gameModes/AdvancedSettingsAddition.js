@@ -7,7 +7,6 @@ import {
   TextInput,
   Dimensions,
   ImageBackground,
-  // KeyboardAvoidingView,
 } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import AdditionProblems from "./AdditionProblems";
@@ -81,7 +80,6 @@ export default function AdvancedSettingsAddition({ navigation }) {
                 {checkboxFirstNum.map((elem) => elem)}
               </View>
             </View>
-            {/* <KeyboardAvoidingView behavior="padding" enabled> */}
             <View style={styles.inputContainer}>
               <View style={styles.container}>
                 <View style={styles.separator}></View>
@@ -134,9 +132,7 @@ export default function AdvancedSettingsAddition({ navigation }) {
               >
                 <Text style={styles.menuText}>Done</Text>
               </Pressable>
-              {/* </View> */}
             </View>
-          {/* </KeyboardAvoidingView> */}
           </View>
         </ImageBackground>
       )}
@@ -174,7 +170,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   checkboxContainer: {
-    // display: 'flex',
     flexWrap: "wrap",
     justifyContent: "center",
     alignItems: "center",
@@ -194,7 +189,6 @@ const styles = StyleSheet.create({
   sectionHeading: {
     fontWeight: "bold",
     textAlign: "center",
-    // textTransform: "uppercase",
     fontSize: screenHeightAdjusted * 0.02,
     color: "white",
   },
