@@ -36,9 +36,9 @@ export default function OperationScores(props) {
   return (
     <ImageBackground source={selectBG} resizeMode="cover">
       <View style={styles.outerContainer}>
-      <Text style={styles.timeAttackHeading}>
-            {props.operation} time attack scores
-          </Text>
+        <Text style={styles.timeAttackHeading}>
+          {props.operation} time attack scores
+        </Text>
         <View style={styles.scoresContainer}>
           {highScoresArr.length
             ? highScoresArr.map((elem, idx) => {
@@ -47,34 +47,35 @@ export default function OperationScores(props) {
                   return (
                     <View style={styles.timeAttackContainer} key={idx}>
                       <Text style={styles.timeAttackSubheading}>
-                      Top Scores ({elem[0].slice(-2)} seconds)
+                        Top Scores ({elem[0].slice(-2)} seconds)
                       </Text>
                       <View style={styles.tableContainer}>
-                        {/* <Text style={styles.scoreText}>
-                          1.     {scoreObject.highScore} points
-                        </Text> */}
-                        <View style={styles.scoreLine}>
-                          <Text style={styles.scoreNum}>1.</Text>
-                          <Text style={styles.scoreVal}>{scoreObject.highScore} points
+                        <View
+                          style={{
+                            ...styles.scoreLine,
+                            backgroundColor: "#b8100f",
+                          }}
+                        >
+                          <Text style={{ ...styles.scoreNum, color: "white" }}>
+                            1.
+                          </Text>
+                          <Text style={{ ...styles.scoreVal, color: "white" }}>
+                            {scoreObject.highScore} points
                           </Text>
                         </View>
                         <View style={styles.separator}></View>
                         <View style={styles.scoreLine}>
-                        <Text style={styles.scoreNum}>
-                        2.
-                        </Text>
-                        <Text style={styles.scoreVal}>
-                        {scoreObject.midScore} points
-                        </Text>
+                          <Text style={styles.scoreNum}>2.</Text>
+                          <Text style={styles.scoreVal}>
+                            {scoreObject.midScore} points
+                          </Text>
                         </View>
                         <View style={styles.separator}></View>
                         <View style={styles.scoreLine}>
-                        <Text style={styles.scoreNum}>
-                        3.
-                        </Text>
-                        <Text style={styles.scoreVal}>
-                        {scoreObject.lowScore} points
-                        </Text>
+                          <Text style={styles.scoreNum}>3.</Text>
+                          <Text style={styles.scoreVal}>
+                            {scoreObject.lowScore} points
+                          </Text>
                         </View>
                       </View>
                     </View>
@@ -119,15 +120,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: screenHeightAdjusted * 0.01,
   },
-  scoreText: {
-    display: "flex",
-    color: "black",
-    fontWeight: "bold",
-    fontSize: screenHeightAdjusted * 0.015,
-    textAlign: "left",
-    width: screen.width * 0.49,
-    backgroundColor: 'white'
-  },
   timeAttackHeading: {
     fontWeight: "bold",
     textAlign: "center",
@@ -144,10 +136,10 @@ const styles = StyleSheet.create({
   timeAttackSubheading: {
     textAlign: "center",
     fontWeight: "bold",
-    color: "red",
+    color: "white",
   },
   positionHighlight: {
-   color: 'red',
+    color: "red",
   },
   separator: {
     marginTop: screenHeightAdjusted * 0.0075,
@@ -156,17 +148,17 @@ const styles = StyleSheet.create({
     width: screen.width * 0.49,
     fontWeight: "bold",
     fontSize: screenHeightAdjusted * 0.015,
-    backgroundColor: 'white',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   scoreNum: {
+    color: "white",
     fontWeight: "bold",
     fontSize: screenHeightAdjusted * 0.015,
     marginLeft: screen.width * 0.02,
   },
   scoreVal: {
+    color: "white",
     fontWeight: "bold",
     fontSize: screenHeightAdjusted * 0.015,
     marginRight: screen.width * 0.02,
