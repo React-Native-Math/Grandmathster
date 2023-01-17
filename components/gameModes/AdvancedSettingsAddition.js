@@ -7,6 +7,8 @@ import {
   TextInput,
   Dimensions,
   ImageBackground,
+  ScrollView,
+  KeyboardAvoidingView,
 } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import AdditionProblems from "./AdditionProblems";
@@ -68,9 +70,10 @@ export default function AdvancedSettingsAddition({ navigation }) {
           resizeMode="cover"
           style={styles.background}
         >
-          <Text style={styles.AdvancedSettingsTitle}>Advanced Settings</Text>
-          <View style={styles.separator}></View>
+         <ScrollView>
+          <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={50}>
           <View style={styles.outerContainer}>
+          <Text style={styles.AdvancedSettingsTitle}>Advanced Settings</Text>
             <View style={styles.questionAmountContainer}>
               <Text style={styles.sectionHeading}>
                 Set first number's ending digit
@@ -134,7 +137,10 @@ export default function AdvancedSettingsAddition({ navigation }) {
               </Pressable>
             </View>
           </View>
+          </KeyboardAvoidingView>
+          </ScrollView>
         </ImageBackground>
+       
       )}
     </>
   );
@@ -142,7 +148,7 @@ export default function AdvancedSettingsAddition({ navigation }) {
 
 const styles = StyleSheet.create({
   background: {
-    height: screenHeightAdjusted,
+    height: 100000,
     width: screen.width,
     display: "flex",
     justifyContent: "center",
