@@ -45,24 +45,39 @@ export default function OperationScores(props) {
                 if (elem[1]) {
                   let scoreObject = JSON.parse(elem[1]);
                   return (
-                    <Text style={styles.timeAttackSubheading} key={idx}>
+                    <View style={styles.timeAttackContainer} key={idx}>
+                      <Text style={styles.timeAttackSubheading}>
                       Top Scores ({elem[0].slice(-2)} seconds)
+                      </Text>
                       <View style={styles.tableContainer}>
-                        <View style={styles.scoreText}>
-                        <Text>
-                          <Text style={styles.positionHighlight}>1.</Text>     {scoreObject.highScore} points
-                        </Text>
+                        {/* <Text style={styles.scoreText}>
+                          1.     {scoreObject.highScore} points
+                        </Text> */}
+                        <View style={styles.scoreLine}>
+                          <Text style={styles.scoreNum}>1.</Text>
+                          <Text style={styles.scoreVal}>{scoreObject.highScore} points
+                          </Text>
+                        </View>
                         <View style={styles.separator}></View>
-                        <Text>
-                        <Text style={styles.positionHighlight}>2.</Text>     {scoreObject.midScore} points
+                        <View style={styles.scoreLine}>
+                        <Text style={styles.scoreNum}>
+                        2.
                         </Text>
+                        <Text style={styles.scoreVal}>
+                        {scoreObject.midScore} points
+                        </Text>
+                        </View>
                         <View style={styles.separator}></View>
-                        <Text>
-                        <Text style={styles.positionHighlight}>3.</Text>     {scoreObject.lowScore} points
+                        <View style={styles.scoreLine}>
+                        <Text style={styles.scoreNum}>
+                        3.
+                        </Text>
+                        <Text style={styles.scoreVal}>
+                        {scoreObject.lowScore} points
                         </Text>
                         </View>
                       </View>
-                    </Text>
+                    </View>
                   );
                 }
               })
@@ -102,11 +117,16 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "white",
     borderRadius: 5,
-    padding: 2,
+    padding: screenHeightAdjusted * 0.01,
   },
   scoreText: {
-    color: "white",
+    display: "flex",
+    color: "black",
+    fontWeight: "bold",
+    fontSize: screenHeightAdjusted * 0.015,
     textAlign: "left",
+    width: screen.width * 0.49,
+    backgroundColor: 'white'
   },
   timeAttackHeading: {
     fontWeight: "bold",
@@ -116,6 +136,10 @@ const styles = StyleSheet.create({
     marginBottom: screenHeightAdjusted * 0.025,
     fontSize: screenHeightAdjusted * 0.025,
     color: "white",
+  },
+  timeAttackContainer: {
+    justifyContent: "center",
+    alignItems: "center",
   },
   timeAttackSubheading: {
     textAlign: "center",
@@ -127,5 +151,24 @@ const styles = StyleSheet.create({
   },
   separator: {
     marginTop: screenHeightAdjusted * 0.0075,
-  }
+  },
+  scoreLine: {
+    width: screen.width * 0.49,
+    fontWeight: "bold",
+    fontSize: screenHeightAdjusted * 0.015,
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    
+  },
+  scoreNum: {
+    fontWeight: "bold",
+    fontSize: screenHeightAdjusted * 0.015,
+    marginLeft: screen.width * 0.02,
+  },
+  scoreVal: {
+    fontWeight: "bold",
+    fontSize: screenHeightAdjusted * 0.015,
+    marginRight: screen.width * 0.02,
+  },
 });
