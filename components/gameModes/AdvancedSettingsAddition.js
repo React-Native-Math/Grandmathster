@@ -176,7 +176,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   checkboxContainer: {
-    // display: 'flex',
     flexWrap: "wrap",
     justifyContent: "center",
     alignItems: "center",
@@ -196,7 +195,6 @@ const styles = StyleSheet.create({
   sectionHeading: {
     fontWeight: "bold",
     textAlign: "center",
-    // textTransform: "uppercase",
     fontSize: screenHeightAdjusted * 0.02,
     color: "white",
   },
