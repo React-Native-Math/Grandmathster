@@ -8,8 +8,8 @@ const screenHeightAdjusted = screen.height - 45; // subtract height of navigatio
 export default function SubtractionProblems(props) {
   const [input, setInput] = useState("");
   const [message, setMessage] = useState("");
-  const [secondNum, setSecondNum] = useState(-1);
-  const [firstNum, setFirstNum] = useState(0);
+  const [secondNum, setSecondNum] = useState(null);
+  const [firstNum, setFirstNum] = useState(null);
   const [change, setChange] = useState(false);
   const [score, setScore] = useState(0);
   const [questionNumber, setQuestionNumber] = useState(0);
@@ -24,24 +24,25 @@ export default function SubtractionProblems(props) {
     //check to see if props.firstNum is a number or object and then set first number
         if(Number.isInteger(props.secondNum)){
             setSecondNum(Math.floor(Math.random() * props.secondNum));
+        
             setFirstNum(Math.floor(Math.random()*props.firstNum)+secondNum)
         }
         else{ let secondNumberArray = Object.entries(props.secondNum)
-            console.log('hit')
             secondNumberArray = secondNumberArray.filter(([key, value])=>{
             if(value) 
             return key
         })
-        console.log(secondNumberArray)
         //check to see if user passed in an empty object or with every number being toggled false
         //if false set the first number to be between 0 and 10. else set first number to be a selection of
         //what user put in under advanced options
         secondNumberArray.length===0 ? setSecondNum(Math.floor(Math.random()*10))
         : setSecondNum(Number(secondNumberArray[Math.floor(Math.random()*secondNumberArray.length)][0]))
-        console.log(secondNum)
         setFirstNum(Math.floor(Math.random()*props.firstNum)+secondNum)
     }
     },[change])
+
+    console.log('second: '+secondNum)
+    console.log('first: '+firstNum)
 
   if (props.timeAtt) {
     setTimeout(() => {
@@ -49,28 +50,21 @@ export default function SubtractionProblems(props) {
     }, 1000);
   }
   if(firstNum-secondNum<0){
-    console.log('hit')
     if(Number.isInteger(props.secondNum)){
         setSecondNum(Math.floor(Math.random() * props.secondNum));
         setFirstNum(Math.floor(Math.random()*props.firstNum)+secondNum)
     }
     else{ let secondNumberArray = Object.entries(props.secondNum)
-        console.log('hit')
         secondNumberArray = secondNumberArray.filter(([key, value])=>{
         if(value) 
         return key
     })
-    //check to see if user passed in an empty object or with every number being toggled false
-    //if false set the first number to be between 0 and 10. else set first number to be a selection of
-    //what user put in under advanced options
     secondNumberArray.length===0 ? setSecondNum(Math.floor(Math.random()*10))
     : setSecondNum(Number(secondNumberArray[Math.floor(Math.random()*secondNumberArray.length)][0]))
-    console.log(secondNum)
     setFirstNum(Math.floor(Math.random()*props.firstNum+secondNum))
     }
   }
-  console.log(firstNum)
-  console.log(secondNum)
+
 
   function handleInputAnswer(e) {
     if (firstNum - secondNum === Number(input)) {

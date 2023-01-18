@@ -57,6 +57,8 @@ export default function AdditionMenu({ navigation }) {
     };
   });
 
+  //easy is fine, medium we want 2 digit + 1 digit, hard we want 2 digits + digits
+
   const handleDifficulty = (e, first, second, difficulty) => {
     setDifficultyFirstNum(first);
     setDifficultySecondNum(second);
