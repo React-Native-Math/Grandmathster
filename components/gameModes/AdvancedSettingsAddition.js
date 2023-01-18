@@ -76,7 +76,7 @@ export default function AdvancedSettingsAddition({ navigation }) {
           <Text style={styles.AdvancedSettingsTitle}>Advanced Settings</Text>
             <View style={styles.questionAmountContainer}>
               <Text style={styles.sectionHeading}>
-                Set first number's ending digit
+                {`Choose 1st number(s) to add`}
               </Text>
               <View style={styles.separator}></View>
               <View style={styles.checkboxContainer}>
@@ -88,7 +88,7 @@ export default function AdvancedSettingsAddition({ navigation }) {
                 <View style={styles.separator}></View>
                 <Text
                   style={styles.sectionHeading}
-                >{`Set second number max. value`}</Text>
+                >{`Choose max value for 2nd number`}</Text>
 
                 <TextInput
                   style={styles.inputField}
@@ -102,7 +102,7 @@ export default function AdvancedSettingsAddition({ navigation }) {
               <View style={styles.separator}></View>
               <Text
                 style={styles.sectionHeading}
-              >{`Set number of questions`}</Text>
+              >{`Choose the number of questions`}</Text>
               <TextInput
                 style={styles.inputField}
                 onChangeText={(input) => setQuestionAmount(Number(input))}
@@ -115,7 +115,7 @@ export default function AdvancedSettingsAddition({ navigation }) {
 
               <Text
                 style={styles.sectionHeading}
-              >{`Set time, in seconds`}</Text>
+              >{`Set the time limit`}</Text>
               <TextInput
                 style={styles.inputField}
                 onChangeText={(input) => {
@@ -133,9 +133,8 @@ export default function AdvancedSettingsAddition({ navigation }) {
                 onPress={(e) => setShowAdditionPage(true)}
                 title="Ready!"
               >
-                <Text style={styles.menuText}>Done</Text>
+                <Text style={styles.menuText}>Start!</Text>
               </Pressable>
-              {/* </View> */}
             </View>
           </View>
           </KeyboardAvoidingView>
