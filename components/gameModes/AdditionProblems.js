@@ -108,12 +108,11 @@ export default function AdditionProblems(props) {
               onSubmitEditing={(e) => handleInputAnswer(e)}
               clearTextOnFocus={true}
               keyboardType="number-pad"
-              enablesReturnKeyAutomatically='false'
               value={input}
               returnKeyType="done"
               blurOnSubmit={false}
               autoFocus={true}
-              
+              enablesReturnKeyAutomatically= {true}
             />
           </View>
           <View>
@@ -157,7 +156,7 @@ const styles = StyleSheet.create({
     borderColor:'#b8100f',
     borderRadius:10,
     borderWidth: 5,
-    marginTop: screenHeightAdjusted > 700 ? screenHeightAdjusted*.08 : screenHeightAdjusted*.03,
+    marginTop: screenHeightAdjusted > 700 ? screenHeightAdjusted*.07 : screenHeightAdjusted*.03,
   },
   textInput: {
     textAlign: "center",
