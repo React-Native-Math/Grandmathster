@@ -50,7 +50,7 @@ export default function AdvancedSettingsAddition({ navigation }) {
       [selectedItem]: !firstNumIncluded[selectedItem],
     });
   };
-
+//user entering Huge number
   return (
     <>
       {showAdditionPage ? (
