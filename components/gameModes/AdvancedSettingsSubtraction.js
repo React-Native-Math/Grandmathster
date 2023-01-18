@@ -55,7 +55,7 @@ console.log(secondNumIncluded)
     <>
       {showSubtractionPage ? (
         <SubtractionProblems
-          firstNum={firstNumMax-10}
+          firstNum={firstNumMax < 10 ? 10 :firstNumMax-10}
           secondNum={secondNumIncluded}
           maxQuestionsNumber={questionAmount}
           timeAtt={timeAttack}
