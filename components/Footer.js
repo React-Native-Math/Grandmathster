@@ -12,7 +12,7 @@ const Footer = () => {
 const styles = StyleSheet.create({
   footerText: {
     color: 'grey',
-    fontSize: 8,
+    fontSize: 10,
   }
 })
 

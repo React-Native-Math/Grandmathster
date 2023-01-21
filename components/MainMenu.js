@@ -5,9 +5,11 @@ import {
   StyleSheet,
   Pressable,
   ImageBackground,
+  Dimensions
 } from "react-native";
 import Footer from "./Footer";
 import mainMenuBG from "../assets/img/mainMenuBG.jpg"
+const screen = Dimensions.get("screen");
 
 const Separator = () => <View style={styles.separator} />;
 const bg = { uri: "https://i.pinimg.com/736x/b8/38/af/b838afc8dd3a316f75b93ca9f78ce024.jpg" };
@@ -24,7 +26,7 @@ const MainMenu = ({ navigation }) => {
   const [about, setAbout] = useState(false)
   const capitalizeFirstChar = (word) => word.charAt(0).toUpperCase() + word.substr(1).toLowerCase();
   return (
-      <ImageBackground source={mainMenuBG} resizeMode="cover" style={styles.bg} >
+      <ImageBackground source={mainMenuBG} resizeMode="stretch" style={styles.bg} >
     <View style={styles.container}>
   {about ? <View style={styles.overlayContainer}>
   <View style={styles.overlay}/>
@@ -69,20 +71,23 @@ const styles = StyleSheet.create({
     borderColor: "#B8100F",
     borderWidth: 3,
     padding: 5,
-    width: 150,
+    width: screen.height > 1000 ? 250 : 150,
+    height: screen.height > 1000 ? 45 : 30,
     alignItems: "center",
   },
   menuText: {
     color: "white",
     fontWeight: "bold",
-    fontSize: 12,
+    fontSize: screen.height > 1000 ? 20:12,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   separator: {
     marginVertical: 12,
   },
   footer: {
-    height: 100,
-    width: 100,
+    height: 125,
+    width: 125,
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
@@ -93,7 +98,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-    height: 100,
+    height: 75,
     width: 100,
   },
   overlay: {
@@ -108,6 +113,8 @@ const styles = StyleSheet.create({
   bg: {
     flex: 1,
     justifyContent: "center",
+    position: 'flex',
+    paddingTop: 50,
   }
 });
 
