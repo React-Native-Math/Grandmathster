@@ -29,6 +29,18 @@ export default function OperationScores(props) {
     }
   };
 
+  const checkHighScores = (highScoresArr) => {
+    console.log(highScoresArr, "<<")
+    return highScoresArr.reduce((acc, val) => {
+      if (val[1]) {
+          acc += 1
+          return acc
+      } else {
+          return acc
+      }
+   }, 0)
+  }
+
   useEffect(() => {
     getHighScores(props.operation.toLowerCase());
   }, [loaded]);
@@ -40,7 +52,9 @@ export default function OperationScores(props) {
           {props.operation} time attack scores
         </Text>
         <View style={styles.scoresContainer}>
-          {highScoresArr.length
+          {console.log(checkHighScores(highScoresArr))}
+          {
+          highScoresArr.length && (checkHighScores(highScoresArr) > 0)
             ? highScoresArr.map((elem, idx) => {
                 if (elem[1]) {
                   let scoreObject = JSON.parse(elem[1]);
@@ -82,7 +96,12 @@ export default function OperationScores(props) {
                   );
                 }
               })
-            : null}
+            : 
+            <View>
+            <Text style={{...styles.timeAttackSubheading, padding: screen.height * 0.025}}>You haven't played this time attack game yet! Your scores will appear here once you've correctly answered some questions</Text>
+            </View>
+
+}
         </View>
       </View>
     </ImageBackground>

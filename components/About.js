@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     height: screen.height * 0.4,
     width: screen.width * 0.8,
     backgroundColor: "#B8100F",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
     marginTop: (screen.height / 2) * 0.05,
   },
