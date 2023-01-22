@@ -4,7 +4,7 @@ import MainMenu from "../components/MainMenu";
 import {
   AdditionMenu,
   SubtractionMenu,
-  MultiplicationGame,
+  MultiplicationMenu,
   DivisionGame,
   RandomGame,
   AdvancedSettingsAddition,
@@ -94,7 +94,7 @@ const Navigation = () => {
       <Stack.Screen name="AdvancedSettingsAddition" component={AdvancedSettingsAddition}/>
       <Stack.Screen name="SubtractionMenu" component={SubtractionMenu} />
       <Stack.Screen name='AdvancedSettingsSubtraction' component={AdvancedSettingsSubtraction}/>
-      <Stack.Screen name="MultiplicationGame" component={MultiplicationGame} />
+      <Stack.Screen name="MultiplicationMenu" component={MultiplicationMenu}/>
       <Stack.Screen name="DivisionGame" component={DivisionGame} />
       <Stack.Screen name="RandomGame" component={RandomGame} />
       <Stack.Screen name="GameOver" component={GameOver} />
