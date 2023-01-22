@@ -30,7 +30,6 @@ export default function OperationScores(props) {
   };
 
   const checkHighScores = (highScoresArr) => {
-    console.log(highScoresArr, "<<")
     return highScoresArr.reduce((acc, val) => {
       if (val[1]) {
           acc += 1
