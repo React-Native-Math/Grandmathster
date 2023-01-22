@@ -121,14 +121,14 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   modalView: {
-    margin: 20,
-    height: screen.height * 0.85,
+    // margin: screen.height * 0.15,
+    height: screen.height * 0.90,
     width: screen.width * 0.9,
     backgroundColor: "black",
     borderRadius: 20,
     borderColor: 'red',
     borderWidth: 2,
-    padding: 35,
+    // padding: screen.height * 0.04,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
