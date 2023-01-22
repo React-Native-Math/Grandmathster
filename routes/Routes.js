@@ -9,6 +9,7 @@ import {
   RandomGame,
   AdvancedSettingsAddition,
   AdvancedSettingsSubtraction,
+  AdvancedSettingsMultiplication,
   GameOver,
 } from "../components/gameModes";
 import About from '../components/About'
@@ -20,7 +21,6 @@ import {
   StyleSheet,
   Text,
   Dimensions,
-  ScrollView,
 } from "react-native";
 import help from "../assets/img/help.png";
 import { useState} from "react";
@@ -95,6 +95,7 @@ const Navigation = () => {
       <Stack.Screen name="SubtractionMenu" component={SubtractionMenu} />
       <Stack.Screen name='AdvancedSettingsSubtraction' component={AdvancedSettingsSubtraction}/>
       <Stack.Screen name="MultiplicationMenu" component={MultiplicationMenu}/>
+      <Stack.Screen name='AdvancedSettingsMultiplication' component={AdvancedSettingsMultiplication}/>
       <Stack.Screen name="DivisionGame" component={DivisionGame} />
       <Stack.Screen name="RandomGame" component={RandomGame} />
       <Stack.Screen name="GameOver" component={GameOver} />

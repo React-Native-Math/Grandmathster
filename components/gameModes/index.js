@@ -7,6 +7,7 @@ import GameOver from "./GameOver";
 import SubtractionMenu from './SubtractionMenu'
 import AdvancedSettingsSubtraction from "./AdvancedSettingsSubtraction";
 import MultiplicationMenu from "./MultiplicationMenu";
+import AdvancedSettingsMultiplication from "./AdvancedSettingsMultiplication";
 
 export {
   AdditionMenu,
@@ -18,4 +19,5 @@ export {
   SubtractionMenu,
   AdvancedSettingsSubtraction,
   MultiplicationMenu,
+  AdvancedSettingsMultiplication,
 };

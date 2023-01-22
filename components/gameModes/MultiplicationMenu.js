@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import BouncyCheckboxGroup, {
 } from "react-native-bouncy-checkbox-group";
-import AdditionProblems from "./AdditionProblems";
+import MultiplicationProblems from "./MultiplicationProblems";
 import cogPic from "../../assets/img/cog.png";
 import selectBG from "../../assets/img/selectBG.jpg";
 const screen = Dimensions.get("screen");
@@ -21,7 +21,7 @@ export default function MultiplicationMenu({ navigation }) {
   const [difficultyFirstNum, setDifficultyFirstNum] = useState(0);
   const [difficultySecondNum, setDifficultySecondNum] = useState(0);
   const [difficulty, setDifficulty] = useState("");
-  const [showAdditionPage, setShowAdditionPage] = useState(false);
+  const [showMultiplicationPage, setShowMultiplicationPage] = useState(false);
   const [questionAmount, setQuestionAmount] = useState(10);
   const [timeAttack, setTimeAttack] = useState(false);
   const [timeAmount, setTimeAmount] = useState(1000000000);
@@ -63,7 +63,7 @@ export default function MultiplicationMenu({ navigation }) {
     setDifficultyFirstNum(first);
     setDifficultySecondNum(second);
     setDifficulty(difficulty);
-    setShowAdditionPage(!false);
+    setShowMultiplicationPage(!false);
   };
 
   const handleSelection = (selectedItem) => {
@@ -87,8 +87,8 @@ export default function MultiplicationMenu({ navigation }) {
 
   return (
     <View style={styles.menuContainer}>
-      {showAdditionPage ? (
-        <AdditionProblems
+      {showMultiplicationPage ? (
+        <MultiplicationProblems
           firstNum={difficultyFirstNum}
           secondNum={difficultySecondNum}
           maxQuestionsNumber={questionAmount}
@@ -117,7 +117,7 @@ export default function MultiplicationMenu({ navigation }) {
             />
           </View>
           <Pressable
-            onPress={() => navigation.navigate("AdvancedSettingsAddition")}
+            onPress={() => navigation.navigate("AdvancedSettingsMultiplication")}
             style={styles.advancedSettingsContainer}
           >
             <Image style={styles.cogPic} source={cogPic} />
@@ -128,13 +128,30 @@ export default function MultiplicationMenu({ navigation }) {
           <View style={styles.separator}></View>
           <View style={styles.buttonsContainer}>
             {difficulties.map((difficulty, idx) => {
+              let maxFirst, maxSecond
+              //  = 10
+              // let maxSecond = 10 ** (idx + 1)
               const maxNum = 10 ** (idx + 1); // sets the maximum possible number for the selected difficulty
+              switch(idx) {
+                case 0:
+                  maxFirst = 10
+                  maxSecond = 10
+                  break
+                case 1:
+                  maxFirst = 50
+                  maxSecond = 10
+                  break
+                case 2:
+                  maxFirst = 100
+                  maxSecond = 10
+                  break
+              }
               return (
                 <Pressable
                   key={idx}
                   style={styles[`menuButton${idx}`]}
                   onPress={(e) =>
-                    handleDifficulty(e, maxNum, maxNum, difficulty)
+                    handleDifficulty(e, maxFirst, maxSecond, difficulty)
                   }
                 >
                   <Text style={styles.menuText}>{difficulty}</Text>
