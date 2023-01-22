@@ -20,6 +20,7 @@ import {
   StyleSheet,
   Text,
   Dimensions,
+  ScrollView,
 } from "react-native";
 import help from "../assets/img/help.png";
 import { useState} from "react";
