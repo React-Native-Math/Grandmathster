@@ -56,7 +56,7 @@ export default function AdvancedSettingsAddition({ navigation }) {
       {showAdditionPage ? (
         <AdditionProblems
           firstNum={firstNumIncluded}
-          secondNum={secondNumMax}
+          secondNum={Number(secondNumMax)===0 ? 10 : Number(secondNumMax)}
           maxQuestionsNumber={questionAmount}
           timeAtt={timeAttack}
           timeAmt={timeAmount}
@@ -94,15 +94,20 @@ export default function AdvancedSettingsAddition({ navigation }) {
                   style={styles.inputField}
                   onChangeText={(input) => {
                     const nums='0123456789'
-                    console.log('hit')
-                    if(nums.indexOf(input)){
-                      console.log('hello')
-                    setSecondNumMax(Number(input))}
-                  }}
+                    let newText = ''
+                    for (var i=0; i < input.length; i++) {
+                      if(nums.indexOf(input[i]) > -1 ) {
+                          newText = newText + input[i];
+                      }
+                    }
+                  setSecondNumMax(newText)
+                  }
+                  }
                   keyboardType="number-pad"
                   placeholder="type here (default = 10)"
                   placeholderTextColor="#b8100f"
                   returnKeyType="done"
+                  maxLength={3}
                 />
               </View>
               <View style={styles.separator}></View>

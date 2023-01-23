@@ -41,9 +41,6 @@ export default function SubtractionProblems(props) {
     }
     },[change])
 
-    console.log('second: '+secondNum)
-    console.log('first: '+firstNum)
-
   if (props.timeAtt) {
     setTimeout(() => {
       setTime(time + 1);
