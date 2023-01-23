@@ -149,7 +149,6 @@ export default function SubtractionProblems(props) {
 }
 
 
-
 const styles = StyleSheet.create({
   outerContainer: {
     height: screenHeightAdjusted,
@@ -162,7 +161,7 @@ const styles = StyleSheet.create({
   scoreContainer: {
     justifyContent: 'flex-start',
     alignItems: "center",
-    padding: screenHeightAdjusted < 667 ? 3 : 20,
+    padding: screenHeightAdjusted > 667 ? 20 : 3,
     borderColor:'#b8100f',
     borderRadius:10,
     borderWidth: 5,
@@ -170,11 +169,11 @@ const styles = StyleSheet.create({
   },
   textInput: {
     textAlign: "center",
-    fontSize: 18,
+    fontSize: screen.height > 900 ? screen.height*.025: 18,
     fontFamily: "Azeret",
     color: "white",
     borderWidth: 5,
-    width: 210,
+    width: screen.width > 600 ? screen.width*.45:screen.width*.65,
     borderColor: "#b8100f",
     marginTop: 5,
     fontWeight:'bold',
@@ -182,24 +181,24 @@ const styles = StyleSheet.create({
     outlineColor: 'black',
   },
   problemContainer: {
-    width: screen.width * 0.65,
+    width: screen.width > 600 ? screen.width*.45 : screen.width * 0.65,
     alignItems: "flex-end",
     marginTop: 15,
     marginRight: 15,
   },
   number: {
-    fontSize: 70,
+    fontSize: screen.height >900 ? screen.height*.1: 70,
     fontFamily: "Azeret",
     color: "white",
   },
   message: {
     paddingTop: 5,
-    fontSize: 15,
+    fontSize: screen.height > 900 ? screen.height*.02: 15,
     fontFamily: "Azeret",
     color: "white",
   },
   score: {
-    fontSize: 20,
+    fontSize: screen.height > 900 ? 25:20,
     fontFamily: "Azeret",
     color: "white",
     justifyContent: 'center',

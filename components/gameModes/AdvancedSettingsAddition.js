@@ -50,7 +50,7 @@ export default function AdvancedSettingsAddition({ navigation }) {
       [selectedItem]: !firstNumIncluded[selectedItem],
     });
   };
-//user entering Huge number
+//fix user entering Huge number or negative number
   return (
     <>
       {showAdditionPage ? (
@@ -92,7 +92,13 @@ export default function AdvancedSettingsAddition({ navigation }) {
 
                 <TextInput
                   style={styles.inputField}
-                  onChangeText={(input) => setSecondNumMax(Number(input))}
+                  onChangeText={(input) => {
+                    const nums='0123456789'
+                    console.log('hit')
+                    if(nums.indexOf(input)){
+                      console.log('hello')
+                    setSecondNumMax(Number(input))}
+                  }}
                   keyboardType="number-pad"
                   placeholder="type here (default = 10)"
                   placeholderTextColor="#b8100f"
@@ -176,6 +182,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   checkboxContainer: {
+    // display: 'flex',
     flexWrap: "wrap",
     justifyContent: "center",
     alignItems: "center",
@@ -195,6 +202,7 @@ const styles = StyleSheet.create({
   sectionHeading: {
     fontWeight: "bold",
     textAlign: "center",
+    // textTransform: "uppercase",
     fontSize: screenHeightAdjusted * 0.02,
     color: "white",
   },

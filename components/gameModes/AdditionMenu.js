@@ -57,7 +57,7 @@ export default function AdditionMenu({ navigation }) {
     };
   });
 
-  //easy is fine, medium we want 2 digit + 1 digit, hard we want 2 digits + digits
+  //easy is fine, medium we want 2 digit + 1 digit, hard we want 2 digits + 3 digits
 
   const handleDifficulty = (e, first, second, difficulty) => {
     setDifficultyFirstNum(first);
@@ -128,13 +128,14 @@ export default function AdditionMenu({ navigation }) {
           <View style={styles.separator}></View>
           <View style={styles.buttonsContainer}>
             {difficulties.map((difficulty, idx) => {
-              const maxNum = 10 ** (idx + 1); // sets the maximum possible number for the selected difficulty
+              const firstNum = [10,10,100]
+              const secondNum = [10,100,1000]
               return (
                 <Pressable
                   key={idx}
                   style={styles[`menuButton${idx}`]}
                   onPress={(e) =>
-                    handleDifficulty(e, maxNum, maxNum, difficulty)
+                    handleDifficulty(e, firstNum[idx], secondNum[idx], difficulty)
                   }
                 >
                   <Text style={styles.menuText}>{difficulty}</Text>
@@ -147,135 +148,134 @@ export default function AdditionMenu({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  background: {
-    width: screen.width,
-    height: screenHeightAdjusted,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  menuContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    // paddingBottom: 5,
-  },
-  questionAmountContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
-    height: screenHeightAdjusted * 0.45,
-    width: screen.width * 0.85,
-    borderColor: "white",
-    borderWidth: 2,
-    borderRadius: 10,
-    backgroundColor: "black",
-  },
-  buttonsContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    height: screenHeightAdjusted * 0.05,
-    marginTop: screenHeightAdjusted * 0.015,
-    fontFamily: "DancingScript",
-  },
-  menuButton0: {
-    borderRadius: 50,
-    padding: 5,
-    margin: 5,
-    width: 70,
-    height: 50,
-    backgroundColor: "black",
-    borderWidth: 5,
-    borderColor: "#006b3d",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  menuButton1: {
-    borderRadius: 50,
-    padding: 5,
-    margin: 5,
-    width: 100,
-    height: 50,
-    backgroundColor: "black",
-    borderWidth: 5,
-    borderColor: "#fcb606",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  menuButton2: {
-    borderRadius: 50,
-    padding: 5,
-    margin: 5,
-    width: 70,
-    height: 50,
-    backgroundColor: "black",
-    borderWidth: 5,
-    borderColor: "#c23b21",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  menuText: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 14,
-  },
-  checkbox: {
-    display: "flex",
-    fontFamily: "DancingScript",
-    flexDirection: "column",
-    color: "white",
-  },
-  sectionHeading: {
-    fontWeight: "bold",
-    textShadowColor: "red",
-    textShadowRadius: 30,
-    // textTransform: "uppercase",
-    fontSize: screenHeightAdjusted * 0.03,
-    color: "white",
-  },
-  subHeading: {
-    fontWeight: "bold",
-    textAlign: "center",
-    fontSize: screenHeightAdjusted * 0.023,
-    color: "white",
-  },
-  separator: {
-    height: screenHeightAdjusted * 0.015,
-    width: 5,
-  },
-  cogPic: {
-    height: screen.width * 0.04,
-    width: screen.width * 0.04,
-  },
-  advancedSettingsContainer: {
-    marginTop: 10,
-    backgroundColor: "black",
-    borderRadius: 50,
-    borderWidth: 2,
-    borderColor: "#b8100f",
-    padding: 10,
-    width: screen.width * 0.6,
-    height: screenHeightAdjusted * 0.06,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  advancedSettingsText: {
-    color: "white",
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontSize: screenHeightAdjusted * 0.015,
-    marginLeft: screenHeightAdjusted * 0.02,
-  },
-});
+  const styles = StyleSheet.create({
+    container: {
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    background: {
+      width: screen.width,
+      height: screenHeightAdjusted,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    menuContainer: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    questionAmountContainer: {
+      justifyContent: "center",
+      alignItems: "center",
+      textAlign: "center",
+      height: screenHeightAdjusted * 0.45,
+      width: screen.width * 0.85,
+      borderColor: "white",
+      borderWidth: 2,
+      borderRadius: 10,
+      backgroundColor: "black",
+    },
+    buttonsContainer: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      height: screenHeightAdjusted * 0.05,
+      marginTop: screenHeightAdjusted * 0.015,
+      fontFamily: "DancingScript",
+    },
+    menuButton0: {
+      borderRadius: 50,
+      padding: 5,
+      margin: 5,
+      width: 70,
+      height: 50,
+      backgroundColor: "black",
+      borderWidth: 5,
+      borderColor: "#006b3d",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    menuButton1: {
+      borderRadius: 50,
+      padding: 5,
+      margin: 5,
+      width: 100,
+      height: 50,
+      backgroundColor: "black",
+      borderWidth: 5,
+      borderColor: "#fcb606",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    menuButton2: {
+      borderRadius: 50,
+      padding: 5,
+      margin: 5,
+      width: 70,
+      height: 50,
+      backgroundColor: "black",
+      borderWidth: 5,
+      borderColor: "#c23b21",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    menuText: {
+      color: "white",
+      fontWeight: "bold",
+      fontSize: 14,
+    },
+    checkbox: {
+      display: "flex",
+      fontFamily: "DancingScript",
+      flexDirection: "column",
+      color: "white",
+    },
+    sectionHeading: {
+      fontWeight: "bold",
+      textShadowColor: "red",
+      textShadowRadius: 30,
+      // textTransform: "uppercase",
+      fontSize: screenHeightAdjusted * 0.03,
+      color: "white",
+    },
+    subHeading: {
+      fontWeight: "bold",
+      textAlign: "center",
+      fontSize: screenHeightAdjusted * 0.023,
+      color: "white",
+    },
+    separator: {
+      height: screenHeightAdjusted * 0.015,
+      width: 5,
+    },
+    cogPic: {
+      height: screen.width * 0.04,
+      width: screen.width * 0.04,
+    },
+    advancedSettingsContainer: {
+      marginTop: 10,
+      backgroundColor: "black",
+      borderRadius: 50,
+      borderWidth: 2,
+      borderColor: "#b8100f",
+      padding: 10,
+      width: screen.width * 0.6,
+      height: screenHeightAdjusted * 0.06,
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    advancedSettingsText: {
+      color: "white",
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontSize: screenHeightAdjusted * 0.015,
+      marginLeft: screenHeightAdjusted * 0.02,
+    },
+  });
+  
