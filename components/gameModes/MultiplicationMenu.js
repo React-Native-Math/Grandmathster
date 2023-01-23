@@ -128,30 +128,14 @@ export default function MultiplicationMenu({ navigation }) {
           <View style={styles.separator}></View>
           <View style={styles.buttonsContainer}>
             {difficulties.map((difficulty, idx) => {
-              let maxFirst, maxSecond
-              //  = 10
-              // let maxSecond = 10 ** (idx + 1)
-              const maxNum = 10 ** (idx + 1); // sets the maximum possible number for the selected difficulty
-              switch(idx) {
-                case 0:
-                  maxFirst = 10
-                  maxSecond = 10
-                  break
-                case 1:
-                  maxFirst = 50
-                  maxSecond = 10
-                  break
-                case 2:
-                  maxFirst = 100
-                  maxSecond = 10
-                  break
-              }
+              const maxNumFirst = 10 ** (idx + 1); // sets the maximum possible number for the selected difficulty
+              const maxNumSecond = 10
               return (
                 <Pressable
                   key={idx}
                   style={styles[`menuButton${idx}`]}
                   onPress={(e) =>
-                    handleDifficulty(e, maxFirst, maxSecond, difficulty)
+                    handleDifficulty(e, maxNumFirst, maxNumSecond, difficulty)
                   }
                 >
                   <Text style={styles.menuText}>{difficulty}</Text>
