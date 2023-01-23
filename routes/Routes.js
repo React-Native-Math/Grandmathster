@@ -3,13 +3,14 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MainMenu from "../components/MainMenu";
 import {
   AdditionMenu,
-  SubtractionMenu,
-  MultiplicationMenu,
-  DivisionGame,
-  RandomGame,
   AdvancedSettingsAddition,
+  SubtractionMenu,
   AdvancedSettingsSubtraction,
+  MultiplicationMenu,
   AdvancedSettingsMultiplication,
+  DivisionMenu,
+  AdvancedSettingsDivision,
+  RandomGame,
   GameOver,
 } from "../components/gameModes";
 import About from '../components/About'
@@ -96,7 +97,8 @@ const Navigation = () => {
       <Stack.Screen name='AdvancedSettingsSubtraction' component={AdvancedSettingsSubtraction}/>
       <Stack.Screen name="MultiplicationMenu" component={MultiplicationMenu}/>
       <Stack.Screen name='AdvancedSettingsMultiplication' component={AdvancedSettingsMultiplication}/>
-      <Stack.Screen name="DivisionGame" component={DivisionGame} />
+      <Stack.Screen name="DivisionMenu" component={DivisionMenu} />
+      <Stack.Screen name='AdvancedSettingsDivision' component={AdvancedSettingsDivision}/>
       <Stack.Screen name="RandomGame" component={RandomGame} />
       <Stack.Screen name="GameOver" component={GameOver} />
       <Stack.Screen name="Scores" component={Scores} />
