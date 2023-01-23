@@ -22,7 +22,7 @@ export default function RandomMenu({ navigation }) {
   const [difficultyFirstNum, setDifficultyFirstNum] = useState(0);
   const [difficultySecondNum, setDifficultySecondNum] = useState(0);
   const [difficulty, setDifficulty] = useState("");
-  const [showAdditionPage, setShowAdditionPage] = useState(false);
+  const [showRandomPage, setShowRandomPage] = useState(false);
   const [questionAmount, setQuestionAmount] = useState(10);
   const [timeAttack, setTimeAttack] = useState(false);
   const [timeAmount, setTimeAmount] = useState(1000000000);
@@ -64,7 +64,7 @@ export default function RandomMenu({ navigation }) {
     setDifficultyFirstNum(first);
     setDifficultySecondNum(second);
     setDifficulty(difficulty);
-    setShowAdditionPage(!false);
+    setShowRandomPage(!false);
   };
 
   const handleSelection = (selectedItem) => {
@@ -88,7 +88,7 @@ export default function RandomMenu({ navigation }) {
 
   return (
     <View style={styles.menuContainer}>
-      {showAdditionPage ? (
+      {showRandomPage ? (
         <RandomProblems
           firstNum={difficultyFirstNum}
           secondNum={difficultySecondNum}
@@ -122,13 +122,14 @@ export default function RandomMenu({ navigation }) {
           <View style={styles.separator}></View>
           <View style={styles.buttonsContainer}>
             {difficulties.map((difficulty, idx) => {
-              const maxNum = 10 ** (idx + 1); // sets the maximum possible number for the selected difficulty
+              const firstNum = [10,10,20]
+              const secondNum = [10,15,20]
               return (
                 <Pressable
                   key={idx}
                   style={styles[`menuButton${idx}`]}
                   onPress={(e) =>
-                    handleDifficulty(e, maxNum, maxNum, difficulty)
+                    handleDifficulty(e, firstNum[idx], secondNum[idx], difficulty)
                   }
                 >
                   <Text style={styles.menuText}>{difficulty}</Text>

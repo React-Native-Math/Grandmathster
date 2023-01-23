@@ -15,29 +15,37 @@ export default function RandomProblems(props) {
   const [questionNumber, setQuestionNumber] = useState(0);
   const [time, setTime] = useState(0);
   const [textShadow, setTextShadow] = useState('#FFFFFF')
+  const [operation, setOperation] = useState(null)
 
   const textShadowVals = ['#FFFFFF', '#FF355E', '#FFFF66', '#CCFF00', '#FF6EFF', '#AAF0D1', '#00FFFF']
 
-  useEffect(() => {
-    //second number always gets passed as an integer. This takes a random number up to the selection.
-        setSecondNum(Math.floor(Math.random()*props.secondNum))
-        
-    //check to see if props.firstNum is a number or object and then set first number
-        if(Number.isInteger(props.firstNum)){
-            setFirstNum(Math.floor(Math.random()*props.firstNum))
-        }
-        else{ let firstNumberArray = Object.entries(props.firstNum)
-            firstNumberArray = firstNumberArray.filter(([key, value])=>{
-            if(value) 
-            return key
-        })
-        //check to see if user passed in an empty object or with every number being toggled false
-        //if false set the first number to be between 0 and 10. else set first number to be a selection of
-        //what user put in under advanced options
-        firstNumberArray.length===0 ? setFirstNum(Math.floor(Math.random()*10))
-        : setFirstNum(Number(firstNumberArray[Math.floor(Math.random()*firstNumberArray.length)][0]))
+  const getRandomOperation = ()=>{
+    const whichOperation = Math.floor(Math.random()*4)
+    if(whichOperation===0) {
+      setOperation('+')
+      setFirstNum(Math.floor(Math.random()*props.firstNum))
+      setSecondNum(Math.floor(Math.random()*props.secondNum))
     }
-    },[change])
+    if(whichOperation===1) {
+      setOperation('-')
+      setSecondNum(Math.floor(Math.random()*props.secondNum))
+      setFirstNum(Math.floor(Math.random()*props.firstNum+secondNum))
+    }
+    if(whichOperation===2){
+      setOperation('x')
+      setFirstNum(Math.floor(Math.random()*props.firstNum))
+      setSecondNum(Math.floor(Math.random()*props.secondNum))
+    }
+    if(whichOperation===3) {
+      setOperation('÷')
+      setSecondNum(Math.floor(Math.random()*props.secondNum))
+      setFirstNum(Math.floor(Math.random()*props.firstNum*secondNum))
+    }
+  }
+
+  useEffect(()=>{
+    getRandomOperation()
+  },[change])
 
   if (props.timeAtt) {
     setTimeout(() => {
@@ -45,21 +53,87 @@ export default function RandomProblems(props) {
     }, 1000);
   }
 
+  if(operation==='÷'){
+    if(firstNum%secondNum!==0){
+      console.log('hit /')
+      setFirstNum(Math.floor(Math.random()*props.firstNum)*props.secondNum)
+    }
+    if(secondNum===0){
+      setSecondNum(Math.floor(Math.random()*props.secondNum))
+      setFirstNum(Math.floor(Math.random()*props.firstNum)*props.secondNum)
+    }
+  }
+
+  if(operation==='-'){
+    if(firstNum-secondNum<0){
+      console.log('hit -')
+      setFirstNum(Math.floor(Math.random()*props.firstNum)+props.secondNum)
+    }
+  }
+
   function handleInputAnswer(e) {
-    if (firstNum + secondNum === Number(input)) {
+    if(operation==='+'){
+      if (firstNum + secondNum === Number(input)) {
       setMessage("Correct!");
       setChange(!change);
       setScore(score + 1);
       setInput("");
       setTextShadow(textShadowVals[Math.floor(Math.random() * textShadowVals.length)]);
       setQuestionNumber(questionNumber + 1);
-    } else {
+      } else {
       setMessage(`Incorrect, the answer was ${firstNum + secondNum}`);
       setChange(!change);
       setInput("");
       setQuestionNumber(questionNumber + 1);
+      }
+    }
+    if(operation==='-'){
+      if (firstNum - secondNum === Number(input)) {
+        setMessage("Correct!");
+        setChange(!change);
+        setScore(score + 1);
+        setInput("");
+        setTextShadow(textShadowVals[Math.floor(Math.random() * textShadowVals.length)]);
+        setQuestionNumber(questionNumber + 1);
+      } else {
+        setMessage(`Incorrect, the answer was ${firstNum - secondNum}`);
+        setChange(!change);
+        setInput("");
+        setQuestionNumber(questionNumber + 1);
+      }
+    }
+    if(operation==='x'){
+      if (firstNum * secondNum === Number(input)) {
+        setMessage("Correct!");
+        setChange(!change);
+        setScore(score + 1);
+        setInput("");
+        setTextShadow(textShadowVals[Math.floor(Math.random() * textShadowVals.length)]);
+        setQuestionNumber(questionNumber + 1);
+      } else {
+        setMessage(`Incorrect, the answer was ${firstNum * secondNum}`);
+        setChange(!change);
+        setInput("");
+        setQuestionNumber(questionNumber + 1);
+      }
+    }
+    if(operation==='÷'){
+      if (firstNum / secondNum === Number(input)) {
+        setMessage("Correct!");
+        setChange(!change);
+        setScore(score + 1);
+        setInput("");
+        setTextShadow(textShadowVals[Math.floor(Math.random() * textShadowVals.length)]);
+        setQuestionNumber(questionNumber + 1);
+      } else {
+        setMessage(`Incorrect, the answer was ${firstNum / secondNum}`);
+        setChange(!change);
+        setInput("");
+        setQuestionNumber(questionNumber + 1);
+      }
     }
   }
+
   return (
     <ImageBackground source={selectBG} resizeMode='cover'>
     <View>
@@ -84,7 +158,7 @@ export default function RandomProblems(props) {
           <View style={styles.problemContainer}>
             <Text style={{...styles.number, textShadowColor: textShadow, textShadowRadius: 30}}>{firstNum}</Text>
             <Text style={{...styles.number, textShadowColor: textShadow, textShadowRadius: 30}}>
-              <Text style={styles.operator}>+ </Text>
+              <Text style={styles.operator}>{operation} </Text>
               {secondNum}
               </Text>
             <TextInput
@@ -115,7 +189,7 @@ export default function RandomProblems(props) {
             difficulty={props.difficulty}
             questionAmount={questionNumber}
             navigation={props.navigation}
-            operation = {'addition'}
+            operation = {'random'}
             timeAtt = {props.timeAtt}
             timeAmt = {props.timeAmt}
             custom = {props.custom}
