@@ -5,133 +5,83 @@ import selectBG from '../../assets/img/selectBG.jpg'
 const screen = Dimensions.get("screen");
 const screenHeightAdjusted = screen.height - 45; // subtract height of navigation stack bar
 
-export default function RandomProblems(props) {
+export default function DivisionProblems(props) {
   const [input, setInput] = useState("");
   const [message, setMessage] = useState("");
-  const [firstNum, setFirstNum] = useState(null);
   const [secondNum, setSecondNum] = useState(null);
+  const [firstNum, setFirstNum] = useState(null);
   const [change, setChange] = useState(false);
   const [score, setScore] = useState(0);
   const [questionNumber, setQuestionNumber] = useState(0);
   const [time, setTime] = useState(0);
   const [textShadow, setTextShadow] = useState('#FFFFFF')
-  const [operation, setOperation] = useState(null)
 
   const textShadowVals = ['#FFFFFF', '#FF355E', '#FFFF66', '#CCFF00', '#FF6EFF', '#AAF0D1', '#00FFFF']
 
-  const getRandomOperation = ()=>{
-    const whichOperation = Math.floor(Math.random()*4)
-    if(whichOperation===0) {
-      setOperation('+')
-      setFirstNum(Math.floor(Math.random()*props.firstNum))
-      setSecondNum(Math.floor(Math.random()*props.secondNum))
-    }
-    if(whichOperation===1) {
-      setOperation('-')
-      setSecondNum(Math.floor(Math.random()*props.secondNum))
-      setFirstNum(Math.floor(Math.random()*props.firstNum+secondNum))
-    }
-    if(whichOperation===2){
-      setOperation('×')
-      setFirstNum(Math.floor(Math.random()*props.firstNum))
-      setSecondNum(Math.floor(Math.random()*props.secondNum))
-    }
-    if(whichOperation===3) {
-      setOperation('÷')
-      setSecondNum(Math.floor(Math.random()*props.secondNum))
-      setFirstNum(Math.floor(Math.random()*props.firstNum*secondNum))
-    }
-  }
+  useEffect(() => {
+    setFirstNum(Math.floor(Math.random()*props.firstNum)*secondNum)
+}, [secondNum]);
+  
+  useEffect(() => {
 
-  useEffect(()=>{
-    getRandomOperation()
-  },[change])
+    //second number always gets passed as an integer. This takes a random number up to the selection.
+        
+    //check to see if props.firstNum is a number or object and then set first number
+        if(Number.isInteger(props.secondNum)){          
+            setSecondNum(Math.floor(Math.random() * props.secondNum));
+        }
+        else{ let secondNumberArray = Object.entries(props.secondNum)
+            secondNumberArray = secondNumberArray.filter(([key, value])=>{
+            if(value) 
+
+            return key
+        })
+        //check to see if user passed in an empty object or with every number being toggled false
+        //if false set the first number to be between 0 and 10. else set first number to be a selection of
+        //what user put in under advanced options
+        secondNumberArray.length===0 ? setSecondNum(Math.floor(Math.random()*10))
+        : setSecondNum(Number(secondNumberArray[Math.floor(Math.random()*secondNumberArray.length)][0]))
+        setFirstNum(Math.floor(Math.random()*props.firstNum)*secondNum)
+    }
+    },[change])
 
   if (props.timeAtt) {
     setTimeout(() => {
       setTime(time + 1);
     }, 1000);
   }
-
-  if(operation==='÷'){
-    if(firstNum%secondNum!==0){
-      setFirstNum(Math.floor(Math.random()*props.firstNum)*props.secondNum)
+  if(firstNum / secondNum < 0 || secondNum === 0){
+    if(Number.isInteger(props.secondNum)){
+        setSecondNum(Math.floor(Math.random() * props.secondNum));
+        setFirstNum(Math.floor(Math.random()*props.firstNum)*secondNum)
     }
-    if(secondNum===0){
-      setSecondNum(Math.floor(Math.random()*props.secondNum))
-      setFirstNum(Math.floor(Math.random()*props.firstNum)*props.secondNum)
+    else{ let secondNumberArray = Object.entries(props.secondNum)
+        secondNumberArray = secondNumberArray.filter(([key, value])=>{
+        if(value) 
+        return key
+    })
+    secondNumberArray.length===0 ? setSecondNum(Math.floor(Math.random()*10))
+    : setSecondNum(Number(secondNumberArray[Math.floor(Math.random()*secondNumberArray.length)][0]))
+    setFirstNum(Math.floor(Math.random()*props.firstNum*secondNum))
     }
   }
 
-  if(operation==='-'){
-    if(firstNum-secondNum<0){
-      setFirstNum(Math.floor(Math.random()*props.firstNum)+props.secondNum)
-    }
-  }
 
   function handleInputAnswer(e) {
-    if(operation==='+'){
-      if (firstNum + secondNum === Number(input)) {
+    if (firstNum / secondNum === Number(input)) {
       setMessage("Correct!");
       setChange(!change);
       setScore(score + 1);
       setInput("");
       setTextShadow(textShadowVals[Math.floor(Math.random() * textShadowVals.length)]);
       setQuestionNumber(questionNumber + 1);
-      } else {
-      setMessage(`Incorrect, the answer was ${firstNum + secondNum}`);
+    } else {
+      setMessage(`Incorrect, the answer was ${firstNum / secondNum}`);
       setChange(!change);
       setInput("");
       setQuestionNumber(questionNumber + 1);
-      }
-    }
-    if(operation==='-'){
-      if (firstNum - secondNum === Number(input)) {
-        setMessage("Correct!");
-        setChange(!change);
-        setScore(score + 1);
-        setInput("");
-        setTextShadow(textShadowVals[Math.floor(Math.random() * textShadowVals.length)]);
-        setQuestionNumber(questionNumber + 1);
-      } else {
-        setMessage(`Incorrect, the answer was ${firstNum - secondNum}`);
-        setChange(!change);
-        setInput("");
-        setQuestionNumber(questionNumber + 1);
-      }
-    }
-    if(operation==='×'){
-      if (firstNum * secondNum === Number(input)) {
-        setMessage("Correct!");
-        setChange(!change);
-        setScore(score + 1);
-        setInput("");
-        setTextShadow(textShadowVals[Math.floor(Math.random() * textShadowVals.length)]);
-        setQuestionNumber(questionNumber + 1);
-      } else {
-        setMessage(`Incorrect, the answer was ${firstNum * secondNum}`);
-        setChange(!change);
-        setInput("");
-        setQuestionNumber(questionNumber + 1);
-      }
-    }
-    if(operation==='÷'){
-      if (firstNum / secondNum === Number(input)) {
-        setMessage("Correct!");
-        setChange(!change);
-        setScore(score + 1);
-        setInput("");
-        setTextShadow(textShadowVals[Math.floor(Math.random() * textShadowVals.length)]);
-        setQuestionNumber(questionNumber + 1);
-      } else {
-        setMessage(`Incorrect, the answer was ${firstNum / secondNum}`);
-        setChange(!change);
-        setInput("");
-        setQuestionNumber(questionNumber + 1);
-      }
     }
   }
-
   return (
     <ImageBackground source={selectBG} resizeMode='cover'>
     <View>
@@ -156,7 +106,7 @@ export default function RandomProblems(props) {
           <View style={styles.problemContainer}>
             <Text style={{...styles.number, textShadowColor: textShadow, textShadowRadius: 30}}>{firstNum}</Text>
             <Text style={{...styles.number, textShadowColor: textShadow, textShadowRadius: 30}}>
-              <Text style={styles.operator}>{operation} </Text>
+              <Text style={styles.operator}>÷ </Text>
               {secondNum}
               </Text>
             <TextInput
@@ -187,7 +137,7 @@ export default function RandomProblems(props) {
             difficulty={props.difficulty}
             questionAmount={questionNumber}
             navigation={props.navigation}
-            operation = {'random'}
+            operation = {'division'}
             timeAtt = {props.timeAtt}
             timeAmt = {props.timeAmt}
             custom = {props.custom}
@@ -213,7 +163,7 @@ const styles = StyleSheet.create({
   scoreContainer: {
     justifyContent: 'flex-start',
     alignItems: "center",
-    padding: screenHeightAdjusted > 667 ? 20 : 3,
+    padding: screenHeightAdjusted < 667 ? 3 : 20,
     borderColor:'#b8100f',
     borderRadius:10,
     borderWidth: 5,
@@ -221,11 +171,11 @@ const styles = StyleSheet.create({
   },
   textInput: {
     textAlign: "center",
-    fontSize: screen.height > 900 ? screen.height*.025: 18,
+    fontSize: 18,
     fontFamily: "Azeret",
     color: "white",
     borderWidth: 5,
-    width: screen.width > 600 ? screen.width*.45:screen.width*.65,
+    width: 210,
     borderColor: "#b8100f",
     marginTop: 5,
     fontWeight:'bold',
@@ -233,24 +183,24 @@ const styles = StyleSheet.create({
     outlineColor: 'black',
   },
   problemContainer: {
-    width: screen.width > 600 ? screen.width*.45 : screen.width * 0.65,
+    width: screen.width * 0.65,
     alignItems: "flex-end",
     marginTop: 15,
     marginRight: 15,
   },
   number: {
-    fontSize: screen.height >900 ? screen.height*.1: 70,
+    fontSize: 70,
     fontFamily: "Azeret",
     color: "white",
   },
   message: {
     paddingTop: 5,
-    fontSize: screen.height > 900 ? screen.height*.02: 15,
+    fontSize: 15,
     fontFamily: "Azeret",
     color: "white",
   },
   score: {
-    fontSize: screen.height > 900 ? 25:20,
+    fontSize: 20,
     fontFamily: "Azeret",
     color: "white",
     justifyContent: 'center',

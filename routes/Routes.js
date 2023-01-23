@@ -4,11 +4,13 @@ import MainMenu from "../components/MainMenu";
 import {
   AdditionMenu,
   SubtractionMenu,
-  MultiplicationGame,
-  DivisionGame,
   RandomMenu,
   AdvancedSettingsAddition,
   AdvancedSettingsSubtraction,
+  MultiplicationMenu,
+  AdvancedSettingsMultiplication,
+  DivisionMenu,
+  AdvancedSettingsDivision,
   GameOver,
 } from "../components/gameModes";
 import About from '../components/About'
@@ -93,8 +95,10 @@ const Navigation = () => {
       <Stack.Screen name="AdvancedSettingsAddition" component={AdvancedSettingsAddition}/>
       <Stack.Screen name="SubtractionMenu" component={SubtractionMenu} />
       <Stack.Screen name='AdvancedSettingsSubtraction' component={AdvancedSettingsSubtraction}/>
-      <Stack.Screen name="MultiplicationGame" component={MultiplicationGame} />
-      <Stack.Screen name="DivisionGame" component={DivisionGame} />
+      <Stack.Screen name="MultiplicationMenu" component={MultiplicationMenu}/>
+      <Stack.Screen name='AdvancedSettingsMultiplication' component={AdvancedSettingsMultiplication}/>
+      <Stack.Screen name="DivisionMenu" component={DivisionMenu} />
+      <Stack.Screen name='AdvancedSettingsDivision' component={AdvancedSettingsDivision}/>
       <Stack.Screen name="GameOver" component={GameOver} />
       <Stack.Screen name="Scores" component={Scores} />
       <Stack.Screen name='RandomMenu' component={RandomMenu}/>
@@ -121,14 +125,14 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   modalView: {
-    margin: 20,
-    height: screen.height * 0.85,
+    // margin: screen.height * 0.15,
+    height: screen.height * 0.90,
     width: screen.width * 0.9,
     backgroundColor: "black",
     borderRadius: 20,
     borderColor: 'red',
     borderWidth: 2,
-    padding: 35,
+    // padding: screen.height * 0.04,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
