@@ -11,9 +11,7 @@ import {
 import BouncyCheckboxGroup, {
 } from "react-native-bouncy-checkbox-group";
 import RandomProblems from "./RandomProblems";
-import cogPic from "../../assets/img/cog.png";
 import selectBG from "../../assets/img/selectBG.jpg";
-import MixedProblems from "./RandomProblems";
 const screen = Dimensions.get("screen");
 const screenHeightAdjusted = screen.height - 45; // subtract height of navigation stack bar
 
