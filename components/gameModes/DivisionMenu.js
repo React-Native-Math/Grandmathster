@@ -59,7 +59,7 @@ export default function DivisionMenu({ navigation }) {
 
   const handleDifficulty = (e, first, second, difficulty) => {
     console.log(first)
-    if (first === 1) first = 5; second = 5 // adjusting 
+    if (first === 1) first = 8; second = 8 // adjusting 
     setDifficultyFirstNum(first);
     setDifficultySecondNum(second);
     setDifficulty(difficulty);

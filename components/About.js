@@ -127,11 +127,11 @@ export default function Welcome() {
               <Pressable
                 onPress={() =>
                   Linking.openURL(
-                    "mailto:INSERT_EMAIL@gmail.com?subject=Feedback: Grandmathster&body="
+                    "mailto:billmunkacsy@gmail.com?subject=Feedback: Grandmathster&body="
                   )
                 }
               >
-                <Text style={styles.emailLinks}>INSERT_EMAIL@gmail.com</Text>
+                <Text style={styles.emailLinks}>billmunkacsy@gmail.com</Text>
               </Pressable>
             </View>
             {"\n"}

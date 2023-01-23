@@ -29,7 +29,7 @@ export default function DivisionProblems(props) {
     //check to see if props.firstNum is a number or object and then set first number
         if(Number.isInteger(props.secondNum)){          
             setSecondNum(Math.floor(Math.random() * props.secondNum));
-            console.log('f', firstNum, 's', secondNum)
+            // console.log('f', firstNum, 's', secondNum)
         }
         else{ let secondNumberArray = Object.entries(props.secondNum)
             secondNumberArray = secondNumberArray.filter(([key, value])=>{
