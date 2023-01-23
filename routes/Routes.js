@@ -6,7 +6,7 @@ import {
   SubtractionMenu,
   MultiplicationGame,
   DivisionGame,
-  RandomGame,
+  RandomMenu,
   AdvancedSettingsAddition,
   AdvancedSettingsSubtraction,
   GameOver,
@@ -95,9 +95,9 @@ const Navigation = () => {
       <Stack.Screen name='AdvancedSettingsSubtraction' component={AdvancedSettingsSubtraction}/>
       <Stack.Screen name="MultiplicationGame" component={MultiplicationGame} />
       <Stack.Screen name="DivisionGame" component={DivisionGame} />
-      <Stack.Screen name="RandomGame" component={RandomGame} />
       <Stack.Screen name="GameOver" component={GameOver} />
       <Stack.Screen name="Scores" component={Scores} />
+      <Stack.Screen name='RandomMenu' component={RandomMenu}/>
     </Stack.Navigator>
   );
 };

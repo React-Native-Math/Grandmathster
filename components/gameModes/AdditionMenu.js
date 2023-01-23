@@ -57,7 +57,7 @@ export default function AdditionMenu({ navigation }) {
     };
   });
 
-  //easy is fine, medium we want 2 digit + 1 digit, hard we want 2 digits + digits
+  //easy is fine, medium we want 2 digit + 1 digit, hard we want 2 digits + 3 digits
 
   const handleDifficulty = (e, first, second, difficulty) => {
     setDifficultyFirstNum(first);
@@ -128,13 +128,14 @@ export default function AdditionMenu({ navigation }) {
           <View style={styles.separator}></View>
           <View style={styles.buttonsContainer}>
             {difficulties.map((difficulty, idx) => {
-              const maxNum = 10 ** (idx + 1); // sets the maximum possible number for the selected difficulty
+              const firstNum = [10,10,100]
+              const secondNum = [10,100,1000]
               return (
                 <Pressable
                   key={idx}
                   style={styles[`menuButton${idx}`]}
                   onPress={(e) =>
-                    handleDifficulty(e, maxNum, maxNum, difficulty)
+                    handleDifficulty(e, firstNum[idx], secondNum[idx], difficulty)
                   }
                 >
                   <Text style={styles.menuText}>{difficulty}</Text>

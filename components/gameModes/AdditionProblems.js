@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     fontFamily: "Azeret",
     color: "white",
     borderWidth: 5,
-    width: 210,
+    width: screen.width > 600 ? screen.width*.45:screen.width*.65,
     borderColor: "#b8100f",
     marginTop: 5,
     fontWeight:'bold',

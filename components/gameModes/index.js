@@ -6,6 +6,7 @@ import AdvancedSettingsAddition from "./AdvancedSettingsAddition";
 import GameOver from "./GameOver";
 import SubtractionMenu from './SubtractionMenu'
 import AdvancedSettingsSubtraction from "./AdvancedSettingsSubtraction";
+import RandomMenu from "./RandomMenu";
 
 export {
   AdditionMenu,
@@ -15,5 +16,6 @@ export {
   AdvancedSettingsAddition,
   GameOver,
   SubtractionMenu,
-  AdvancedSettingsSubtraction
+  AdvancedSettingsSubtraction,
+  RandomMenu,
 };

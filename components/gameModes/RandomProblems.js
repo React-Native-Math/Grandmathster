@@ -5,11 +5,11 @@ import selectBG from '../../assets/img/selectBG.jpg'
 const screen = Dimensions.get("screen");
 const screenHeightAdjusted = screen.height - 45; // subtract height of navigation stack bar
 
-export default function SubtractionProblems(props) {
+export default function RandomProblems(props) {
   const [input, setInput] = useState("");
   const [message, setMessage] = useState("");
-  const [secondNum, setSecondNum] = useState(null);
   const [firstNum, setFirstNum] = useState(null);
+  const [secondNum, setSecondNum] = useState(null);
   const [change, setChange] = useState(false);
   const [score, setScore] = useState(0);
   const [questionNumber, setQuestionNumber] = useState(0);
@@ -17,57 +17,36 @@ export default function SubtractionProblems(props) {
   const [textShadow, setTextShadow] = useState('#FFFFFF')
 
   const textShadowVals = ['#FFFFFF', '#FF355E', '#FFFF66', '#CCFF00', '#FF6EFF', '#AAF0D1', '#00FFFF']
-  useEffect(() => {
 
+  useEffect(() => {
     //second number always gets passed as an integer. This takes a random number up to the selection.
+        setSecondNum(Math.floor(Math.random()*props.secondNum))
         
     //check to see if props.firstNum is a number or object and then set first number
-        if(Number.isInteger(props.secondNum)){
-            setSecondNum(Math.floor(Math.random() * props.secondNum));
-        
-            setFirstNum(Math.floor(Math.random()*props.firstNum)+secondNum)
+        if(Number.isInteger(props.firstNum)){
+            setFirstNum(Math.floor(Math.random()*props.firstNum))
         }
-        else{ let secondNumberArray = Object.entries(props.secondNum)
-            secondNumberArray = secondNumberArray.filter(([key, value])=>{
+        else{ let firstNumberArray = Object.entries(props.firstNum)
+            firstNumberArray = firstNumberArray.filter(([key, value])=>{
             if(value) 
             return key
         })
         //check to see if user passed in an empty object or with every number being toggled false
         //if false set the first number to be between 0 and 10. else set first number to be a selection of
         //what user put in under advanced options
-        secondNumberArray.length===0 ? setSecondNum(Math.floor(Math.random()*10))
-        : setSecondNum(Number(secondNumberArray[Math.floor(Math.random()*secondNumberArray.length)][0]))
-        setFirstNum(Math.floor(Math.random()*props.firstNum)+secondNum)
+        firstNumberArray.length===0 ? setFirstNum(Math.floor(Math.random()*10))
+        : setFirstNum(Number(firstNumberArray[Math.floor(Math.random()*firstNumberArray.length)][0]))
     }
     },[change])
-
-    console.log('second: '+secondNum)
-    console.log('first: '+firstNum)
 
   if (props.timeAtt) {
     setTimeout(() => {
       setTime(time + 1);
     }, 1000);
   }
-  if(firstNum-secondNum<0){
-    if(Number.isInteger(props.secondNum)){
-        setSecondNum(Math.floor(Math.random() * props.secondNum));
-        setFirstNum(Math.floor(Math.random()*props.firstNum)+secondNum)
-    }
-    else{ let secondNumberArray = Object.entries(props.secondNum)
-        secondNumberArray = secondNumberArray.filter(([key, value])=>{
-        if(value) 
-        return key
-    })
-    secondNumberArray.length===0 ? setSecondNum(Math.floor(Math.random()*10))
-    : setSecondNum(Number(secondNumberArray[Math.floor(Math.random()*secondNumberArray.length)][0]))
-    setFirstNum(Math.floor(Math.random()*props.firstNum+secondNum))
-    }
-  }
-
 
   function handleInputAnswer(e) {
-    if (firstNum - secondNum === Number(input)) {
+    if (firstNum + secondNum === Number(input)) {
       setMessage("Correct!");
       setChange(!change);
       setScore(score + 1);
@@ -75,7 +54,7 @@ export default function SubtractionProblems(props) {
       setTextShadow(textShadowVals[Math.floor(Math.random() * textShadowVals.length)]);
       setQuestionNumber(questionNumber + 1);
     } else {
-      setMessage(`Incorrect, the answer was ${firstNum - secondNum}`);
+      setMessage(`Incorrect, the answer was ${firstNum + secondNum}`);
       setChange(!change);
       setInput("");
       setQuestionNumber(questionNumber + 1);
@@ -105,7 +84,7 @@ export default function SubtractionProblems(props) {
           <View style={styles.problemContainer}>
             <Text style={{...styles.number, textShadowColor: textShadow, textShadowRadius: 30}}>{firstNum}</Text>
             <Text style={{...styles.number, textShadowColor: textShadow, textShadowRadius: 30}}>
-              <Text style={styles.operator}>- </Text>
+              <Text style={styles.operator}>+ </Text>
               {secondNum}
               </Text>
             <TextInput
@@ -136,7 +115,7 @@ export default function SubtractionProblems(props) {
             difficulty={props.difficulty}
             questionAmount={questionNumber}
             navigation={props.navigation}
-            operation = {'subtraction'}
+            operation = {'addition'}
             timeAtt = {props.timeAtt}
             timeAmt = {props.timeAmt}
             custom = {props.custom}
@@ -147,6 +126,7 @@ export default function SubtractionProblems(props) {
     </ImageBackground>
   );
 }
+
 
 
 const styles = StyleSheet.create({
