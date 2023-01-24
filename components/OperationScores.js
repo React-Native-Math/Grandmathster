@@ -51,7 +51,6 @@ export default function OperationScores(props) {
           {props.operation} time attack scores
         </Text>
         <View style={styles.scoresContainer}>
-          {console.log(checkHighScores(highScoresArr))}
           {highScoresArr.length && checkHighScores(highScoresArr) > 0 ? (
             highScoresArr.map((elem, idx) => {
               if (elem[1]) {

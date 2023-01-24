@@ -23,6 +23,7 @@ export default function AdvancedSettingsAddition({ navigation }) {
   const [questionAmount, setQuestionAmount] = useState(10);
   const [timeAttack, setTimeAttack] = useState(false);
   const [timeAmount, setTimeAmount] = useState(Infinity);
+  const [fieldInput, setFieldInput] = useState('')
 
   const checkboxOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -92,22 +93,30 @@ export default function AdvancedSettingsAddition({ navigation }) {
 
                 <TextInput
                   style={styles.inputField}
-                  onChangeText={(input) => {
-                    const nums='0123456789'
-                    let newText = ''
-                    for (var i=0; i < input.length; i++) {
-                      if(nums.indexOf(input[i]) > -1 ) {
-                          newText = newText + input[i];
-                      }
+                  onChangeText = {(input) => {
+                    const changeText = (input) => {
+                      let newText = input.replace(/[^0-9]+/, '')
+                      setFieldInput(newText)
                     }
-                  setSecondNumMax(newText)
-                  }
-                  }
+                    changeText(input)
+                  }}
+                  value={fieldInput}
+                  // onChangeText={(input) => {
+                  //   const nums='0123456789'
+                  //   let newText = ''
+                  //   for (var i=0; i < input.length; i++) {
+                  //     if(nums.indexOf(input[i]) > -1 ) {
+                  //         newText = newText + input[i];
+                  //     }
+                  //   }
+                  // setSecondNumMax(newText)
+                  // }
+                  // }
                   keyboardType="number-pad"
                   placeholder="type here (default = 10)"
                   placeholderTextColor="#b8100f"
                   returnKeyType="done"
-                  maxLength={3}
+                  maxLength={30}
                 />
               </View>
               <View style={styles.separator}></View>
