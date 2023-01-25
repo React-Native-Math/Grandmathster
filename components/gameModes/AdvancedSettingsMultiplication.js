@@ -107,6 +107,7 @@ export default function AdvancedSettingsMultiplication({ navigation }) {
                   placeholder="type here (default = 10)"
                   placeholderTextColor="#b8100f"
                   returnKeyType="done"
+                  maxLength={3}
                 />
               </View>
               <View style={styles.separator}></View>
@@ -130,6 +131,7 @@ export default function AdvancedSettingsMultiplication({ navigation }) {
                 placeholder="type here (default = 10)"
                 placeholderTextColor="#b8100f"
                 returnKeyType="done"
+                maxLength={3}
               />
               <View style={styles.separator}></View>
 
@@ -153,6 +155,7 @@ export default function AdvancedSettingsMultiplication({ navigation }) {
                 placeholder="type here (default = unlimited)"
                 placeholderTextColor="#b8100f"
                 returnKeyType="done"
+                maxLength={3}
               />
               <View style={styles.separator}></View>
               <Pressable
