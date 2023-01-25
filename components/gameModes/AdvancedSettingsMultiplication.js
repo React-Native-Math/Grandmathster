@@ -56,10 +56,10 @@ export default function AdvancedSettingsMultiplication({ navigation }) {
       {showMultiplicationPage ? (
         <MultiplicationProblems
           firstNum={firstNumIncluded}
-          secondNum={secondNumMax}
-          maxQuestionsNumber={questionAmount}
-          timeAtt={timeAttack}
-          timeAmt={timeAmount}
+          secondNum={secondNumMax===0 ? 10 : secondNumMax}
+          maxQuestionsNumber={questionAmount===0 ? 10: questionAmount}
+          timeAtt={timeAmount === 0 ? false: timeAttack}
+          timeAmt={timeAmount===0 ? 10 : timeAmount}
           difficulty={"custom settings"}
           navigation={navigation}
           custom={true}

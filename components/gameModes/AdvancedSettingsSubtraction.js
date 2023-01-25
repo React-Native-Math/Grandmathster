@@ -57,9 +57,9 @@ console.log(secondNumIncluded)
         <SubtractionProblems
           firstNum={firstNumMax < 10 ? 10 :firstNumMax-10}
           secondNum={secondNumIncluded}
-          maxQuestionsNumber={questionAmount}
-          timeAtt={timeAttack}
-          timeAmt={timeAmount}
+          maxQuestionsNumber={questionAmount===0 ? 10: questionAmount}
+          timeAtt={timeAmount === 0 ? false: timeAttack}
+          timeAmt={timeAmount===0 ? 10 : timeAmount}
           difficulty={"custom settings"}
           navigation={navigation}
           custom={true}

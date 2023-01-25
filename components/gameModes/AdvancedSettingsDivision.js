@@ -55,11 +55,11 @@ console.log(secondNumIncluded)
     <>
       {showDivisionPage ? (
         <DivisionProblems
-          firstNum={firstNumMax < 10 ? 10 :firstNumMax-10}
+          firstNum={firstNumMax < 10 ? 10 : firstNumMax/10}
           secondNum={secondNumIncluded}
-          maxQuestionsNumber={questionAmount}
-          timeAtt={timeAttack}
-          timeAmt={timeAmount}
+          maxQuestionsNumber={questionAmount===0 ? 10: questionAmount}
+          timeAtt={timeAmount === 0 ? false: timeAttack}
+          timeAmt={timeAmount===0 ? 10 : timeAmount}
           difficulty={"custom settings"}
           navigation={navigation}
           custom={true}
@@ -104,7 +104,7 @@ console.log(secondNumIncluded)
                   }
                   }
                   keyboardType="number-pad"
-                  placeholder="type here (default = 20)"
+                  placeholder="type here (default = 100)"
                   placeholderTextColor="#b8100f"
                   returnKeyType="done"
                 />
