@@ -72,15 +72,14 @@ We are excited to present Grandmathster to you and hope it improves your mathema
 
 ### Installation
 
-<a href="INSERTURL"><img style="float:left; vertical-align:top; margin-top: 0.45em" alt="Grandmathster logo" src="./assets/documentation/img/grandmathsterLogoApp.jpg" width=85/></a>
+<a href="INSERTURL"><img style="vertical-align:top; margin-top: 0.45em" align="left" alt="Grandmathster logo" src="./assets/documentation/img/grandmathsterLogoApp.jpg" width=85/></a>
 
-<div style="margin-left:7em">
+<p style="margin-left:7em">
 Grandmathster is available from the app store at the following URL:  
 [INSERT URL -> guide: https://developer.apple.com/library/archive/qa/qa1633/_index.html].
-<br></br>
-</div>
-<div>
-The app is free to download and is compatible with iOS devices (iPhone and iPads)</div>
+</p>
+<p>
+The app is free to download and is compatible with iOS devices (iPhone and iPads)</p>
 
 ### Playing the game
 

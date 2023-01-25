@@ -113,6 +113,7 @@ export default function SubtractionProblems(props) {
               </Text>
             <TextInput
               style={styles.textInput}
+              selectionColor={'white'}
               placeholder={questionNumber !== 0 ? "" : "type your answer"}
               onChangeText={(userInput) => {
                 setInput(userInput);
