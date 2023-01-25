@@ -100,9 +100,8 @@ export default function AdvancedSettingsAddition({ navigation }) {
                           newText = newText + input[i];
                       }
                     }
-                  setSecondNumMax(newText)
-                  }
-                  }
+                  setSecondNumMax(Number(newText))
+                  }}
                   keyboardType="number-pad"
                   placeholder="type here (default = 10)"
                   placeholderTextColor="#b8100f"
@@ -116,11 +115,21 @@ export default function AdvancedSettingsAddition({ navigation }) {
               >{`Choose the number of questions`}</Text>
               <TextInput
                 style={styles.inputField}
-                onChangeText={(input) => setQuestionAmount(Number(input))}
+                onChangeText={(input) => {
+                  const nums='0123456789'
+                  let newText = ''
+                  for (var i=0; i < input.length; i++) {
+                    if(nums.indexOf(input[i]) > -1 ) {
+                        newText = newText + input[i];
+                    }
+                  }
+                setQuestionAmount(Number(newText))
+                }}
                 keyboardType="number-pad"
                 placeholder="type here (default = 10)"
                 placeholderTextColor="#b8100f"
                 returnKeyType="done"
+                maxLength={3}
               />
               <View style={styles.separator}></View>
 
@@ -130,13 +139,21 @@ export default function AdvancedSettingsAddition({ navigation }) {
               <TextInput
                 style={styles.inputField}
                 onChangeText={(input) => {
-                  setTimeAmount(Number(input));
-                  setTimeAttack(true);
+                  const nums='0123456789'
+                  let newText = ''
+                  for (var i=0; i < input.length; i++) {
+                    if(nums.indexOf(input[i]) > -1 ) {
+                        newText = newText + input[i];
+                    }
+                  }
+                setTimeAmount(Number(newText))
+                setTimeAttack(true)
                 }}
                 keyboardType="number-pad"
                 placeholder="type here (default = unlimited)"
                 placeholderTextColor="#b8100f"
                 returnKeyType="done"
+                maxLength={3}
               />
               <View style={styles.separator}></View>
               <Pressable

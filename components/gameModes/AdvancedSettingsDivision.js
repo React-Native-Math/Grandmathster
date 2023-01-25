@@ -92,7 +92,17 @@ console.log(secondNumIncluded)
 
                 <TextInput
                   style={styles.inputField}
-                  onChangeText={(input) => setFirstNumMax(Number(input))}
+                      onChangeText={(input) => {
+                    const nums='0123456789'
+                    let newText = ''
+                    for (var i=0; i < input.length; i++) {
+                      if(nums.indexOf(input[i]) > -1 ) {
+                          newText = newText + input[i];
+                      }
+                    }
+                  setFirstNumMax(Number(newText))
+                  }
+                  }
                   keyboardType="number-pad"
                   placeholder="type here (default = 20)"
                   placeholderTextColor="#b8100f"
@@ -105,7 +115,17 @@ console.log(secondNumIncluded)
               >{`Choose the number of questions`}</Text>
               <TextInput
                 style={styles.inputField}
-                onChangeText={(input) => setQuestionAmount(Number(input))}
+                onChangeText={(input) => {
+                  const nums='0123456789'
+                  let newText = ''
+                  for (var i=0; i < input.length; i++) {
+                    if(nums.indexOf(input[i]) > -1 ) {
+                        newText = newText + input[i];
+                    }
+                  }
+                setQuestionAmount(Number(newText))
+                }
+                }
                 keyboardType="number-pad"
                 placeholder="type here (default = 10)"
                 placeholderTextColor="#b8100f"
@@ -119,9 +139,17 @@ console.log(secondNumIncluded)
               <TextInput
                 style={styles.inputField}
                 onChangeText={(input) => {
-                  setTimeAmount(Number(input));
-                  setTimeAttack(true);
-                }}
+                  const nums='0123456789'
+                  let newText = ''
+                  for (var i=0; i < input.length; i++) {
+                    if(nums.indexOf(input[i]) > -1 ) {
+                        newText = newText + input[i];
+                    }
+                  }
+                setTimeAmount(Number(newText))
+                setTimeAttack(true)
+                }
+                }
                 keyboardType="number-pad"
                 placeholder="type here (default = unlimited)"
                 placeholderTextColor="#b8100f"
