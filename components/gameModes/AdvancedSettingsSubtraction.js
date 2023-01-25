@@ -50,7 +50,6 @@ export default function AdvancedSettingsSubtraction({ navigation }) {
       [selectedItem]: !secondNumIncluded[selectedItem],
     });
   };
-console.log(secondNumIncluded)
   return (
     <>
       {showSubtractionPage ? (

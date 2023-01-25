@@ -13,7 +13,7 @@ import {
   AdvancedSettingsDivision,
   GameOver,
 } from "../components/gameModes";
-import About from '../components/About'
+import ModalPage from "../components/ModalPage";
 import {
   Image,
   Pressable,
@@ -24,8 +24,8 @@ import {
   Dimensions,
 } from "react-native";
 import help from "../assets/img/help.png";
-import { useState} from "react";
-import Scores from '../components/Scores'
+import { useState } from "react";
+import Scores from "../components/Scores";
 
 const Stack = createNativeStackNavigator();
 const screen = Dimensions.get("screen");
@@ -49,7 +49,7 @@ function ArrowButton() {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <About />
+              <ModalPage />
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(!modalVisible)}
@@ -76,45 +76,53 @@ const Navigation = () => {
       screenOptions={{
         headerTitle: (props) => <ArrowButton />,
         headerTintColor: "#B8100F",
-        headerStyle: { backgroundColor: 'black', height: 45},
+        headerStyle: { backgroundColor: "black", height: 45 },
         headerTitleStyle: {
           color: "white",
         },
-        // contentStyle: {
-        //   borderTopColor: 'red',
-        //   borderTopWidth: 3,
-        // },
       }}
     >
       <Stack.Screen
         name="Home"
         component={MainMenu}
-        options={{ title: "Grandmathster"}}
+        options={{ title: "Grandmathster" }}
       />
       <Stack.Screen name="AdditionMenu" component={AdditionMenu} />
-      <Stack.Screen name="AdvancedSettingsAddition" component={AdvancedSettingsAddition}/>
+      <Stack.Screen
+        name="AdvancedSettingsAddition"
+        component={AdvancedSettingsAddition}
+      />
       <Stack.Screen name="SubtractionMenu" component={SubtractionMenu} />
-      <Stack.Screen name='AdvancedSettingsSubtraction' component={AdvancedSettingsSubtraction}/>
-      <Stack.Screen name="MultiplicationMenu" component={MultiplicationMenu}/>
-      <Stack.Screen name='AdvancedSettingsMultiplication' component={AdvancedSettingsMultiplication}/>
+      <Stack.Screen
+        name="AdvancedSettingsSubtraction"
+        component={AdvancedSettingsSubtraction}
+      />
+      <Stack.Screen name="MultiplicationMenu" component={MultiplicationMenu} />
+      <Stack.Screen
+        name="AdvancedSettingsMultiplication"
+        component={AdvancedSettingsMultiplication}
+      />
       <Stack.Screen name="DivisionMenu" component={DivisionMenu} />
-      <Stack.Screen name='AdvancedSettingsDivision' component={AdvancedSettingsDivision}/>
+      <Stack.Screen
+        name="AdvancedSettingsDivision"
+        component={AdvancedSettingsDivision}
+      />
       <Stack.Screen name="GameOver" component={GameOver} />
       <Stack.Screen name="Scores" component={Scores} />
-      <Stack.Screen name='RandomMenu' component={RandomMenu}/>
+      <Stack.Screen name="RandomMenu" component={RandomMenu} />
     </Stack.Navigator>
   );
 };
 
 const styles = StyleSheet.create({
   helpIconContainer: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     width: screen.width,
     height: 30,
   },
   helpIcon: {
-    position: 'absolute',
+    position: "absolute",
     width: 30,
     height: 30,
   },
@@ -125,14 +133,12 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   modalView: {
-    // margin: screen.height * 0.15,
-    height: screen.height * 0.90,
+    height: screen.height * 0.9,
     width: screen.width * 0.9,
     backgroundColor: "black",
     borderRadius: 20,
-    borderColor: 'red',
+    borderColor: "red",
     borderWidth: 2,
-    // padding: screen.height * 0.04,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {

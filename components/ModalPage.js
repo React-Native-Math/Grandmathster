@@ -17,7 +17,7 @@ const screen = Dimensions.get("screen");
 
 const badges = [badgeAdd, badgeSub, badgeMul, badgeDiv, badgeRan];
 
-export default function Welcome() {
+export default function ModalPage() {
   return (
     <>
       <View style={styles.container}>
@@ -25,7 +25,10 @@ export default function Welcome() {
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
         >
+          {/* Scroll helper text (top corner) */}
           <Text style={styles.scrollIndicator}>Scroll for more ↓</Text>
+          {/* ModalPage Main Section */}
+          {/* About */}
           <Text style={styles.sectionHeading}>About</Text>
           <Text style={styles.sectionInfo}>
             Grandmathster is a game that'll put your mental math skills to the
@@ -33,6 +36,7 @@ export default function Welcome() {
             mode from the main menu to begin. You can sharpen your skills with
             digits of different lengths or try out the time attack modes.
           </Text>
+          {/* Game Modes */}
           <Text style={styles.sectionHeading}>Game Modes</Text>
           <Text style={styles.sectionInfo}>
             The four main modes of the game are based on the four mathematical
@@ -82,13 +86,17 @@ export default function Welcome() {
               </Text>
             </View>
           </View>
+          {/* Scores */}
           <Text style={styles.sectionHeading}>Scores</Text>
           <View style={styles.scoresSectionContainer}>
             <Text style={styles.sectionInfo}>
               At the end of each game, you'll achieve a rank and get to see how
               many questions you answered correctly. The reward for a
               Grandmathster rank are badges. Your accuracy and the game mode
-              you're playing will determine how many of these you earn. Specifically, you can earn 1 badge from a 10 question game, 2 badges from a 20 question game and 5 badges from a 30 question game.
+              you're playing will determine how many of these you earn.
+              Specifically, you can earn 1 badge from a 10 question game, 2
+              badges from a 20 question game and 5 badges from a 30 question
+              game.
             </Text>
             <View style={styles.badgesContainer}>
               {badges.map((badge, idx) => {
@@ -104,9 +112,10 @@ export default function Welcome() {
               up and to view your high scores.
             </Text>
           </View>
+          {/* Feedback */}
           <Text style={styles.sectionHeading}>Feedback</Text>
           <Text style={styles.sectionInfo}>
-            We hope you enjoy improving your mental math skills with
+            We hope you enjoy exercising your mental math skills with
             Grandmathster. Please help us improve this game in future updates by
             leaving reviews on the app store. If you would like to provide any
             other feedback or report issues with the app, please touch below to

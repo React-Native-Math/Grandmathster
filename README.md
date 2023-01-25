@@ -65,16 +65,19 @@ Players have the choice of answering questions on addition, subtraction, multipl
 
 Grandmathster was written in React Native and made use of Expo for building, testing, and deploying purposes.
 
-We are proud and excited to present Grandmathster to you. Enjoy!
+We are excited to present Grandmathster to you and hope it improves your mathematical skills. Enjoy!
 
 ### Installation
 
-<img style="float:left; vertical-align:top; margin-top: 0.45em" alt="Grandmathster logo" src="./assets/documentation/img/grandmathsterLogoApp.jpg" width=85/>
+<a href="INSERTURL"><img style="float:left; vertical-align:top; margin-top: 0.45em" alt="Grandmathster logo" src="./assets/documentation/img/grandmathsterLogoApp.jpg" width=85/></a>
 
 <div style="margin-left:7em">
-Grandmathster is available from the app store at the following URL: [INSERT URL -> guide: https://developer.apple.com/library/archive/qa/qa1633/_index.html].
+Grandmathster is available from the app store at the following URL:  
+[INSERT URL -> guide: https://developer.apple.com/library/archive/qa/qa1633/_index.html].
 <br></br>
-The app is free to download and is compatible with iOS devices (iPhone and iPads) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+</div>
+<div>
+The app is free to download and is compatible with iOS devices (iPhone and iPads)</div>
 
 ### Playing the game
 
