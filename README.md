@@ -61,7 +61,7 @@ Overview of motivation -- why is mental math important / audience / random mode 
 
 [![ReactNative][ReactNative]][ReactNative-url]  [![Expo][Expo]][Expo-url]
 
-Grandmathster was coded in React Native and made use of Expo for building, testing, and deploying purposes.
+Grandmathster was written in React Native and made use of Expo for building, testing, and deploying purposes.
 
 We are proud and excited to present Grandmathster to you. Enjoy!
 

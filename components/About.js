@@ -26,7 +26,6 @@ export default function Welcome() {
           showsHorizontalScrollIndicator={false}
         >
           <Text style={styles.scrollIndicator}>Scroll for more ↓</Text>
-          {/* ⌄ */}
           <Text style={styles.sectionHeading}>About</Text>
           <Text style={styles.sectionInfo}>
             Grandmathster is a game that'll put your mental math skills to the
@@ -89,7 +88,7 @@ export default function Welcome() {
               At the end of each game, you'll achieve a rank and get to see how
               many questions you answered correctly. The reward for a
               Grandmathster rank are badges. Your accuracy and the game mode
-              you're playing will determine how many of these you earn.
+              you're playing will determine how many of these you earn. Specifically, you can earn 1 badge from a 10 question game, 2 badges from a 20 question game and 5 badges from a 30 question game.
             </Text>
             <View style={styles.badgesContainer}>
               {badges.map((badge, idx) => {
