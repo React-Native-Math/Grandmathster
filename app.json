@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "MentalMath",
-    "slug": "MentalMath",
+    "name": "GrandMathster",
+    "slug": "grandMathster",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
