@@ -67,7 +67,6 @@ const Scores = () => {
         const operation = badges[idx].name.toLowerCase();
         let jsonValue = await AsyncStorage.getItem(operation);
         if (jsonValue === "undefined") jsonValue = null;
-        // console.log('>> ', typeof(jsonValue))
         // TODO: Look into this - dirty fix above -- why is it undefined?
         const output = jsonValue != null ? JSON.parse(jsonValue) : 0;
         badges[idx].func(output);
