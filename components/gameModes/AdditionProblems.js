@@ -46,7 +46,13 @@ export default function AdditionProblems(props) {
   }
 
   function handleInputAnswer(e) {
-    if (firstNum + secondNum === Number(input)) {
+    if(input===''){
+      setMessage(`Incorrect, the answer was ${firstNum + secondNum}`);
+      setChange(!change);
+      setInput("");
+      setQuestionNumber(questionNumber + 1);
+    }
+    else if (firstNum + secondNum === Number(input)) {
       setMessage("Correct!");
       setChange(!change);
       setScore(score + 1);

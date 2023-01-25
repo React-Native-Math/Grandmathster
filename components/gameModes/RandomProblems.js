@@ -71,7 +71,13 @@ export default function RandomProblems(props) {
 
   function handleInputAnswer(e) {
     if(operation==='+'){
-      if (firstNum + secondNum === Number(input)) {
+      if(input===''){
+        setMessage(`Incorrect, the answer was ${firstNum + secondNum}`);
+        setChange(!change);
+        setInput("");
+        setQuestionNumber(questionNumber + 1);
+      }
+      else if (firstNum + secondNum === Number(input)) {
       setMessage("Correct!");
       setChange(!change);
       setScore(score + 1);
@@ -86,7 +92,13 @@ export default function RandomProblems(props) {
       }
     }
     if(operation==='-'){
-      if (firstNum - secondNum === Number(input)) {
+      if(input===''){
+        setMessage(`Incorrect, the answer was ${firstNum - secondNum}`);
+        setChange(!change);
+        setInput("");
+        setQuestionNumber(questionNumber + 1);
+      }
+      else if (firstNum - secondNum === Number(input)) {
         setMessage("Correct!");
         setChange(!change);
         setScore(score + 1);
@@ -101,7 +113,13 @@ export default function RandomProblems(props) {
       }
     }
     if(operation==='×'){
-      if (firstNum * secondNum === Number(input)) {
+      if(input===''){
+        setMessage(`Incorrect, the answer was ${firstNum * secondNum}`);
+        setChange(!change);
+        setInput("");
+        setQuestionNumber(questionNumber + 1);
+      }
+      else if (firstNum * secondNum === Number(input)) {
         setMessage("Correct!");
         setChange(!change);
         setScore(score + 1);
@@ -116,7 +134,13 @@ export default function RandomProblems(props) {
       }
     }
     if(operation==='÷'){
-      if (firstNum / secondNum === Number(input)) {
+      if(input===''){
+        setMessage(`Incorrect, the answer was ${firstNum / secondNum}`);
+        setChange(!change);
+        setInput("");
+        setQuestionNumber(questionNumber + 1);
+      }
+      else if (firstNum / secondNum === Number(input)) {
         setMessage("Correct!");
         setChange(!change);
         setScore(score + 1);

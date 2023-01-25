@@ -56,10 +56,10 @@ export default function AdvancedSettingsMultiplication({ navigation }) {
       {showMultiplicationPage ? (
         <MultiplicationProblems
           firstNum={firstNumIncluded}
-          secondNum={secondNumMax}
-          maxQuestionsNumber={questionAmount}
-          timeAtt={timeAttack}
-          timeAmt={timeAmount}
+          secondNum={secondNumMax===0 ? 10 : secondNumMax}
+          maxQuestionsNumber={questionAmount===0 ? 10: questionAmount}
+          timeAtt={timeAmount === 0 ? false: timeAttack}
+          timeAmt={timeAmount===0 ? 10 : timeAmount}
           difficulty={"custom settings"}
           navigation={navigation}
           custom={true}
@@ -92,11 +92,22 @@ export default function AdvancedSettingsMultiplication({ navigation }) {
 
                 <TextInput
                   style={styles.inputField}
-                  onChangeText={(input) => setSecondNumMax(Number(input))}
+                  onChangeText={(input) => {
+                    const nums='0123456789'
+                    let newText = ''
+                    for (var i=0; i < input.length; i++) {
+                      if(nums.indexOf(input[i]) > -1 ) {
+                          newText = newText + input[i];
+                      }
+                    }
+                  setSecondNumMax(Number(newText))
+                  }
+                  }
                   keyboardType="number-pad"
                   placeholder="type here (default = 10)"
                   placeholderTextColor="#b8100f"
                   returnKeyType="done"
+                  maxLength={3}
                 />
               </View>
               <View style={styles.separator}></View>
@@ -105,11 +116,22 @@ export default function AdvancedSettingsMultiplication({ navigation }) {
               >{`Choose the number of questions`}</Text>
               <TextInput
                 style={styles.inputField}
-                onChangeText={(input) => setQuestionAmount(Number(input))}
+                onChangeText={(input) => {
+                  const nums='0123456789'
+                  let newText = ''
+                  for (var i=0; i < input.length; i++) {
+                    if(nums.indexOf(input[i]) > -1 ) {
+                        newText = newText + input[i];
+                    }
+                  }
+                setQuestionAmount(Number(newText))
+                }
+                }
                 keyboardType="number-pad"
                 placeholder="type here (default = 10)"
                 placeholderTextColor="#b8100f"
                 returnKeyType="done"
+                maxLength={3}
               />
               <View style={styles.separator}></View>
 
@@ -118,14 +140,22 @@ export default function AdvancedSettingsMultiplication({ navigation }) {
               >{`Set the time limit`}</Text>
               <TextInput
                 style={styles.inputField}
-                onChangeText={(input) => {
-                  setTimeAmount(Number(input));
-                  setTimeAttack(true);
+                    onChangeText={(input) => {
+                  const nums='0123456789'
+                  let newText = ''
+                  for (var i=0; i < input.length; i++) {
+                    if(nums.indexOf(input[i]) > -1 ) {
+                        newText = newText + input[i];
+                    }
+                  }
+                setTimeAmount(Number(newText))
+                setTimeAttack(true)
                 }}
                 keyboardType="number-pad"
                 placeholder="type here (default = unlimited)"
                 placeholderTextColor="#b8100f"
                 returnKeyType="done"
+                maxLength={3}
               />
               <View style={styles.separator}></View>
               <Pressable

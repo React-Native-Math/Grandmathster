@@ -126,14 +126,14 @@ export default function DivisionMenu({ navigation }) {
           <View style={styles.separator}></View>
           <View style={styles.buttonsContainer}>
             {difficulties.map((difficulty, idx) => {
-              const maxNumFirst = 10 ** idx; // sets the maximum possible number for the selected difficulty
-              const maxNumSecond = 10;
+              const maxNumFirst = [8,12,20]; // sets the maximum possible number for the selected difficulty
+              const maxNumSecond = 10
               return (
                 <Pressable
                   key={idx}
                   style={styles[`menuButton${idx}`]}
                   onPress={(e) =>
-                    handleDifficulty(e, maxNumFirst, maxNumSecond, difficulty)
+                    handleDifficulty(e, maxNumFirst[idx], maxNumSecond, difficulty)
                   }
                 >
                   <Text style={styles.menuText}>{difficulty}</Text>
