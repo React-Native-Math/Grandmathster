@@ -12,7 +12,6 @@ import mainMenuBG from "../assets/img/mainMenuBG.jpg"
 const screen = Dimensions.get("screen");
 
 const Separator = () => <View style={styles.separator} />;
-const bg = { uri: "https://i.pinimg.com/736x/b8/38/af/b838afc8dd3a316f75b93ca9f78ce024.jpg" };
 
 const menuItems = [
   "ADDITION",

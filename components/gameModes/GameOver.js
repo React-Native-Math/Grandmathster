@@ -101,7 +101,7 @@ export default function GameOver({
       callReadAndWriteTimAttHighScores(score);
     }
     if (accuracy === 100) {
-      setMessage(
+      timeAtt ? setMessage(`Congratulations on achieving GRANDMATHSTER on ${difficultyLower} mode!`) : setMessage(
         `Congratulations on achieving GRANDMATHSTER on ${difficultyLower} mode! You earned a new '${operation} badge'`
       );
       if (!timeAtt) {

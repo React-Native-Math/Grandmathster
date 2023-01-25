@@ -50,7 +50,6 @@ export default function AdvancedSettingsDivision({ navigation }) {
       [selectedItem]: !secondNumIncluded[selectedItem],
     });
   };
-console.log(secondNumIncluded)
   return (
     <>
       {showDivisionPage ? (

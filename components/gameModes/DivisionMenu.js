@@ -8,8 +8,7 @@ import {
   ImageBackground,
   Dimensions,
 } from "react-native";
-import BouncyCheckboxGroup, {
-} from "react-native-bouncy-checkbox-group";
+import BouncyCheckboxGroup from "react-native-bouncy-checkbox-group";
 import DivisionProblems from "./DivisionProblems";
 import cogPic from "../../assets/img/cog.png";
 import selectBG from "../../assets/img/selectBG.jpg";
@@ -17,7 +16,6 @@ const screen = Dimensions.get("screen");
 const screenHeightAdjusted = screen.height - 45; // subtract height of navigation stack bar
 
 export default function DivisionMenu({ navigation }) {
-
   const [difficultyFirstNum, setDifficultyFirstNum] = useState(0);
   const [difficultySecondNum, setDifficultySecondNum] = useState(0);
   const [difficulty, setDifficulty] = useState("");
@@ -58,8 +56,8 @@ export default function DivisionMenu({ navigation }) {
   });
 
   const handleDifficulty = (e, first, second, difficulty) => {
-    console.log(first)
-    if (first === 1) first = 8; second = 8 // adjusting 
+    if (first === 1) first = 8;
+    second = 8; // manually adjusting
     setDifficultyFirstNum(first);
     setDifficultySecondNum(second);
     setDifficulty(difficulty);
@@ -273,8 +271,8 @@ const styles = StyleSheet.create({
   },
   advancedSettingsText: {
     color: "white",
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     fontSize: screenHeightAdjusted * 0.015,
     marginLeft: screenHeightAdjusted * 0.02,
   },
