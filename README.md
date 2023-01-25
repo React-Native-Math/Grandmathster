@@ -57,6 +57,8 @@ An educational gaming app designed to help both young and old sharpen their ment
 
 Overview of motivation -- why is mental math important / audience / random mode / time attack mode
 
+Players have the choice of answering questions on addition, subtraction, multiplication or division. A more detailed view on this, with in-game examples, is provided in the 'Playing the game' section below.
+
 #### Technology Stack
 
 [![ReactNative][ReactNative]][ReactNative-url]  [![Expo][Expo]][Expo-url]
@@ -67,7 +69,12 @@ We are proud and excited to present Grandmathster to you. Enjoy!
 
 ### Installation
 
-Grandmathster is available from the app store at the following URL: [INSERT URL -> guide: https://developer.apple.com/library/archive/qa/qa1633/_index.html]
+<img style="float:left; vertical-align:top; margin-top: 0.45em" alt="Grandmathster logo" src="./assets/documentation/img/grandmathsterLogoApp.jpg" width=85/>
+
+<div style="margin-left:7em">
+Grandmathster is available from the app store at the following URL: [INSERT URL -> guide: https://developer.apple.com/library/archive/qa/qa1633/_index.html].
+<br></br>
+The app is free to download and is compatible with iOS devices (iPhone and iPads) Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
 
 ### Playing the game
 
