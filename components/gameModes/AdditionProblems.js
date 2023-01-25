@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   scoreContainer: {
     justifyContent: 'flex-start',
     alignItems: "center",
-    padding: screenHeightAdjusted > 667 ? 20 : 3,
+    padding: screenHeightAdjusted > 667 ? 25 : 3,
     borderColor:'#b8100f',
     borderRadius:10,
     borderWidth: 5,
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   number: {
-    fontSize: screen.height >900 ? screen.height*.1: 70,
+    fontSize: screen.height >900 ? screen.height*.08: 70,
     fontFamily: "Azeret",
     color: "white",
   },

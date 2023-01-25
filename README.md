@@ -55,9 +55,12 @@ An educational gaming app designed to help both young and old sharpen their ment
 
 #### About the game
 
-Overview of motivation -- why is mental math important / audience / random mode / time attack mode
+With mental math still being an important part of children's formative education, we wanted to build an app that would mainly help these younger groups of people become more engaged with the subject and flourish in class as a result.
 
-Players have the choice of answering questions on addition, subtraction, multiplication or division. A more detailed view on this, with in-game examples, is provided in the 'Playing the game' section below.
+Grandmathster gives players the choice of answering questions on addition, subtraction, multiplication or division. Within this simple interface, the app allows different levels of customization to each game mode - such as the option to select your desired number of questions to solve or to focus on specific digits only (e.g. exclusively working on multiples of 7). Additionally, players are able to keep track of their top scores and unlock different badges throughout the game.
+
+As the skills developed by playing are also useful in different working fields, the game can also be enjoyed by adults. A more detailed view on using the app, with in-game examples, is provided in the 'Playing the game' section below.
+
 
 #### Technology Stack
 
@@ -82,7 +85,7 @@ The app is free to download and is compatible with iOS devices (iPhone and iPads
 ### Playing the game
 
 <!-- TODO ADD SCREENSHOTS AND DETAILS OF ACCEPTED USER INPUTS -->
-Walkthrough Addition Mode, advanced settings, time attack, scores, model
+[Walkthrough / screenshots to be added here]
 
 ### Contact
 

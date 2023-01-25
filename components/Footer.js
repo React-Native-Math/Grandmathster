@@ -6,7 +6,7 @@ const screenHeightAdjusted = screen.height - 45; // subtract height of navigatio
 const Footer = () => {
   return (
     <>
-      <Text style={styles.footerText}>♜ 2023 BABM Creations</Text>
+      <Text style={styles.footerText}>© 2023 BABM Creations</Text>
     </>
   );
 };
