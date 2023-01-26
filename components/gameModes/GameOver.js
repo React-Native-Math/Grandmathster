@@ -79,7 +79,8 @@ export default function GameOver({
       await AsyncStorage.setItem(operation + "_" + timeAmt, jsonValue);
     }
   };
-  const accuracy = questionAmount === 0 ? 0 : Math.floor((score / questionAmount) * 100);
+  const accuracy =
+    questionAmount === 0 ? 0 : Math.floor((score / questionAmount) * 100);
 
   const storePerfectScores = async () => {
     try {
@@ -95,32 +96,32 @@ export default function GameOver({
     }
   };
   useEffect(() => {
-    
     const difficultyLower = difficulty.toLowerCase();
+    const validQuestionsForPerfectScore = [10, 20, 30];
+
     if (timeAtt && !custom) {
       callReadAndWriteTimAttHighScores(score);
     }
     if (accuracy === 100) {
-      timeAtt ? setMessage(`Congratulations on achieving GRANDMATHSTER on ${difficultyLower} mode!`) : setMessage(
-        `Congratulations on achieving GRANDMATHSTER on ${difficultyLower} mode! You earned a new '${operation} badge'`
-      );
-      if (!timeAtt) {
+      (timeAtt || !validQuestionsForPerfectScore.includes(questionAmount))
+        ? setMessage(
+            `Congratulations on achieving GRANDMATHSTER on ${difficultyLower} mode!`
+          )
+        : setMessage(
+            `Congratulations on achieving GRANDMATHSTER on ${difficultyLower} mode! You earned a new '${operation} badge'`
+          );
+      if (!timeAtt && validQuestionsForPerfectScore.includes(questionAmount)) {
         storePerfectScores();
         setShowBadge(true);
       }
     } else if (accuracy >= 90)
-      setMessage(
-        `Achieved MATHSTER level on ${difficultyLower} mode!`
-      );
+      setMessage(`Achieved MATHSTER level on ${difficultyLower} mode!`);
     else if (accuracy >= 75)
-      setMessage(
-        `You achieved NOVICE level on ${difficultyLower} mode!`
-      );
+      setMessage(`You achieved NOVICE level on ${difficultyLower} mode!`);
     else if (accuracy >= 50)
       setMessage("Good effort but there's room for improvement!");
     else if (accuracy >= 0)
       setMessage("Check the help button (❓) above if you're struggling");
-    // else if (accuracy === 0) setMessage("Stop Guessing");
   }, [loading]);
   return (
     <ImageBackground source={selectBG} style={styles.background}>
@@ -140,12 +141,11 @@ export default function GameOver({
           <></>
         )}
         <View style={styles.qAmountContainer}>
-            <Text style={styles.qAmountText}>
-              {questionAmount} QUESTIONS ANSWERED
-            </Text>
-          </View>
+          <Text style={styles.qAmountText}>
+            {questionAmount} QUESTIONS ANSWERED
+          </Text>
+        </View>
         <View style={styles.resultsContainer}>
-
           <View style={styles.scoreSwipeContainer}>
             <View style={styles.scoreContainer}>
               <Image source={redSwipe} style={styles.redSwipe}></Image>
@@ -158,21 +158,13 @@ export default function GameOver({
 
           <View style={styles.messageContainer}>
             <Text
-              // numberOfLines={2}
-              // adjustsFontSizeToFit
               style={styles.messageTextTop}
             >
               This means your accuracy was
-              <Text style={styles.messageAcc}>
-                {" "}
-                {accuracy}%{" "}
-              </Text>
-              
+              <Text style={styles.messageAcc}> {accuracy}% </Text>
             </Text>
 
             <Text
-              // numberOfLines={4}
-              // adjustsFontSizeToFit
               style={styles.messageTextBottom}
             >
               {message}
@@ -206,20 +198,20 @@ const styles = StyleSheet.create({
     borderColor: "white",
     height: screenHeightAdjusted * 0.35,
     width: screen.width * 0.7,
-    backgroundColor: 'black'
+    backgroundColor: "black",
   },
   messageTextTop: {
     color: "white",
     fontSize: screenHeightAdjusted * 0.02,
     padding: 10,
-    textAlign: 'center',
+    textAlign: "center",
   },
   messageTextBottom: {
     color: "white",
     marginTop: screenHeightAdjusted * 0.02,
-    fontSize: screenHeightAdjusted *0.02,
+    fontSize: screenHeightAdjusted * 0.02,
     padding: 10,
-    textAlign: 'center',
+    textAlign: "center",
   },
   messageAcc: {
     color: "red",
@@ -288,7 +280,7 @@ const styles = StyleSheet.create({
   },
   badgeText: {
     color: "white",
-    textShadowColor: 'yellow',
+    textShadowColor: "yellow",
     textShadowRadius: 30,
     fontSize: screenHeightAdjusted * 0.015,
     fontWeight: "bold",
@@ -303,13 +295,13 @@ const styles = StyleSheet.create({
     width: screen.width * 0.85,
   },
   qAmountText: {
-      fontWeight: "bold",
-      textAlign: "center",
-      fontSize: screenHeightAdjusted * 0.02,
-      color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: screenHeightAdjusted * 0.02,
+    color: "white",
   },
   scoreSwipeContainer: {
-    height: screenHeightAdjusted * 0.10,
+    height: screenHeightAdjusted * 0.1,
     width: screen.width * 0.5,
     display: "flex",
     justifyContent: "center",
