@@ -87,28 +87,28 @@ This app has been designed with simplicity in mind and is easy enough for anyone
 
 <!-- Screen Capture: Customizable gameplay -->
 <div align="center">
-<div style="font-weight:bold">Customizable Gameplay</div>
+<b>Customizable Gameplay</b>
 <p style="font-size:11pt">Grandmathster allows players to control their own games so they can get comfortable on areas of weakness</p><img alt="walkthroughGameplay" src="./assets/documentation/vid/gameplay.gif" width="25%" height="25%" style="border-radius:2.5%"/>
 </div>
 <br/>
 
 <!-- Screen Capture: Math Tips -->
 <div align="center">
-<div style="font-weight:bold">Math Tips</div>
+<b>Math Tips</b>
 <p style="font-size:11pt">Players can access additional information about the app as well as useful math tips from any page, including during an active game</p><img alt="walkthroughModal" src="./assets/documentation/vid/modal.gif" width="25%" height="25%" style="border-radius:2.5%"/>
 </div>
 <br/>
 
 <!-- Screen Capture: Rankings -->
 <div align="center">
-<div style="font-weight:bold">Rankings</div>
+<b>Rankings</b>
 <p style="font-size:11pt">Players receive custom ranks at the end of each game. Achieving 100% accuracy on selected modes earns the Grandmathster rank</p><img alt="walkthroughGameover" src="./assets/documentation/vid/gameover.gif" width="25%" height="25%" style="border-radius:2.5%"/>
 </div>
 <br/>
 
 <!-- Screen Capture: Scores & Badges -->
 <div align="center">
-<div style="font-weight:bold">Scores & Badges</div>
+<b>Scores & Badges</b>
 <p style="font-size:11pt">Players can view the badges they have unlocked and see their best time attack scores by game mode</p><img alt="walkthroughScores" src="./assets/documentation/vid/scores.gif" width="25%" height="25%" style="border-radius:2.5%"/>
 </div>
 
