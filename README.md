@@ -24,10 +24,10 @@ onChangeText = {(input) => {
 <!-- BADGES -->
 <p align="center">
 <a href="">
-<img src="https://img.shields.io/badge/Version-1.0-00ADD8?style=for-the-badge" alt="linkuistix version" />
+<img src="https://img.shields.io/badge/Version-1.0-00ADD8?style=for-the-badge" alt="grandmathster version" />
 </a>&nbsp;
 <a href="">
-<img src="https://img.shields.io/badge/Contributors-2-success?style=for-the-badge&logo=none" alt="linkuistix contributors" />
+<img src="https://img.shields.io/badge/Contributors-2-success?style=for-the-badge&logo=none" alt="grandmathster contributors" />
 </a>&nbsp;
 </p>
 
@@ -61,7 +61,6 @@ Grandmathster gives players the choice of answering questions on addition, subtr
 
 As the skills developed by playing are also useful in different working fields, the game can also be enjoyed by adults. A more detailed view on using the app, with in-game examples, is provided in the 'Playing the game' section below.
 
-
 #### Technology Stack
 
 [![ReactNative][ReactNative]][ReactNative-url]  [![Expo][Expo]][Expo-url]
@@ -83,8 +82,35 @@ The app is free to download and is compatible with iOS devices (iPhone and iPads
 
 ### Playing the game
 
-<!-- TODO ADD SCREENSHOTS AND DETAILS OF ACCEPTED USER INPUTS -->
-[Walkthrough / screenshots to be added here]
+This app has been designed with simplicity in mind and is easy enough for anyone learning basic math to instantly get used to. As such, navigating Grandmathster is largely self-explanatory and just requires picking a game mode and difficulty level to get started. Some of the gameplay and additional features are demonstrated below:
+<br/>
+
+<!-- Screen Capture: Customizable gameplay -->
+<div align="center">
+<div style="font-weight:bold">Customizable gameplay</div>
+<p style="font-size:11pt">Grandmathster allows players to control their own games so they can get comfortable on areas of weakness</p><img alt="walkthroughGameplay" src="./assets/documentation/vid/gameplay.gif" width="25%" height="25%" style="border-radius:2.5%"/>
+</div>
+<br/>
+
+<!-- Screen Capture: Math Tips -->
+<div align="center">
+<div style="font-weight:bold">Math Tips</div>
+<p style="font-size:11pt">Players can access additional information about the app as well as useful math tips from any page or during a game</p><img alt="walkthroughModal" src="./assets/documentation/vid/modal.gif" width="25%" height="25%" style="border-radius:2.5%"/>
+</div>
+<br/>
+
+<!-- Screen Capture: Rankings -->
+<div align="center">
+<div style="font-weight:bold">Rankings</div>
+<p style="font-size:11pt">Players receive custom ranks at the end of each game. Achieving 100% accuracy on certain modes earns the Grandmathster rank</p><img alt="walkthroughGameover" src="./assets/documentation/vid/gameover.gif" width="25%" height="25%" style="border-radius:2.5%"/>
+</div>
+<br/>
+
+<!-- Screen Capture: Scores & Badges -->
+<div align="center">
+<div style="font-weight:bold">Scores & Badges</div>
+<p style="font-size:11pt">Players can view the badges they have unlocked and see their best time attack scores by game mode</p><img alt="walkthroughScores" src="./assets/documentation/vid/scores.gif" width="25%" height="25%" style="border-radius:2.5%"/>
+</div>
 
 ### Contact
 
