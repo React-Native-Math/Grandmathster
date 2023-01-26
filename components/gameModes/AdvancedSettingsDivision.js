@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "center",
     alignItems: "center",
-    height: screenHeightAdjusted * 0.3,
+    height: screenHeightAdjusted * 0.35,
     width: screen.width * 0.7,
     backgroundColor: "black",
   },
