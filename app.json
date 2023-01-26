@@ -2,13 +2,13 @@
   "expo": {
     "name": "GrandMathster",
     "slug": "grandMathster",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/documentation/img/gmLogo1024.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./assets/img/mainMenuBG.png",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -18,16 +18,23 @@
       "assets/img/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.babbas.grandMathster",
+      "buildNumber": "2"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/img/mainMenuBG.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/documentation/img/gmLogo1024.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "504b29ce-88d9-4462-9244-47ea6c988353"
+      }
     }
   }
 }
