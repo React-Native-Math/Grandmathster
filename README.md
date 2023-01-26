@@ -77,7 +77,7 @@ We are excited to present Grandmathster to you and hope it improves your mathema
 Grandmathster is available from the app store at the following URL:  
 [INSERT URL -> guide: https://developer.apple.com/library/archive/qa/qa1633/_index.html].
 </p>
-<p>
+<p style="margin-left:7em">
 The app is free to download and is compatible with iOS devices (iPhone and iPads)</p>
 
 ### Playing the game
@@ -87,7 +87,7 @@ This app has been designed with simplicity in mind and is easy enough for anyone
 
 <!-- Screen Capture: Customizable gameplay -->
 <div align="center">
-<div style="font-weight:bold">Customizable gameplay</div>
+<div style="font-weight:bold">Customizable Gameplay</div>
 <p style="font-size:11pt">Grandmathster allows players to control their own games so they can get comfortable on areas of weakness</p><img alt="walkthroughGameplay" src="./assets/documentation/vid/gameplay.gif" width="25%" height="25%" style="border-radius:2.5%"/>
 </div>
 <br/>
@@ -95,14 +95,14 @@ This app has been designed with simplicity in mind and is easy enough for anyone
 <!-- Screen Capture: Math Tips -->
 <div align="center">
 <div style="font-weight:bold">Math Tips</div>
-<p style="font-size:11pt">Players can access additional information about the app as well as useful math tips from any page or during a game</p><img alt="walkthroughModal" src="./assets/documentation/vid/modal.gif" width="25%" height="25%" style="border-radius:2.5%"/>
+<p style="font-size:11pt">Players can access additional information about the app as well as useful math tips from any page, including during an active game</p><img alt="walkthroughModal" src="./assets/documentation/vid/modal.gif" width="25%" height="25%" style="border-radius:2.5%"/>
 </div>
 <br/>
 
 <!-- Screen Capture: Rankings -->
 <div align="center">
 <div style="font-weight:bold">Rankings</div>
-<p style="font-size:11pt">Players receive custom ranks at the end of each game. Achieving 100% accuracy on certain modes earns the Grandmathster rank</p><img alt="walkthroughGameover" src="./assets/documentation/vid/gameover.gif" width="25%" height="25%" style="border-radius:2.5%"/>
+<p style="font-size:11pt">Players receive custom ranks at the end of each game. Achieving 100% accuracy on selected modes earns the Grandmathster rank</p><img alt="walkthroughGameover" src="./assets/documentation/vid/gameover.gif" width="25%" height="25%" style="border-radius:2.5%"/>
 </div>
 <br/>
 
