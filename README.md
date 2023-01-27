@@ -18,7 +18,7 @@ onChangeText = {(input) => {
 <!-- HEADER -->
 <h1 align="center">
   <img alt="Grandmathster logo" src="./assets/documentation/img/grandmathsterLogo.png" width=180/><br/>
-  <a href="INSERTLINK">🔗 appstoreLink</a>
+  <a href="https://apps.apple.com/us/app/grandmathster/id1668216288">🔗 Available on iOS</a>
 </h1>
 
 <!-- BADGES -->
@@ -71,11 +71,11 @@ We are excited to present Grandmathster to you and hope it improves your mathema
 
 ### Installation
 
-<a href="INSERTURL"><img style="vertical-align:top; margin-top: 0.45em" align="left" alt="Grandmathster logo" src="./assets/documentation/img/grandmathsterLogoApp.jpg" width=85/></a>
+<a href="https://apps.apple.com/us/app/grandmathster/id1668216288"><img style="vertical-align:top; margin-top: 0.45em" align="left" alt="Grandmathster logo" src="./assets/documentation/img/grandmathsterLogoApp.jpg" width=85/></a>
 
 <p style="margin-left:7em">
 Grandmathster is available from the app store at the following URL:  
-[INSERT URL -> guide: https://developer.apple.com/library/archive/qa/qa1633/_index.html].
+<a href="https://apps.apple.com/us/app/grandmathster/id1668216288">https://apps.apple.com/us/app/grandmathster/id1668216288</a>
 </p>
 <p style="margin-left:7em">
 The app is free to download and is compatible with iOS devices (iPhone and iPads)</p>
