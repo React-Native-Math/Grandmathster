@@ -24,7 +24,7 @@ export default function AdvancedSettingsDivision({ navigation }) {
   const [timeAttack, setTimeAttack] = useState(false);
   const [timeAmount, setTimeAmount] = useState(Infinity);
 
-  const checkboxOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  const checkboxOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const checkboxSecondNum = checkboxOptions.map((option) => {
     return (

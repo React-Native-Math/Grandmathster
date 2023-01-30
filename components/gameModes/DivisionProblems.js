@@ -17,27 +17,22 @@ export default function DivisionProblems(props) {
   const [textShadow, setTextShadow] = useState('#FFFFFF')
 
   const textShadowVals = ['#FFFFFF', '#FF355E', '#FFFF66', '#CCFF00', '#FF6EFF', '#AAF0D1', '#00FFFF']
-
-  useEffect(() => {
-    setFirstNum(Math.floor(Math.random()*props.firstNum)*secondNum)
-}, [secondNum]);
   
   useEffect(() => {
 
-    //second number always gets passed as an integer. This takes a random number up to the selection.
+    //first number always gets passed as an integer. This takes a random number up to the selection.
         
     //check to see if props.firstNum is a number or object and then set first number
         if(Number.isInteger(props.secondNum)){          
-            setSecondNum(Math.floor(Math.random() * props.secondNum));
+            setSecondNum(Math.floor(Math.random() * props.secondNum)+1)
         }
         else{ let secondNumberArray = Object.entries(props.secondNum)
             secondNumberArray = secondNumberArray.filter(([key, value])=>{
             if(value) 
-
             return key
         })
         //check to see if user passed in an empty object or with every number being toggled false
-        //if false set the first number to be between 0 and 10. else set first number to be a selection of
+        //if false set the second number to be between 0 and 10. else set second number to be a selection of
         //what user put in under advanced options
         secondNumberArray.length===0 ? setSecondNum(Math.floor(Math.random()*10))
         : setSecondNum(Number(secondNumberArray[Math.floor(Math.random()*secondNumberArray.length)][0]))
@@ -45,27 +40,15 @@ export default function DivisionProblems(props) {
     }
     },[change])
 
+    useEffect(() => {
+      setFirstNum(Math.floor(Math.random()*props.firstNum)*secondNum)
+  }, [secondNum]);
+
   if (props.timeAtt) {
     setTimeout(() => {
       setTime(time + 1);
     }, 1000);
   }
-  if(firstNum / secondNum < 0 || secondNum === 0){
-    if(Number.isInteger(props.secondNum)){
-        setSecondNum(Math.floor(Math.random() * props.secondNum));
-        setFirstNum(Math.floor(Math.random()*props.firstNum)*secondNum)
-    }
-    else{ let secondNumberArray = Object.entries(props.secondNum)
-        secondNumberArray = secondNumberArray.filter(([key, value])=>{
-        if(value) 
-        return key
-    })
-    secondNumberArray.length===0 ? setSecondNum(Math.floor(Math.random()*10))
-    : setSecondNum(Number(secondNumberArray[Math.floor(Math.random()*secondNumberArray.length)][0]))
-    setFirstNum(Math.floor(Math.random()*props.firstNum*secondNum))
-    }
-  }
-
 
   function handleInputAnswer(e) {
     if(input===''){
