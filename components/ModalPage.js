@@ -115,7 +115,7 @@ export default function ModalPage() {
           {/* Feedback */}
           <Text style={styles.sectionHeading}>Feedback</Text>
           <Text style={styles.sectionInfo}>
-            We hope you enjoy exercising your mental math skills with
+          This game was developed by Bilal Abbas and Bill Munkacsy and we hope you enjoy exercising your mental math skills with
             Grandmathster. Please help us improve this game in future updates by
             leaving reviews on the app store. If you would like to provide any
             other feedback or report issues with the app, please touch below to

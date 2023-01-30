@@ -1,7 +1,12 @@
 <!-- 
+NOTE: do nvm use 16.17.0, then npm start to run this app correctly
 bugfixes todo -
 - addition hard mode - not aligning properly on ipad (swap first and second num?)
 - ... -->
+<!-- 
+- force portait view
+- add names to footer and about section 
+- -->
 
 <!-- Solution with regex -->
 <!-- const [fieldInput, setFieldInput] = useState('')

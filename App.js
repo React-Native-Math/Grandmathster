@@ -3,7 +3,10 @@ import { NavigationContainer, DarkTheme } from "@react-navigation/native";
 import Routes from "./routes/Routes";
 import { useFonts } from "expo-font";
 import { useEffect } from "react";
-import {Asset} from 'expo-asset'
+import {Asset} from 'expo-asset';
+import * as ScreenOrientation from 'expo-screen-orientation';
+
+ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
 
 export default function App() {
   let [fontsLoaded] = useFonts({
