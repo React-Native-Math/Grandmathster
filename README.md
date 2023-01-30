@@ -1,7 +1,12 @@
 <!-- 
+NOTE: do nvm use 16.17.0, then npm start to run this app correctly
 bugfixes todo -
 - addition hard mode - not aligning properly on ipad (swap first and second num?)
 - ... -->
+<!-- 
+- force portait view
+- add names to footer and about section 
+- -->
 
 <!-- Solution with regex -->
 <!-- const [fieldInput, setFieldInput] = useState('')
@@ -18,7 +23,7 @@ onChangeText = {(input) => {
 <!-- HEADER -->
 <h1 align="center">
   <img alt="Grandmathster logo" src="./assets/documentation/img/grandmathsterLogo.png" width=180/><br/>
-  <a href="INSERTLINK">🔗 appstoreLink</a>
+  <a href="https://apps.apple.com/us/app/grandmathster/id1668216288">🔗 Available on iOS</a>
 </h1>
 
 <!-- BADGES -->
@@ -71,11 +76,11 @@ We are excited to present Grandmathster to you and hope it improves your mathema
 
 ### Installation
 
-<a href="INSERTURL"><img style="vertical-align:top; margin-top: 0.45em" align="left" alt="Grandmathster logo" src="./assets/documentation/img/grandmathsterLogoApp.jpg" width=85/></a>
+<a href="https://apps.apple.com/us/app/grandmathster/id1668216288"><img style="vertical-align:top; margin-top: 0.45em" align="left" alt="Grandmathster logo" src="./assets/documentation/img/grandmathsterLogoApp.jpg" width=85/></a>
 
 <p style="margin-left:7em">
 Grandmathster is available from the app store at the following URL:  
-[INSERT URL -> guide: https://developer.apple.com/library/archive/qa/qa1633/_index.html].
+<a href="https://apps.apple.com/us/app/grandmathster/id1668216288">https://apps.apple.com/us/app/grandmathster/id1668216288</a>
 </p>
 <p style="margin-left:7em">
 The app is free to download and is compatible with iOS devices (iPhone and iPads)</p>
@@ -87,28 +92,28 @@ This app has been designed with simplicity in mind and is easy enough for anyone
 
 <!-- Screen Capture: Customizable gameplay -->
 <div align="center">
-<div style="font-weight:bold">Customizable Gameplay</div>
+<b>Customizable Gameplay</b>
 <p style="font-size:11pt">Grandmathster allows players to control their own games so they can get comfortable on areas of weakness</p><img alt="walkthroughGameplay" src="./assets/documentation/vid/gameplay.gif" width="25%" height="25%" style="border-radius:2.5%"/>
 </div>
 <br/>
 
 <!-- Screen Capture: Math Tips -->
 <div align="center">
-<div style="font-weight:bold">Math Tips</div>
+<b>Math Tips</b>
 <p style="font-size:11pt">Players can access additional information about the app as well as useful math tips from any page, including during an active game</p><img alt="walkthroughModal" src="./assets/documentation/vid/modal.gif" width="25%" height="25%" style="border-radius:2.5%"/>
 </div>
 <br/>
 
 <!-- Screen Capture: Rankings -->
 <div align="center">
-<div style="font-weight:bold">Rankings</div>
+<b>Rankings</b>
 <p style="font-size:11pt">Players receive custom ranks at the end of each game. Achieving 100% accuracy on selected modes earns the Grandmathster rank</p><img alt="walkthroughGameover" src="./assets/documentation/vid/gameover.gif" width="25%" height="25%" style="border-radius:2.5%"/>
 </div>
 <br/>
 
 <!-- Screen Capture: Scores & Badges -->
 <div align="center">
-<div style="font-weight:bold">Scores & Badges</div>
+<b>Scores & Badges</b>
 <p style="font-size:11pt">Players can view the badges they have unlocked and see their best time attack scores by game mode</p><img alt="walkthroughScores" src="./assets/documentation/vid/scores.gif" width="25%" height="25%" style="border-radius:2.5%"/>
 </div>
 

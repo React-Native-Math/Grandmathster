@@ -2,7 +2,11 @@
   "expo": {
     "name": "Grand Mathster",
     "slug": "grandMathster",
+<<<<<<< HEAD
     "version": "1.0.2",
+=======
+    "version": "1.0.1",
+>>>>>>> a2a09efcb7b536be8414efe1f4e31cc6471b4d0e
     "orientation": "portrait",
     "icon": "./assets/documentation/img/gmLogo1024.png",
     "userInterfaceStyle": "light",
@@ -19,8 +23,13 @@
     ],
     "ios": {
       "supportsTablet": true,
+<<<<<<< HEAD
       "buildNumber": "3",
       "bundleIdentifier": "com.bmunkacsy.grandMathster"
+=======
+      "bundleIdentifier": "com.babbas.grandMathster",
+      "buildNumber": "2"
+>>>>>>> a2a09efcb7b536be8414efe1f4e31cc6471b4d0e
     },
     "android": {
       "adaptiveIcon": {
@@ -33,7 +42,11 @@
     },
     "extra": {
       "eas": {
+<<<<<<< HEAD
         "projectId": "3c106fe0-129f-4293-be58-ef5314e8ea54"
+=======
+        "projectId": "504b29ce-88d9-4462-9244-47ea6c988353"
+>>>>>>> a2a09efcb7b536be8414efe1f4e31cc6471b4d0e
       }
     }
   }
