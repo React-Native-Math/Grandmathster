@@ -5,8 +5,8 @@ import { useFonts } from "expo-font";
 import { useEffect } from "react";
 import {Asset} from 'expo-asset';
 import * as ScreenOrientation from 'expo-screen-orientation';
-
-ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
+// ScreenOrientation does not work on iPads at the moment
+// TODO: review open issue: https://github.com/expo/expo/issues/15009
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -26,6 +26,12 @@ export default function App() {
       }
     });
   }
+
+  useEffect(() => {
+    (async () => {
+      await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+    })();
+  }, []);
 
   useEffect(()=>{
     const imageAssets = cacheImages([require('./assets/img/redSwipe.png'), require('./assets/img/badgeOutline.png'), require('./assets/img/badgeAdd.png'), require('./assets/img/badgeDiv.png'), require('./assets/img/badgeMul.png'), require('./assets/img/badgeRan.png'),require('./assets/img/badgeSub.png'), require('./assets/img/cog.png'), require('./assets/img/selectBG.jpg'), require('./assets/img/help.png'),  require('./assets/img/modalPNG.png')])

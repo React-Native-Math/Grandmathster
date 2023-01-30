@@ -21,7 +21,7 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.babbas.grandMathster",
       "buildNumber": "3"
-    },
+  },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/img/mainMenuBG.png",
