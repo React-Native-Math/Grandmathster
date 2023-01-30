@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "GrandMathster",
+    "name": "Grand Mathster",
     "slug": "grandMathster",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/documentation/img/gmLogo1024.png",
     "userInterfaceStyle": "light",
@@ -20,7 +20,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.babbas.grandMathster",
-      "buildNumber": "2"
+      "buildNumber": "3"
     },
     "android": {
       "adaptiveIcon": {
