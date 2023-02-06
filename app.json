@@ -22,6 +22,7 @@
       "bundleIdentifier": "com.bmunkacsy.grandMathsters",
       "buildNumber": "8"
     },
+
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/documentation/img/gmLogo1024.png",

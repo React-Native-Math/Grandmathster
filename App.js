@@ -5,10 +5,10 @@ import { useFonts } from "expo-font";
 import { useEffect } from "react";
 import {Asset} from 'expo-asset';
 import * as ScreenOrientation from 'expo-screen-orientation';
-
 async function changeScreenOrientation() {
   await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
 }
+
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -28,6 +28,12 @@ export default function App() {
       }
     });
   }
+
+  useEffect(() => {
+    (async () => {
+      await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+    })();
+  }, []);
 
   useEffect(()=>{
     changeScreenOrientation()
