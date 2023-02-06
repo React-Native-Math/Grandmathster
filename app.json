@@ -2,7 +2,7 @@
   "expo": {
     "name": "Grandmathster US",
     "slug": "grand_Mathster",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "orientation": "portrait",
     "icon": "./assets/documentation/img/gmLogo1024.png",
     "userInterfaceStyle": "light",
@@ -20,19 +20,11 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.bmunkacsy.grandMathsters",
-      "buildNumber": "7",
-      "plugins": [
-        [
-          "expo-screen-orientation",
-          {
-            "initialOrientation": "portrait"
-          }
-        ]
-      ]
+      "buildNumber": "8"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/img/mainMenuBG.png",
+        "foregroundImage": "./assets/documentation/img/gmLogo1024.png",
         "backgroundColor": "#FFFFFF"
       }
     },
