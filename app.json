@@ -30,6 +30,7 @@
         ]
       ]
     },
+
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/img/mainMenuBG.png",
