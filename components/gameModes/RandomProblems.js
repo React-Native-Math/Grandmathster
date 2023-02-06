@@ -162,28 +162,29 @@ export default function RandomProblems(props) {
       {questionNumber < Number(props.maxQuestionsNumber) &&
       props.timeAmt - time > 0 ? (
         <View style={styles.outerContainer}>
-          <View style={styles.scoreContainer}>
-            <Text style={styles.score}>Score: {score} Question: {questionNumber}
+          <View allowFontScaling={false} style={styles.scoreContainer}>
+            <Text allowFontScaling={false} style={styles.score}>Score: {score} Question: {questionNumber}
             </Text>
-            <Text style={styles.score}>
+            <Text allowFontScaling={false} style={styles.score}>
               
               {questionNumber > 0
                 ? `Accuracy: ${Math.floor((score / questionNumber) * 100)}%`
                 : "Accuracy: 0%"}
             </Text>
-            <Text style={styles.score}>
+            <Text allowFontScaling={false} style={styles.score}>
               {props.timeAtt
                 ? `Time Remaining: ${Math.floor(props.timeAmt - time)}`
                 : ""}
             </Text>
           </View>
           <View style={styles.problemContainer}>
-            <Text style={{...styles.number, textShadowColor: textShadow, textShadowRadius: 30}}>{firstNum}</Text>
-            <Text style={{...styles.number, textShadowColor: textShadow, textShadowRadius: 30}}>
+            <Text allowFontScaling={false} style={{...styles.number, textShadowColor: textShadow, textShadowRadius: 30}}>{firstNum}</Text>
+            <Text allowFontScaling={false} style={{...styles.number, textShadowColor: textShadow, textShadowRadius: 30}}>
               <Text style={styles.operator}>{operation} </Text>
               {secondNum}
               </Text>
             <TextInput
+              allowFontScaling={false}
               style={styles.textInput}
               placeholder={questionNumber !== 0 ? "" : "type your answer"}
               onChangeText={(userInput) => {
@@ -201,7 +202,7 @@ export default function RandomProblems(props) {
             />
           </View>
           <View>
-            <Text style={styles.message}>{message}</Text>
+            <Text allowFontScaling={false} style={styles.message}>{message}</Text>
           </View>
         </View>
       ) : (
