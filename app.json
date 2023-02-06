@@ -20,7 +20,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.bmunkacsy.grandMathsters",
-      "buildNumber": "8"
+      "buildNumber": "9"
     },
 
     "android": {
